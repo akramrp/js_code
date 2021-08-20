@@ -1,73 +1,190 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>js code</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>Code</title>
 </head>
 <body>
-The “null” value<br>
-	In JavaScript, null is not a “reference to a non-existing object” or a “null pointer” like in some other languages.
-	It’s just a special value which represents “nothing”, “empty” or “value unknown”.
-	The code above states that age is unknown.
-<br><br>
-The “undefined” value<br>
-	The special value undefined also stands apart. It makes a type of its own, just like null.
-	The meaning of undefined is “value is not assigned”.
-	If a variable is declared, but not assigned, then its value is undefined: exp: ageFrom
+	<div class="container-flude mr-3 ml-3">
+		<h2 class="mt-2">Help Code</h2>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="accordion" id="accordionExample">
+					<div class="card">
+						<div class="card-header" id="heading1">
+							<h5 class="mb-0">
+								<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+									The “null” value
+								</button>
+							</h5>
+						</div>
+						<div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordionExample">
+							<div class="card-body">
+								In JavaScript, null is not a “reference to a non-existing object” or a “null pointer” like in some other languages.
+								It’s just a special value which represents “nothing”, “empty” or “value unknown”.
+								The code above states that age is unknown.
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="heading2">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+									The “undefined” value
+								</button>
+							</h5>
+						</div>
+						<div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
+							<div class="card-body">
+								The special value undefined also stands apart. It makes a type of its own, just like null.
+								The meaning of undefined is “value is not assigned”.
+								If a variable is declared, but not assigned, then its value is undefined: exp: ageFrom
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="heading3">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+									Difference Between Primitive and Non-Primitive Data Types in JavaScript
+								</button>
+							</h5>
+						</div>
+						<div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
+							<div class="card-body">
+								There are 7 primitive data types: string, number, bigint, boolean, undefined, symbol, and null.<br>
+								The ‘object’ is a non-primitive data type in JavaScript. Arrays and Functions in JavaScript belong to the ‘object’ data type.<br>
+								JavaScript primitive data types are data types that refer to a single value.<br>
+								E.g. var a =5;
+								Here the variable ‘a’ is an integer data type and has a single integer value. The variable ‘a’ refers to a single value in memory. If we want to change the value of a, we would have to assign a new value to a.  Primitive data types are not mutable.<br>
+								When we create a variable, it reserves a space for itself in the memory. The variable ‘a’ has space in memory which holds its value. When we try to change the value of ‘a’ by assigning another value like var a = 6, it doesn’t alter the value of the original a, it just creates a new variable ‘a’ with the new value 6.
+								We can assign the value of ‘a’ to another variable like this:<br>
+								var a1=a;<br>
+								Here the variable ‘a1’ is assigned the value of ‘a’, not the address of ‘a’ in memory.<br>
+								Thus ‘a1’ now holds the same value as ‘a’.
+								We can compare the two variables ‘a’ and ‘a1’ as the two variables refer to the same value now.<br>
+								Using the comparison operator will return a Boolean value of ‘true’.
+								a===a1 // equals to ‘true’ as ‘===’  checks both the value and type of these two variables are true.<br><br>
 
-<br><br>
-Difference Between Primitive and Non-Primitive Data Types in JavaScript<br>
-	There are 7 primitive data types: string, number, bigint, boolean, undefined, symbol, and null.<br>
-	The ‘object’ is a non-primitive data type in JavaScript. Arrays and Functions in JavaScript belong to the ‘object’ data type.<br>
-	JavaScript primitive data types are data types that refer to a single value.<br>
-	E.g. var a =5;
-	Here the variable ‘a’ is an integer data type and has a single integer value. The variable ‘a’ refers to a single value in memory. If we want to change the value of a, we would have to assign a new value to a.  Primitive data types are not mutable.<br>
-	When we create a variable, it reserves a space for itself in the memory. The variable ‘a’ has space in memory which holds its value. When we try to change the value of ‘a’ by assigning another value like var a = 6, it doesn’t alter the value of the original a, it just creates a new variable ‘a’ with the new value 6.
-	We can assign the value of ‘a’ to another variable like this:<br>
-	var a1=a;<br>
-	Here the variable ‘a1’ is assigned the value of ‘a’, not the address of ‘a’ in memory.<br>
-	Thus ‘a1’ now holds the same value as ‘a’.
-	We can compare the two variables ‘a’ and ‘a1’ as the two variables refer to the same value now.<br>
-	Using the comparison operator will return a Boolean value of ‘true’.
-	a===a1 // equals to ‘true’ as ‘===’  checks both the value and type of these two variables are true.<br><br>
-	 
-	JavaScript non-primitive types are objects. An object holds a reference/address of a single key-value pair or many key-value pairs. Whenever we refer to an object, we refer to an address in memory which contains the key-value pair. If we assign an object ‘object1’ to another object ‘object2’, we are actually assigning the address of ‘object1’ to ‘object2’ instead of the key-value pair which the ‘object1’ contains in memory. Let’s see below”.<br>
-	var object1= {a:5, a1:6};<br>
-	var object2 = object1;<br>
-	The above statement assigns the address of object2 to object1, and not the value {a:5, a1:6}. Thus with this assignment ‘object1’ and ‘object2’ refer to the same address in memory.<br>
-	When we compare these two objects, we find that both of them refer to the same address in memory.<br>
-	object1===object2 //will return true, as both refer to the same address. If we compare two separate objects like below:<br>
-	var object1= {a:5, a1:6};<br>
-	var object2 = {a:5, a1:6};<br>
-	This statement object1===object2 // would return a false because both the objects refer to two separate addresses in memory. When we compare two objects, we compare their addresses, not their values.<br>
-	We have seen above in case of primitive data types, that when we assign the variable ‘a’ to variable ‘a1’, the value of ‘a’ is copied to ‘a1’, and not its address which happens in non-primitive data types.<br>
-	Thus primitive data types refer to a ‘single value’ in an address in memory whereas non-primitive data types refer to the ‘address’ in memory which contains single or multiple key-value pair/s.<br><br>
+								JavaScript non-primitive types are objects. An object holds a reference/address of a single key-value pair or many key-value pairs. Whenever we refer to an object, we refer to an address in memory which contains the key-value pair. If we assign an object ‘object1’ to another object ‘object2’, we are actually assigning the address of ‘object1’ to ‘object2’ instead of the key-value pair which the ‘object1’ contains in memory. Let’s see below”.<br>
+								var object1= {a:5, a1:6};<br>
+								var object2 = object1;<br>
+								The above statement assigns the address of object2 to object1, and not the value {a:5, a1:6}. Thus with this assignment ‘object1’ and ‘object2’ refer to the same address in memory.<br>
+								When we compare these two objects, we find that both of them refer to the same address in memory.<br>
+								object1===object2 //will return true, as both refer to the same address. If we compare two separate objects like below:<br>
+								var object1= {a:5, a1:6};<br>
+								var object2 = {a:5, a1:6};<br>
+								This statement object1===object2 // would return a false because both the objects refer to two separate addresses in memory. When we compare two objects, we compare their addresses, not their values.<br>
+								We have seen above in case of primitive data types, that when we assign the variable ‘a’ to variable ‘a1’, the value of ‘a’ is copied to ‘a1’, and not its address which happens in non-primitive data types.<br>
+								Thus primitive data types refer to a ‘single value’ in an address in memory whereas non-primitive data types refer to the ‘address’ in memory which contains single or multiple key-value pair/s.<br><br>
+							</div>
+						</div>
+					</div>
 
+					<div class="card">
+						<div class="card-header" id="heading4">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+									Nullish coalescing operator '??'
+								</button>
+							</h5>
+						</div>
+						<div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
+							<div class="card-body">
+								The nullish coalescing operator is written as two question marks ??.
+								As it treats null and undefined similarly, we’ll use a special term here, in this article. We’ll say that an expression is “defined” when it’s neither null nor undefined.
+								<xmp>
+									let user;
+									alert(user ?? "Anonymous"); // Anonymous (user not defined)
+
+									===================================================
+									let user = "John";
+									alert(user ?? "Anonymous"); // John (user defined)
+
+									===================================================
+									let height = null;
+									let width = null;
+									// important: use parentheses
+									let area = (height ?? 100) * (width ?? 50);
+									alert(area); // 5000
+								</xmp>
+							</div>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-header" id="heading5">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+									The “undefined” value
+								</button>
+							</h5>
+						</div>
+						<div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordionExample">
+							<div class="card-body">
+								The special value undefined also stands apart. It makes a type of its own, just like null.
+								The meaning of undefined is “value is not assigned”.
+								If a variable is declared, but not assigned, then its value is undefined: exp: ageFrom
+							</div>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-header" id="heading6">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+									The “undefined” value
+								</button>
+							</h5>
+						</div>
+						<div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordionExample">
+							<div class="card-body">
+								The special value undefined also stands apart. It makes a type of its own, just like null.
+								The meaning of undefined is “value is not assigned”.
+								If a variable is declared, but not assigned, then its value is undefined: exp: ageFrom
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script>
-		/*
-			var: 		global scope
-			let: 		local scope
-			const: 		constant value
+	/*
+		var: 		global scope
+		let: 		local scope
+		const: 		constant value
 		*/
-		// document.write(); console.log();
-		var text = '';
-		var arr = ['akram','jeeshan','imran'];
-		arr.forEach(function(num, index) {
-			document.write(index+': '+num+'\n');
-		});
-		let user = 'John', ageTo = 25, message = 'Hello';  // multiple variavle declaration in at a time
-		//What’s interesting – the dollar sign '$' and the underscore '_' can also be used in names. They are regular symbols, just like letters, without any special meaning.
-		let $ = 1; // declared a variable with the name "$"
-		let _ = 2; // and now a variable with the name "_"
-		console.log('some of $ and _ variable: ', $ + _); // 3
-		// Backticks are “extended functionality” quotes. They allow us to embed variables and expressions into a string by wrapping them in ${…}, for example:
-		let name = 'Akram'
-		document.write("<br> 2. hello ${name} :: ", `hello ${name}`);
-		let isGreater = 4 > 1;							// return true
-		var age = null;
-		let ageFrom;
+	// document.write(); console.log();
+	var text = '';
+	var arr = ['akram','jeeshan','imran'];
+	arr.forEach(function(num, index) {
+		document.write(index+': '+num+'\n');
+	});
+	let user = 'John', ageTo = 25, message = 'Hello';  // multiple variavle declaration in at a time
+	//What’s interesting – the dollar sign '$' and the underscore '_' can also be used in names. They are regular symbols, just like letters, without any special meaning.
+	let $ = 1; // declared a variable with the name "$"
+	let _ = 2; // and now a variable with the name "_"
+	console.log('some of $ and _ variable: ', $ + _); // 3
+	// Backticks are “extended functionality” quotes. They allow us to embed variables and expressions into a string by wrapping them in ${…}, for example:
+	let name = 'Akram'
+	document.write("<br> 2. hello ${name} :: ", `hello ${name}`);
+	let isGreater = 4 > 1;							// return true
+	var age = null;
+	let ageFrom;
 
-		
-	</script>
+	// multiple turnary operatorn condition in one statement
+	var num2 = 9
+	var res2 = (num2 > 10) ? 'number greater then 10' : (num2 > 7) ? 'number greater then 7' : `your age is ${num2}`;
+	console.log(res)
+</script>
 </body>
 </html>

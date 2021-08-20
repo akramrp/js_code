@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
+	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<title>JS Example</title>
+	<title>Register</title>
 </head>
 <body>
 	<div class="container">
@@ -14,19 +16,21 @@
 				<form action="" method="post">
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email Address</label>
-						<input type="email" class="form-control" name="email" placeholder="Enter email" id="loginEmail" required>
+						<input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label>
-						<input type="password" class="form-control" name="password" placeholder="Password" id="loginPass" required>
+						<input type="password" class="form-control" name="password" placeholder="Password" required>
 					</div>
-					<button name="login" value="login" class="btn btn-success">login</button>
-					<p id="response1"></p>
+					<button type="submit" name="login" value="login" class="btn btn-success">login</button>
+					<p style="color:red"><?=$error_login?></p>
+
 				</form>
 			</div>
 			<div class="col-md-6">
 				<h2 class="mt-5">Register Here</h2>
-				<form action=" " method="post">
+				<form action=" " method="post" onsubmit="return check_form()">
+					<!-- <input type="hidden" name="action" value="register"> -->
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label>
 						<input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" required="">
@@ -40,13 +44,31 @@
 						<input type="password" class="form-control" name="cpass" id="cpass" placeholder="Confirm Password" required="">
 					</div>
 					<button type="submit" name="register" value="register"  class="btn btn-success">register</button>
-					<p id="response2"></p>
+					<p style="color:green"><?=$success_msg?></p>
+					<p style="color:red"><?=$error_msg?></p>
 				</form>
 			</div>
 		</div> 
 	</div>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"  crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script>
+		function check_form(){
+			var email =	$('#email').val();
+			var pass  =	$('#pass').val();
+			var cpass =	$('#cpass').val();
+			if (pass != cpass) {
+				alert('password not match');
+				$('#cpass').focus();
+				return false;
+			}
+			return true;
+		}
+		
+	</script>
 </body>
 </html>
