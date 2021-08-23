@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>try</title>
+</head>
+<body>
+	<h2>Help code</h2>
+	<div>
+		<input type="text" name="num" id="num">
+		<input type="button" id="showPrimeNumber" value="check prime"> <span id="response"></span>
+	</div>
+	<div>
+		<input type="text" name="num1" id="num1">
+		<input type="button" id="checkAge" value="check age"> <span id="response1"></span>
+	</div>
+	<p>Read It: Object, Symbol</p>
+<xmp>
+	:::::::::::::::::: Arrow functions, the basics ::::::::::::::::::
+	syntex: let func = (arg1, arg2, ..., argN) => expression 
+	
+	let sum = (a, b) => a + b;
+	/* This arrow function is a shorter form of:
+		let sum = function(a, b) {
+		  return a + b;
+		};
+	*/
+	alert( sum(1, 2) ); // 3		
+</xmp>
+
+<xmp>
+:::::::::::::::::: Automated Linters ::::::::::::::::::
+Linters are tools that can automatically check the style of your code and make improving suggestions.
+ The great thing about them is that style-checking can also find some bugs, like typos in variable or function names. 
+ Because of this feature, using a linter is recommended even if you don’t want to stick to one particular “code style”.
+Here are some well-known linting tools:
+
+JSLint – one of the first linters.
+JSHint – more settings than JSLint.
+ESLint – probably the newest one.
+All of them can do the job. The author uses ESLint.
+
+Most linters are integrated with many popular editors: just enable the plugin in the editor and configure the style.
+For instance, for ESLint you should do the following:
+
+Install Node.js.
+Install ESLint with the command npm install -g eslint (npm is a JavaScript package installer).
+Create a config file named .eslintrc in the root of your JavaScript project (in the folder that contains all your files).
+Install/enable the plugin for your editor that integrates with ESLint. The majority of editors have one.
+Here’s an example of an .eslintrc file:
+
+{
+  "extends": "eslint:recommended",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "no-console": 0,
+    "indent": 2
+  }
+}
+Here the directive "extends" denotes that the configuration is based on the “eslint:recommended” set of settings. After that, we specify our own.
+It is also possible to download style rule sets from the web and extend them instead. See http://eslint.org/docs/user-guide/getting-started for more details about installation.
+Also certain IDEs have built-in linting, which is convenient but not as customizable as ESLint.
+</xmp>
+
+<xmp>
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Character		Description
+\n 					New line
+\r					Carriage return: not used alone. Windows text files use a combination of two characters \r\n to represent a line break.
+\', \"			Quotes
+\\					Backslash
+\t					Tab
+\b, \f, \v	Backspace, Form Feed, Vertical Tab – kept for compatibility, not used nowadays.
+\xXX				Unicode character with the given hexadecimal Unicode XX, e.g. '\x7A' is the same as 'z'.
+\uXXXX			A Unicode symbol with hexqcode XXXX in UTF-16 encoding, for instance \u00A9 – is a Unicode for the copyright symbol ©. It must be exactly 4hex digits.
+\u{X…XXXXXX} (1 to 6 hex characters)	A Unicode symbol with the given UTF-32 encoding. Some rare characters are encoded with two Unicode symbols, taking 4 bytes. This way we can insert long codes.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+</xmp>
+
+	<script>
+		document.getElementById("showPrimeNumber").addEventListener('click', function(){
+			var check;
+			var num = document.getElementById("num").value;
+			for (var i = 2; i < num; i++) {
+				if(num % 2 == 0 )  
+					check = `${num} is not prime`;
+				else
+					check = `${num} is prime`;
+			}
+			document.getElementById("response").innerHTML = check;
+		});
+
+		document.getElementById('checkAge').addEventListener('click', function(){
+			var age = document.getElementById("num1").value;
+			let welcome = (age < 18 ) ? 
+				() => alert('hello with Multiline arrow functions') : 
+				() => alert('Greeting! with Multiline arrow functions'); 
+			welcome();
+		})
+		// function showPrimeNumber(num){
+		// 	for (var i = 2; i < num; i++) {
+		// 		if(num % 2 == 0 ) return false;
+		// 	}
+		// 	return true;
+		// }
+		// console.log(showPrimeNumber(8));
+
+		let sum = (a, b) => a+b;
+		console.log('the sum of two number with arrow function => ', sum(7,8));
+
+		let sayHi = () => console.log('say hii function');
+		sayHi();
+
+		// The typeof operator returns the type for a value, with two exceptions:
+		typeof null == "object" // error in the language
+		typeof function(){} == "function" // functions are treated specially
+		
+		num3 = 1.2345;
+		num3.toFixed(2); 		// 1.23
+
+		// =============================================== js Objects start===============================================
+		// ===============================================================================================================
+			// object work like both object and array, we can assess, set or delete property both mathod array and object
+			// An empty object (“empty cabinet”) can be created using one of two syntaxes:
+			var user = new Object(); // "object constructor" syntax
+			var user = {};  // "object literal" syntax
+
+			var user = {
+				name : 'akram',
+				mobile : 123456789,
+				"likes birds": true,  					// multiword property name must be quoted
+				age: 26,
+				fullName: function() {
+			    return this.name + " " + this.mobile;
+			  }
+			}
+
+			user.sayHi = function() {
+			  console.log("Hello!");
+			};
+
+			console.log(user);   							// {name: "akram", mobile: 123456789}
+			console.log(user.name, ',', user.mobile);
+			console.log(user.fullName());
+
+			user.isAdmin = true; 							// add property
+			user['isSuperuser'] = true; 			// add property
+			// delete user.age;  							// delete property
+			user.__mvalue = 55;
+			console.log(user);   							// {name: "akram", mobile: 123456789}
+
+			console.log( "age" in user ); 		// true, user.age exists
+			console.log( "blabla" in user ); 	// false, user.blabla doesn't exist
+
+
+			for(let key in user) {
+				document.write(`key: ${key} | value: ${user[key]} <br>`);
+			}
+
+			/*
+			:::::::::: Property names limitations ::::::::::
+			As we already know, a variable cannot have a name equal to one of language-reserved words like “for”, “let”, “return” etc.
+			But for an object property, there’s no such restriction:
+			these properties are all right
+			*/
+
+			let obj = {
+			  for: 1,
+			  let: 2,
+			  return: 3
+			};
+
+			console.log( obj.for + obj.let + obj.return );  // 6
+
+
+			/*
+			Comparison by reference
+			Two objects are equal only if they are the same object.
+			For instance, here a and b reference the same object, thus they are equal:
+			
+
+			let a = {};
+			let b = a; // copy the reference
+
+			console.log( a == b ); // true, both variables reference the same object
+			console.log( a === b ); // true
+
+			//And here two independent objects are not equal, even though they look alike (both are empty):
+
+			let a = {};
+			let b = {}; // two independent objects
+
+			console.log( a == b ); // false
+
+
+			
+			//Cloning and merging, Object.assign
+
+			let user = { name: "John" };
+			let permissions1 = { canView: true };
+			let permissions2 = { canEdit: true };
+
+			// copies all properties from permissions1 and permissions2 into user
+
+			Object.assign(user, permissions1, permissions2);		// now user = { name: "John", canView: true, canEdit: true }
+			*/
+
+		// ===============================================================================================================
+		// =============================================== js Objects end  ===============================================
+
+
+		// includes, startsWith, endsWith
+		// It’s the right choice if we need to test for the match, but don’t need its position:
+		var str = "hello Akram, try to javascript code";
+		console.log('check word "akram" inbuilt include mathod: ', str.includes('Akram')); 	// return true or false
+		console.log('check word "akram" inbuilt include mathod after 7 index: ', str.includes('Akram', 7));
+		console.log('check str, start with "hello" inbuilt startsWith mathod: ', str.startsWith('hello'));  // return true or false
+		console.log('check str, end with "hello" inbuilt endsWith mathod: ', str.endsWith('hello'));
+
+
+		// Getting a substring
+		// There are 3 methods in JavaScript to get a substring: substring, substr and slice.
+		// substring is almost the same as slice, but it allows start to be greater than end.
+		// substr return the part of the string from start, with the given length.
+		// A lowercase letter is always greater than the uppercase: alert( 'a' > 'Z' ); // true
+
+		let str1 = "stringify";
+		let str2 = "";
+		var nameStr = "mohdAkram";
+		console.log(`get index value from  index : 0, 5 by slice mathod: ${str1.slice(0,5)}`); // strin
+		console.log(`get value from the 2nd position till the end by slice mathod: ${str1.slice(2)}`); // ringify
+
+
+		function getUpperCaseWord(str){
+		  return str[0].toUpperCase()+str.slice(1)
+		}
+		console.log(getUpperCaseWord('akram'));
+
+
+		function getUpperCaseWord(str){
+	    let nval = "";
+	    let splitValue = str.split(' ');
+	    if(splitValue.length > 1) {
+        for(let a=0; a<splitValue.length; a++) {
+         let singleValue = splitValue[a];
+         nval += singleValue[0].toUpperCase()+singleValue.slice(1)+'';
+        }
+	    }
+	    else{
+	      nval = str[0].toUpperCase()+str.slice(1)
+	    }
+	    return nval;
+		}
+		console.log(getUpperCaseWord('mohd akram').trimEnd());
+
+
+		function getReverse(str){
+		  let nstr = "";
+	    for(let a=str.length-1; a>=0; a--){
+	      nstr += str[a];
+	    }
+	    return nstr;
+		}
+
+
+		function isInArray(value, array) {
+		  return array.indexOf(value) > -1;
+		}
+		isInArray(3, [1,2,3]); 		 // 2
+
+		[1, 2, 3].includes(2);     // true
+		[1, 2, 3].includes(4);     // false
+
+
+		console.log('mohdAkram reverse str: ', getReverse(nameStr));
+		console.log('mohdAkram reverse str: ', nameStr.split("").reverse().join(''));
+
+		console.log('str.trim() - removes (“trims”) spaces from the beginning and end of the string: ', nameStr.trim()); // trim => trimStart,trimEnd
+		console.log('str.repeat(n) – repeats the string n times.: ', nameStr.repeat(2));
+
+		console.log(`codePointAt(pos) Returns the code for the character at position: ${'a'.codePointAt(0)}`);
+		console.log(`codePointAt(pos) Returns the code for the character at position: ${'A'.codePointAt(0)}`);
+		console.log(`String.fromCodePoint(65) Returns character by its numeric: ${String.fromCodePoint(65)}`);
+
+		for (var i = 65; i <= 220; i++) {
+			str2 += String.fromCharCode(i);
+		}
+		console.log(`from 65 to 220 find character by String.fromCodePoint(num):\n ${str2}`);
+
+
+		// ===============================================================================================================
+		// =============================================== js array end  ===============================================
+			
+		/*
+			push appends an element to the end.
+			pop remove an element from the end.
+
+			shift remove an element from the start.
+			unshift appends an element to the start.
+
+			:::::::::::::::: To loop over the elements of the array :::::::::::::::
+			for (let i=0; i<arr.length; i++) – works fastest, old-browser-compatible.
+			for (let item of arr) – the modern syntax for items only,
+			for (let i in arr) – never use.
+
+
+			For instance, it is copied by reference:
+		*/
+		
+		var fruits = ["Banana"];
+		var arr = fruits; 							// copy by reference (two variables reference the same array)
+		console.log( arr === fruits ); 	// true
+
+
+		// Arrays have their own implementation of toString method that returns a comma-separated list of elements.
+
+		let arr1 = [1, 2, 3];
+		document.write('<br>String method of array: ', arr1); // 1,2,3
+		document.write('<br>String method of array: ', String(arr1)); // 1,2,3
+
+		// ===============================================================================================================
+		// =============================================== js array end  ===============================================
+		
+
+	</script>
+</body>
+</html>
