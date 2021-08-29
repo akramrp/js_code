@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GeekForGeek</title>
+</head>
+<style>
+    .mainDiv {
+        margin: 10px;
+    }
+    
+    .cls1 {
+        width: 50%;
+        float: left;
+    }
+    
+    .cls2 {
+        width: 50%;
+        float: right;
+    }
+    #vsuccess{ 
+        color: #18ad1e;
+        background-color: cornsilk;
+        padding: 15px; 
+    }
+</style>
+
+<body>
+    <div class="mainDiv">
+        <div class="cls1">
+
+            <script>
+                // parseFloat(" 100 ") = 100        //return typeof number
+                // parseFloat("22 7 2018") = 22
+
+                // parseInt(" 100 ") = 100          //return typeof number
+                // parseInt("22 7 2018") = 22
+
+                function add(a, b, callback) {
+                    document.write(`The sum of  ${a} and ${b} is ${a+b}.` + "<br>");
+                    callback();
+                }
+
+                function disp() {
+                    document.write('This must be printed after addition' + "<br>");
+                }
+                add(5, 7, disp);
+
+                document.write("<br>");
+                const url = "https://www.google.com/search?q=geeks for geeks";
+                document.write('encodedURL => ' + encodeURI(url) + "<br>");
+                document.write('decodeURI => ' + decodeURI(url) + "<br>");
+
+
+                var object = {
+                    0: '23',
+                    1: 'geeksforgeeks',
+                    2: 'true'
+                };
+                document.write("<br>");
+                document.write('Object.keys(object) => ' + Object.keys(object) + "<br>");
+                document.write('Object.values(object) => ' + Object.values(object) + "<br>");
+
+                document.write("<br>");
+                document.write('method use in data comparing(Date.parse("2020-01-29")) => ' + Date.parse("2020-01-29") + "<br>");
+                document.write('method use in data comparing(Date.parse(new Date())) => ' + Date.parse(new Date()) + "<br>");
+
+                // es6 rest parameter 
+                function fun(...input) {
+                    let sum = 0;
+                    for (let i of input) {
+                        sum += i;
+                    }
+                    return sum;
+                } //15
+                document.write("<br>");
+                document.write('rest parameter fun(1,2,3,4) function fun(...input) { } => ' + fun(1, 2, 3, 4) + "<br>");
+
+                // normal array concat() method 
+                let arr1 = [1, 2, 3];
+                let arr2 = [4, 5];
+                arr3 = arr1.concat(arr2); // [ 1, 2, 3, 4, 5 ]
+                document.write('normal array concat() method: arr.concat(arr2) => ' + arr3 + "<br>");
+
+                // spread operator doing the concat job 
+                let arr4 = [1, 2, 3];
+                let arr5 = [4, 5];
+                arr6 = [...arr4, ...arr5]; // [ 1, 2, 3, 4, 5 ] 
+                document.write('spread operator doing the concat job: [...arr4,...arr5] => ' + arr5 + "<br>");
+
+                let shortFun = arr1.map((number) => {
+                    return number + 7;
+                });
+                document.write('function  => ' + shortFun + "<br>");
+            </script>
+        </div>
+
+        <div class="cls2">
+            <!--====================== google language convertor ========================-->
+            <div id="google_translate_element"></div>
+            <script type="text/javascript">  
+                function googleTranslateElementInit() {  
+                    new google.translate.TranslateElement( 
+                        {pageLanguage: 'en'},  
+                        'google_translate_element' 
+                    );  
+                }  
+            </script> 
+            <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>   
+            <!--====================== google language convertor ========================-->
+            
+            <!--====================== Searching in Javascript   ========================-->
+            <p>
+                Searching in Javascript:
+                <input type="text" list="datalist" onkeyup="ac(this.value)">
+                <datalist id="datalist"> 
+                    <option value="Delhi"></option> 
+                    <option value="Ahemdabad"></option> 
+                    <option value="Punjab"></option> 
+                    <option value="Uttar Pradesh"></option> 
+                    <option value="Himachal Pradesh"></option> 
+                    <option value="Karnatka"></option> 
+                    <option value="Kerela"></option> 
+                    <option value="Maharashtra"></option> 
+                    <option value="Gujrat"></option> 
+                    <option value="Rajasthan"></option> 
+                    <option value="Bihar"></option> 
+                    <option value="Tamil Nadu"></option> 
+                    <option value="Haryana"></option>
+                </datalist>
+                <script>
+                    var tags = ["Delhi","Ahemdabad","Punjab","Uttar Pradesh","Himachal Pradesh","Karnatka","Kerela","Maharashtra","Gujrat","Rajasthan","Bihar","Tamil Nadu","Haryana","aaa","bbb","ccc","aab","aac","abb","acc"]; 
+                    /*list of available options*/ 
+                    var n = tags.length; //length of datalist tags
+                    function ac(value) { 
+                        document.getElementById('datalist').innerHTML = ''; 
+                        //setting datalist empty at the start of function 
+                        //if we skip this step, same name will be repeated 
+                        l = value.length;
+                        //input query length 
+                        for (var i = 0; i<n; i++) { 
+                            if(((tags[i].toLowerCase()).indexOf(value.toLowerCase()))>-1) 
+                            {
+                                //comparing if input string is existing in tags[i] string 
+                                var node = document.createElement("option"); 
+                                var val = document.createTextNode(tags[i]); 
+                                node.appendChild(val); 
+                                document.getElementById("datalist").appendChild(node); 
+                                //creating and appending new elements in data list 
+                            } 
+                        } 
+                    }
+                </script>
+
+            </p>
+            <!--====================== Searching in Javascript   ========================-->
+            
+            <!--====================== validation in Javascript   ========================-->
+            <h3>Validate Form</h3>
+            <form id="validateForm">
+                <p>Name: <input type="text" id="vname" required>&nbsp;&nbsp; Phone: <input type="text" id="vphone" maxlength="10" required></p>
+                <p>Email: <input type="text" id="vemail" required>&nbsp;&nbsp; Date: <input type="date" id="vdate" required></p>
+                <p>Password <span> <input type="password" id="vpass" value="password00##">&nbsp;&nbsp; <input type="checkbox" onclick="togglePass()"> Show Password</span></p>
+
+                <p>Education:
+                    <input type="radio" name="vedu" value="Under-Graduate"><span>Under-Graduate</span>
+                    <input type="radio" name="vedu" value="Graduate"><span>Graduate</span>
+                    <input type="radio" name="vedu" value="Post-Graduate"><span>Post-Graduate</span>
+
+                </p>
+                <p>Select Mobile Model:
+                    <select id="vmodel" required>
+                        <option value="">Select Mobile Model</option>
+                        <option value="samsung s9">samsung s9</option>  
+                        <option value="samsung s6">samsung s6</option> 
+                        <option value="samsung m40">samsung m40</option> 
+                        <option value="samsung m30">samsung m30</option> 
+                    </select>
+                </p>
+                <p>Choose Question:<br>
+                    <input type="checkbox" name="vques" value="Ofline Promotion" >
+                    <span>Ofline Promotion</span> <br />
+                    <input type="checkbox" name="vques" value="Online Promotion" >
+                    <span>Online Promotion</span> <br />
+                    <input type="checkbox" name="vques" value="Spread the Word Around">
+                    <span>Spread the Word Around</span> <br />
+                    <input type="checkbox" name="vques" value="Work as Volunteer wherever we call you in your city.">
+                    <span>Work as Volunteer wherever we call you in your city. </span>
+                </p>
+                <p><input type="submit" id="vsubmit" value="Submit"></p>
+                <p style="display: none;" id="vsuccess"></p>
+                <script>
+                    var form = document.querySelector('#validateForm');
+                    var vname = document.querySelector('#vname');
+                    var vphone = document.querySelector('#vphone');
+                    var vemail = document.querySelector('#vemail');
+                    var vdate = document.querySelector('#vdate');
+                    var vpass = document.querySelector('#vpass');
+                    var vedu = document.getElementsByName('vedu');
+                    var vmodel = document.querySelector('#vmodel');
+                    var vques = document.getElementsByName('vques');
+                    var vsuccess = document.querySelector('#vsuccess');
+
+
+                    function togglePass(){
+                        if(vpass.type === "password")
+                            vpass.type = "text";
+                        else
+                            vpass.type = "password";
+                    }
+
+                    //input only number 
+                    vphone.oninput = function() {
+                        this.value = this.value.replace(/[^\d]/g, '');
+                    }
+
+                    function validateEmail(email) {
+                        let atPos = email.indexOf('@');
+                        let dotPos = email.lastIndexOf('.');
+                        if (atPos < 1 || (dotPos - atPos) < 2)
+                            return false;
+                        else
+                            return true;
+                    }
+
+                    function currentDate() {
+                        var d = new Date(),
+                            month = d.getMonth() + 1,
+                            day = d.getDate(),
+                            year = d.getFullYear();
+
+                        if (month < 10) month = '0' + month;
+                        if (day < 10) day = '0' + day;
+
+                        return [year, month, day].join('-');
+                    }
+
+                    form.onsubmit = function(event) {
+                        event.preventDefault();
+                        if (!isNaN(vname.value)) {
+                            alert('invalid name.');
+                            vname.focus();
+                            return false;
+                        }
+                        if (!(vphone.value).match(/^[6-9]{1}[0-9]{9}$/)) {
+                            alert('invalid phone.');
+                            vphone.focus();
+                            return false;
+                        }
+
+                        if (!validateEmail(vemail.value)) {
+                            alert('invalid eamil.');
+                            vemail.focus();
+                            return false;
+                        }
+
+                        if (Date.parse(currentDate()) < Date.parse(vdate.value)) {
+                            alert('invalid date.');
+                            vdate.focus();
+                            return false;
+                        }
+
+                        for(var i=0; i<vedu.length; i++){
+                            if(vedu[i].checked){
+                                var education = vedu[i].value;
+                                break;
+                            }
+                        }
+
+                        if(i==vedu.length){
+                            alert('select education');
+                            return false;
+                        }
+
+                        if (vmodel.value == '') {
+                            alert('select model.');
+                            vmodel.focus();
+                            return false;
+                        }
+
+                        var questionArr = [];
+                        for(var m=0; m<vques.length; m++){
+                            if(vques[m].type=='checkbox' && vques[m].checked==true)
+                                questionArr.push(vques[m].value);
+                        }
+
+                        if (questionArr.length == '' || questionArr.length == 0) {
+                            alert('select question.');
+                            return false;
+                        }
+
+                        var msg = '<span style="color:red; font-size:16px">Validate Data:</span>' +
+                            '<br> Name: ' + vname.value + 
+                            '<br> Phone: ' + vphone.value + 
+                            '<br> Email: ' + vemail.value + 
+                            '<br> Date: ' + vdate.value + 
+                            '<br> Education: ' + education + 
+                            '<br> Mobile Model: ' + vmodel.value + 
+                            '<br> Question: ' + questionArr + '<br>';
+                            
+                        vsuccess.style.display = 'block';
+                        vsuccess.innerHTML = msg;
+                    }
+                </script>
+            </form>
+            <!--====================== validation in Javascript   ========================-->
+            <!--
+                <!doctype html> 
+                <html lang="en"> 
+                <head> 
+                    <meta charset="utf-8"> 
+                    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+                    <title>Autocomplete using Jquery</title> 
+                    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+                    <link rel="stylesheet" href="/resources/demos/style.css"> 
+                    <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+                    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+                    <script> 
+                        $( function() { 
+                            /* Making a list of available tags */
+                            var tags = [ 
+                            "Delhi","Ahemdabad","Punjab","Uttar Pradesh","Himachal Pradesh","Karnatka","Kerela","Maharashtra","Gujrat","Rajasthan","Bihar","Tamil Nadu","Haryana"];
+                            /* #tthe ags is the id of the input element source: tags is the list of available tags*/ 
+                            $( "#tags" ).autocomplete({ source: tags }); 
+                        }); 
+                    </script> 
+                </head> 
+                <body> 
+                    <div class="ui-widget"> 
+                        <H3>Enter an alphabet to get suggestion:</H3> 
+                        <input id="tags"> 
+                    </div> 
+                </body> 
+                </html>
+            -->
+        </div>
+    </div>
+</body>
+
+</html>

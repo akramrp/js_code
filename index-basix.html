@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Javascript Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+        #time {
+            font-size: 50px;
+            font-weight: 100;
+            font-family: 'Titillium Web', cursive;
+            color: #f6da74;
+        }
+        
+        #clock {
+            font-size: 25px;
+            font-weight: 80;
+            font-family: 'Titillium Web', cursive;
+            color: #1b7eab;
+        }
+    </style>
+</head>
+
+<body onload="startTime()">
+    <header class="text-center hclass" id="hid">
+        <h2>HELLO WORLD CALL addEventListener</h2>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1 class="hello" onclick="hello()">Hello</h1>
+                <div>1. <input type="color" id="send" oninput="result.value=send.value"> <input type="text" id="result"></div>
+                <div>2. <input type="range" min="0" max="70" id="send1" oninput="result1.value=send1.value"> <input type="text" id="result1" value="35"></div>
+                <div>3. <input type="search" id="send2" placeholder="enter search value" oninput="result2.value=send2.value"> <input type="text" id="result2"></div>
+                <div>4. <input type="date" id="send4"></div>
+                <div>5. <input type="button" onclick="checkDay()" value="checkDay"> <span id="day"></span> </div>
+                <div>6. <input type="button" onclick="checkAge()" value="checkAge"> <span id="age"></span> </div>
+                <div>7. <input type="text" onkeypress="return isNumberKey()" placeholder="only number allow"></div>
+                <div>8. <input type="button" onclick="formatDate()" value="todatDate"> <span id="formatDate"></span> </div>
+                <div>9. <input type="button" onclick="setTimeOutFunc()" value="setTimeOut"></div>
+                <div>10. <input type="text" class="onlyNumber" placeholder="enter number"> <span id="oncValue"></span> </div>
+                <div>11. Simple Form
+                    <form name="myForm" id="myForm" onSubmit="return validateForm()">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" placeholder="Enter Name" id="name">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" id="submit" class="btn btn-success btn-xs" value="submit">
+                        </div>
+                    </form>
+                </div>
+                <div>12. <input type="button" value="Load new document" onclick="newDoc()"> </div>
+                <div>13. <input type="button" value="Back History" onClick="goBack()"> </div>
+                <div>13. <input type="button" value="Forward History" onClick="goForward()"> </div>
+                <div>14. <label>Fahrenheit </label>
+                    <input id="inputFahrenheit" type="text" placeholder="Fahrenheit" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value)">
+                    <p> Celcius: <span id="outputCelcius"></span></p>
+                </div>
+
+                <!--=================================== number game ===================================-->
+                <h5>15. NUMBER GUESING GAME</h5>
+                <p> Random number 1 to 100. total term is 10</p>
+                <div class="form">
+                    <label for="guessField">Enter a guess: </label>
+                    <input type="text" id="guessField" class="onlyNumber guessField">
+                    <input type="submit" value="Submit Guess" class="guessSubmit">
+                </div>
+                <div class="resultParas">
+                    <p class="guesses"></p>
+                    <p class="lastResult"></p>
+                    <p class="lowOrHi"></p>
+                </div>
+                <script>
+                    let randomNumber = Math.floor(Math.random() * 100 + 1);
+                    const guessField = document.querySelector('.guessField');
+                    const guessSubmit = document.querySelector('.guessSubmit');
+
+                    const guesses = document.querySelector('.guesses');
+                    const lastResult = document.querySelector('.lastResult');
+                    const lowOrHi = document.querySelector('.lowOrHi');
+
+                    guessField.focus();
+                    let guessCount = 1;
+                    let resetButton;
+
+                    guessSubmit.addEventListener('click', checkGuess);
+
+                    function checkGuess() {
+                        let userGuess = Number(guessField.value);
+                        if (guessCount === 1)
+                            guesses.textContent = "Previous Guess: ";
+
+                        guesses.textContent += userGuess + ', ';
+
+                        if (userGuess === randomNumber) {
+                            lastResult.textContent = "Congratulation! You got it right..";
+                            lastResult.style.background = 'green';
+                            lowOrHi.textContent = '';
+                            setGameOver();
+                        } else if (guessCount === 10) {
+                            lastResult.textContent = "Game Over!"
+                            setGameOver();
+                        } else {
+                            lastResult.textContent = "Wrong!";
+                            lastResult.style.background = 'red';
+
+                            if (userGuess < randomNumber)
+                                lowOrHi.textContent = "Last guess was too low.";
+                            else if (userGuess > randomNumber)
+                                lowOrHi.textContent = "Last guess was to high";
+                        }
+
+                        guessCount++;
+                        guessField.value = '';
+                        guessField.focus();
+                    }
+
+                    function setGameOver() {
+                        guessField.disabled = true;
+                        guessSubmit.disabled = true;
+                        resetButton = document.createElement('button');
+                        resetButton.textContent = "Start New Game";
+                        lowOrHi.appendChild(resetButton);
+                        resetButton.addEventListener('click', resetGame);
+                    }
+
+                    function resetGame() {
+                        guessField.disabled = false;
+                        guessSubmit.disabled = false;
+                        guessField.value = '';
+                        guessField.focus();
+                        guessCount = 1;
+                        randomNumber = Math.floor(Math.random() * 100 + 1);
+                        lastResult.style.background = 'white';
+
+                        const resetParas = document.querySelectorAll('.resultParas p');
+                        for (let i = 0; i < resetParas.length; i++) {
+                            resetParas[i].textContent = '';
+                        }
+                        resetButton.remove();
+                    }
+                </script>
+                <!--=================================== number game ===================================-->
+
+
+                <div>16.
+                    <p>Differences between innerText, innerHTML and textContent.</p>
+                    <p id="demo"> This element has extra spacing and contains <span>a span element</span>.</p>
+                    <button onclick="getInnerText()">Get innerText</button>
+                    <button onclick="getHTML()">Get innerHTML</button>
+                    <button onclick="getTextContent()">Get textContent</button>
+                    <script>
+                        function getInnerText() {
+                            alert(document.getElementById("demo").innerText)
+                        }
+
+                        function getHTML() {
+                            alert(document.getElementById("demo").innerHTML)
+                        }
+
+                        function getTextContent() {
+                            alert(document.getElementById("demo").textContent)
+                        }
+                    </script>
+                </div>
+
+                <div>
+                    <br>
+                    <p id="demo17">17. This is demo 17 paragraph</p>
+                    <select id="theme">
+                        <option value="">select theme</option>
+                        <option value="red">red</option>
+                        <option value="green">green</option>
+                    </select>
+                    <script>
+                        const para17 = document.querySelector('#demo17');
+                        // const select = document.querySelector('select');
+                        const select = document.querySelector('#theme');
+                        select.addEventListener('change', function() {
+                            para17.style.background = select.value;
+                        });
+                    </script>
+                </div><br>
+
+                <button class="btn btn-primary btn-sm mt">ChangeColor</button>
+                <div class="multiTheme" style="height:175px; background: rgb(41, 174, 130);">
+                    <p>18. Click the btn and enjoy the theme</p>
+                    <p>18. This is demo 18 paragraph</p>
+                    <p>18. Click the btn and enjoy the theme</p>
+                    <script>
+                        const btn = document.querySelector('.mt');
+                        const mtt = document.querySelector('.multiTheme');
+                        btn.onclick = function() {
+                            const rndClr = 'rgb(' + random(255) + ', ' + random(255) + ', ' + random(255) + ')';
+                            mtt.style.background = rndClr;
+                        }
+
+                        function random(val) {
+                            return Math.floor(Math.random() * (val + 1));
+                        }
+                    </script>
+                </div><br>
+
+                <p>19. Please input a number between 5 and 10:</p>
+                <p> error handler in js</p>
+                <input id="input1" type="text">
+                <button type="button" onclick="myFunction()">Test Input</button>
+                <p id="p01"></p>
+                <script>
+                    function myFunction() {
+                        var message, x;
+                        message = document.getElementById("p01");
+                        message.innerHTML = "";
+                        x = document.getElementById("input1").value;
+                        try {
+                            x = Number(x);
+
+                            if (x == "") throw "empty";
+                            if (isNaN(x)) throw "not a number";
+                            if (x < 5) throw "too low";
+                            if (x > 10) throw "too high";
+                        } catch (err) {
+                            message.innerHTML = "Input is " + err;
+                        }
+                    }
+                </script>
+
+
+                <div>
+                    <p id="simpleClick">20. CLICK ME</p>
+                    <script>
+                        let sclick = document.querySelector('#simpleClick');
+                        sclick.onclick = sclickFun;
+
+                        function sclickFun() {
+                            alert(sclick.textContent);
+                        }
+                    </script>
+                </div>
+
+
+
+                <!-- <div class="container">
+                    <h2>Thumbnail</h2>
+                    <p class="float-left img" style="width:34%">The .img-thumbnail class creates a thumbnail of the image class creates a thumbnail of the image of the image of the image of the image:</p>            
+                    <img src="images/cinqueterre.jpg" class="img-thumbnail float-right" alt="Cinque Terre" width="265" height="200"> 
+                </div> -->
+            </div>
+            <div class="col-sm-6">
+                <pre style="color:blue">
+                    PrimitiveDataType(string,number,boolena,undefined)
+                    Non Primitive Data Type(function, object, array)
+            
+                    //undefined and null are equal in value
+                    // but different in type:
+
+                    typeof undefined            // undefined
+                    typeof null                 // object
+                    null === undefined          // false
+                    null == undefined           // true
+            
+                    document.write(typeof(5));    // variable date type 
+                    document.write(3**6);         // num**(power)
+                    var x=5,y=7;
+                    document.write(x+y); 
+            
+                    function toCelsius(fahrenheit) {
+                        return (5/9) * (fahrenheit-32);
+                    }
+                    
+                </pre>
+                <div id="time">5 <small>Second</small></div>
+                <div id="clock"></div>
+                <div id="div1">
+                    <p id="p1">This is a paragraph.</p>
+                    <p id="p2">This is another paragraph.</p>
+                </div>
+
+                <script>
+                    document.querySelector('#hid').addEventListener('mouseleave', function(event) {
+                        document.querySelector('.hclass').style.color = 'green';
+                    });
+                    document.querySelector('#hid').addEventListener('click', function(event) {
+                        document.querySelector('.hclass').style.color = 'red';
+                    });
+
+                    var st1 = 'string1 ';
+                    var st2 = 'string2 ';
+                    var st3 = 'string3 ';
+                    document.write(st1.concat(st2, st3) + 'three string concat<br>');
+                    document.write(st1.repeat(5) + ' (st1 repeat  time by repeat(5) ) <br>');
+                    document.write(Math.trunc(5.3333) + ' (Math.trunc(5.3333)  return only intiger value) <br>');
+
+                    //arroy function
+                    //var hello = () => { return 'hello world <br>'; }
+                    // var hello = () => 'hello world <br>';
+                    var hello = val => 'hello ' + val + ' <br>';
+                    document.write(hello('univaese'));
+
+                    //every function
+                    var ages = [22, 33, 44, 55, 66, 77, 88];
+                    var ages1 = [2, 7, 11, 22, 33, 44, 55, 66];
+
+                    var val1 = ages.some(checkAdult);
+                    document.write(val1 + " : some() return true for any condition is true <br>");
+
+                    var val2 = ages.every(checkAdult);
+                    document.write(val2 + " : every() return true for every condition is true <br>");
+
+                    var val3 = ages.findIndex(checkAdult);
+                    document.write(val3 + " : findIndex() return index value of element <br>");
+
+                    var val4 = ages1.filter(checkAdult);
+                    document.write(val4 + " : filter() return filter value of element <br>");
+
+                    function checkAdult(val) {
+                        return val >= 18;
+                    }
+
+                    var val5 = ages.map(function(val) {
+                        return val * 10;
+                    });
+                    document.write(val5 + " : map() return filter maped value <br>");
+
+                    // access the array value 
+                    var ages2 = ['akrma', 'shahroz', 'zeeshan', 'jeeshan'];
+                    ages2.forEach(function(value, index) {
+                        document.write(index + " : " + value + "<br>");
+                    });
+
+                    // access the object value
+                    var names = {
+                        fname: 'mohd',
+                        lname: 'akram',
+                        phone: 9917945344,
+                        email: 'akramrp7@gmail.com'
+                    }
+
+                    for (var key in names) {
+                        document.write(key + ' : ' + names[key] + ' <br>');
+                    }
+
+
+
+                    class Car {
+                        constructor(car_name) {
+                            this.carname = car_name;
+                        }
+                        present(val) {
+                            return "I have a " + this.carname + ', ' + val;
+                        }
+                        static hello(x) {
+                            return '<br>static hello ' + x.carname + '<br>';
+                        }
+                    }
+
+                    class Model extends Car {
+                        constructor(car_name, model) {
+                            super(car_name);
+                            this.model = model;
+                        }
+                        show() {
+                            return this.present('gifted by Father') + " and model is " + this.model;
+                        }
+                    }
+                    mycar = new Model("Ford", "Mustang");
+                    //carObj = new Model("Ford");
+                    document.write(mycar.show());
+                    document.write(Car.hello(mycar));
+                    //debugger;
+                    class Mobile {
+                        constructor(name, model) {
+                            this.name = name;
+                            this.model = model;
+                            this._fullName = name + ' ' + model;
+                        }
+                        get fullName() {
+                            return this._fullName;
+                        }
+                        set fullName(x) {
+                            this._fullName = x;
+                        }
+                    }
+                    var mobObj = new Mobile('Samsung', 'M20');
+                    document.write(mobObj.fullName);
+
+                    var person = {
+                        firstName: "Mohd",
+                        lastName: "Akram",
+                        language: "en",
+                        fullName1: function() {
+                            return this.firstName + ' ' + this.lastName;
+                        },
+                        get lang() {
+                            return this.language;
+                        },
+                        set lang2(val) {
+                            return this.language = val;
+                        }
+                    };
+                    person.lang2 = "Hindi";
+
+                    document.write('<br>');
+                    document.write(person.fullName1());
+                    document.write('<br>');
+                    document.write(person.lang);
+                    document.write('<br>');
+                    document.write(person.language);
+
+                    document.write('<br>');
+                    document.write('<br>');
+
+                    //for insert new element
+
+                    const target1 = document.querySelector('#hid');
+                    const newElement1 = "<h3 style='text-align:center; margin:15px;'>This in targat.insertAdjacentHTML('afterbegin',newElement)</h3>";
+                    // beforebegin, beforeend, afterbegin, afterend
+                    target1.insertAdjacentHTML('afterend', newElement1);
+
+
+                    // new js....................................
+
+
+                    function newDoc() {
+                        window.location.assign("https://www.w3schools.com")
+                    }
+
+                    function goBack() {
+                        window.history.back()
+                    }
+
+                    function goForward() {
+                        window.history.forward()
+                    }
+
+                    var para = document.createElement('p');
+                    var node = document.createTextNode('this is appendChild node paragraph');
+                    para.appendChild(node);
+                    var element = document.querySelector('#div1');
+                    element.appendChild(para);
+
+                    // var child1 = document.querySelector('#p1');
+                    // element.insertBefore(para,child1); 
+
+                    // var counter = 5;
+                    // var interval = setInterval(function() {
+                    //     counter--;
+                    //     if (counter <= 0) {
+                    //         clearInterval(interval); return;
+                    //     }
+                    //     else{
+                    //         $('#time').html(counter+"<small> Second</small>");
+                    //         console.log("Timer -- " + counter);
+                    //     }
+                    // }, 1000);
+
+                    function startTime() {
+                        var d, h, m, s;
+                        d = new Date();
+                        h = d.getHours();
+                        m = d.getMinutes();
+                        s = d.getSeconds();
+
+                        m = m < 10 ? '0' + m : m;
+                        s = s < 10 ? '0' + s : s;
+                        document.querySelector('#clock').innerHTML = 'Time : ' + h + ':' + m + ':' + s;
+                        setTimeout(startTime, 800);
+
+                    }
+
+                    document.write('title of page: ' + document.title + '<br>');
+                    document.write('domain name: ' + document.domain + '<br>');
+                    document.write('current url: ' + document.URL + '<br>');
+                    document.write('current url: ' + document.baseURI + '<br>');
+                    document.write('current page url: ' + window.location.href + '<br>');
+                    document.write('current page host: ' + window.location.hostname + '<br>');
+                    document.write('current page path: ' + window.location.pathname + '<br>');
+                    document.write('current page protocol: ' + window.location.protocol + '<br>');
+                    document.write('current page path: ' + window.location.pathname + '<br>');
+
+                    document.write("window.innerWidth: " + window.innerWidth + '<br>');
+                    document.write("window.innerHeight: " + window.innerHeight + '<br>');
+                    document.write("screen.width :" + screen.width + '<br>');
+                    document.write("screen.height: " + screen.height + '<br>');
+
+                    document.write("navigator.appName: " + navigator.appName + '<br>');
+                    document.write("navigator.appCodeName: " + navigator.appCodeName + '<br>');
+                    document.write("navigator.appVersion: " + navigator.appVersion + '<br>');
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" crossorigin="anonymous"></script>
+</script>
+<script>
+    $(function() {
+        $('.onlyNumber').on('input', function() {
+            this.value = this.value.replace(/[^\d]/g, ''); // numbers and decimals only
+        });
+    });
+
+    function setTimeOutFunc() {
+        setTimeout(function() {
+            alert('call setTimeout after 3 second...');
+        }, 3000);
+    }
+
+    function validateForm() {
+        var x = document.querySelector('#name').value;
+        alert(x);
+        return false;
+    }
+</script>
+<script src='myScript.js'></script>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>oops</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <!-- <script src='main.js'></script> -->
+</head>
+<body>
+    <h3>try code </h3>
+    <script>
+        class UserClass {
+            constructor(name){
+                this.name = name;
+            }
+    
+            sayHi() {
+                return `hello... ${this.name}`;
+            } 
+        }
+        let user = new UserClass('akram')
+        console.log(user.sayHi());
+
+
+        class Animal {
+            constructor(name) {
+                this.speed = 0;
+                this.name = name;
+            }
+            run(speed) {
+                this.speed = speed;
+                console.log(`${this.name} runs with speed ${this.speed}.`);
+            }
+            stop() {
+                this.speed = 0;
+                console.log(`${this.name} stands still.`);
+            }
+        }
+        let animal = new Animal("My animal");
+
+
+        class Rabbit extends Animal {
+            hide() {
+                console.log(`${this.name} hides!`);
+            }
+        }
+        let rabbit = new Rabbit("White Rabbit");
+        rabbit.run(5); // White Rabbit runs with speed 5.
+        rabbit.hide(); // White Rabbit hides!
+
+        /*
+        // Overriding a method
+        class Animal {
+            constructor(name) {
+                this.speed = 0;
+                this.name = name;
+            }
+
+            run(speed) {
+                this.speed = speed;
+                alert(`${this.name} runs with speed ${this.speed}.`);
+            }
+
+            stop() {
+                this.speed = 0;
+                alert(`${this.name} stands still.`);
+            }
+
+        }
+
+        class Rabbit extends Animal {
+            hide() {
+                alert(`${this.name} hides!`);
+            }
+
+            stop() {
+                super.stop(); // call parent stop
+                this.hide(); // and then hide
+            }
+        }
+
+        let rabbit = new Rabbit("White Rabbit");
+        alert( rabbit instanceof Rabbit ); // true
+        rabbit.run(5); // White Rabbit runs with speed 5.
+        rabbit.stop(); // White Rabbit stands still. White Rabbit hides!
+
+
+
+
+        // Static properties and methods
+        // We can also assign a method to the class function itself, not to its "prototype". Such methods are called static.
+        // In a class, they are prepended by static keyword, like this:
+
+        class User {
+            static staticMethod() {
+                alert(this === User);
+            }
+        }
+
+        
+        User.staticMethod(); // true
+        That actually does the same as assigning it as a property directly:
+
+        class User { }
+
+        User.staticMethod = function() {
+            alert(this === User);
+        };
+
+        User.staticMethod(); // true
+
+        */
+
+        let json = '{ "name" :"akram", "age": 30 }';
+        try {
+            let user = JSON.parse(json); // <-- no errors
+            console.log( user.name );
+        } catch (err) {
+            console.log( "doesn't execute" );
+        }
+
+        // Promise function
+        let promise = new Promise(function(resolve, reject) {
+            setTimeout(() => resolve("done!"), 1000);
+        });
+        // resolve runs the first function in .then
+        promise.then(
+            result => console.log(result), // shows "done!" after 1 second
+            error => console.log(error) // doesn't run
+        );
+        console.log(promise)
+
+
+        let promise1 = new Promise(function(resolve, reject) {
+            setTimeout(() => reject(new Error("Whoops!")), 1000);
+        });
+        // reject runs the second function in .then
+        promise1.then(
+            result => console.log(result), // doesn't run
+            error => console.log(error) // shows "Error: Whoops!" after 1 second
+        );
+        console.log(promise1)
+
+        /*
+        Promises chaining
+        Let’s return to the problem mentioned in the chapter Introduction: callbacks: we have a sequence of asynchronous tasks to be performed one after another — for instance, loading scripts. How can we code it well?
+        Promises provide a couple of recipes to do that.
+        In this chapter we cover promise chaining.
+        It looks like this:
+        */
+        new Promise(function(resolve, reject) {
+            setTimeout(() => resolve(1), 1000); // (*)
+        }).then((result) => { // (**)
+            alert(result); // 1
+            return result * 2;
+        }).then((result) => { // (***)
+            alert(result); // 2
+            return result * 2;
+        }).then((result) => {
+            alert(result); // 4
+            return result * 2;
+        });
+
+
+
+        function loadJson(url) {
+            return fetch(url).then(response => response.json());
+        }
+        function loadGithubUser(name) {
+            return loadJson(`https://api.github.com/users/${name}`);
+        }
+        function showAvatar(githubUser) {
+            return new Promise(function(resolve, reject) {
+                let img = document.createElement('img');
+                img.src = githubUser.avatar_url;
+                img.className = "promise-avatar-example";
+                document.body.append(img);
+                setTimeout(() => {
+                    img.remove();
+                    resolve(githubUser);
+                }, 3000);
+            });
+        }
+        // Use them:
+        loadJson('/article/promise-chaining/user.json')
+        .then(user => loadGithubUser(user.name))
+        .then(showAvatar)
+        .then(githubUser => alert(`Finished showing ${githubUser.name}`));
+
+
+        let urls = [
+            'https://api.github.com/users/iliakan',
+            'https://api.github.com/users/remy',
+            'https://api.github.com/users/jeresig'
+        ];
+
+        // map every url to the promise of the fetch
+        let requests = urls.map(url => fetch(url));
+        // Promise.all waits until all jobs are resolved
+        Promise.all(requests).then(responses => responses.forEach(
+            response => alert(`${response.url}: ${response.status}`)
+        ));
+
+
+
+        /*
+        Async/await:
+        The word “async” before a function means one simple thing: a function always returns a promise. Other values are wrapped in a resolved promise automatically.
+        So, async ensures that the function returns a promise, and wraps non-promises in it. Simple enough, right? But not only that. There’s another keyword, await, that works only inside async functions, and it’s pretty cool.
+        "The keyword await makes JavaScript wait until that promise settles and returns its result."
+
+
+        async function f() {
+            return 1;
+        }
+        f().then(alert); // 1
+
+        async function f() {
+            let promise = new Promise((resolve, reject) => {
+                setTimeout(() => resolve("done!"), 1000)
+            });
+            let result = await promise; // wait until the promise resolves (*)
+            alert(result); // "done!"
+        }
+        f();
+
+        */ 
+
+        // generator 
+        function* generateSequence() {
+            yield 1;
+            yield 2;
+            return 3;
+        }
+        let generator = generateSequence();
+        for(let value of generator) {
+            alert(value); // 1, then 2
+        }
+        
+
+    </script>
+</body>
+</html>
