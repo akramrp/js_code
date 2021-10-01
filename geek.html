@@ -204,7 +204,6 @@
                     var vques = document.getElementsByName('vques');
                     var vsuccess = document.querySelector('#vsuccess');
 
-
                     function togglePass(){
                         if(vpass.type === "password")
                             vpass.type = "text";
@@ -304,6 +303,17 @@
                         vsuccess.style.display = 'block';
                         vsuccess.innerHTML = msg;
                     }
+
+
+                    // async function showAvatar() {
+                    //   let githubResponse = await fetch(`http://localhost/ticketing/election/ElectionController/searchAllBlockInDistrict`);
+                    //   let githubUser = await githubResponse.json();
+                    //   return githubUser;
+                    // }
+
+                    // showAvatar();
+
+
                 </script>
             </form>
             <!--====================== validation in Javascript   ========================-->

@@ -60,19 +60,19 @@
 
             run(speed) {
                 this.speed = speed;
-                alert(`${this.name} runs with speed ${this.speed}.`);
+                console.logs(`${this.name} runs with speed ${this.speed}.`);
             }
 
             stop() {
                 this.speed = 0;
-                alert(`${this.name} stands still.`);
+                console.logs(`${this.name} stands still.`);
             }
 
         }
 
         class Rabbit extends Animal {
             hide() {
-                alert(`${this.name} hides!`);
+                console.logs(`${this.name} hides!`);
             }
 
             stop() {
@@ -82,7 +82,7 @@
         }
 
         let rabbit = new Rabbit("White Rabbit");
-        alert( rabbit instanceof Rabbit ); // true
+        console.logs( rabbit instanceof Rabbit ); // true
         rabbit.run(5); // White Rabbit runs with speed 5.
         rabbit.stop(); // White Rabbit stands still. White Rabbit hides!
 
@@ -95,7 +95,7 @@
 
         class User {
             static staticMethod() {
-                alert(this === User);
+                console.logs(this === User);
             }
         }
 
@@ -106,7 +106,7 @@
         class User { }
 
         User.staticMethod = function() {
-            alert(this === User);
+            console.logs(this === User);
         };
 
         User.staticMethod(); // true
@@ -150,58 +150,58 @@
         In this chapter we cover promise chaining.
         It looks like this:
         */
-        new Promise(function(resolve, reject) {
-            setTimeout(() => resolve(1), 1000); // (*)
-        }).then((result) => { // (**)
-            alert(result); // 1
-            return result * 2;
-        }).then((result) => { // (***)
-            alert(result); // 2
-            return result * 2;
-        }).then((result) => {
-            alert(result); // 4
-            return result * 2;
-        });
+        // new Promise(function(resolve, reject) {
+        //     setTimeout(() => resolve(1), 1000); // (*)
+        // }).then((result) => { // (**)
+        //     console.logs(result); // 1
+        //     return result * 2;
+        // }).then((result) => { // (***)
+        //     console.logs(result); // 2
+        //     return result * 2;
+        // }).then((result) => {
+        //     console.logs(result); // 4
+        //     return result * 2;
+        // });
 
 
 
-        function loadJson(url) {
-            return fetch(url).then(response => response.json());
-        }
-        function loadGithubUser(name) {
-            return loadJson(`https://api.github.com/users/${name}`);
-        }
-        function showAvatar(githubUser) {
-            return new Promise(function(resolve, reject) {
-                let img = document.createElement('img');
-                img.src = githubUser.avatar_url;
-                img.className = "promise-avatar-example";
-                document.body.append(img);
-                setTimeout(() => {
-                    img.remove();
-                    resolve(githubUser);
-                }, 3000);
-            });
-        }
-        // Use them:
-        loadJson('/article/promise-chaining/user.json')
-        .then(user => loadGithubUser(user.name))
-        .then(showAvatar)
-        .then(githubUser => alert(`Finished showing ${githubUser.name}`));
+        // function loadJson(url) {
+        //     return fetch(url).then(response => response.json());
+        // }
+        // function loadGithubUser(name) {
+        //     return loadJson(`https://api.github.com/users/${name}`);
+        // }
+        // function showAvatar(githubUser) {
+        //     return new Promise(function(resolve, reject) {
+        //         let img = document.createElement('img');
+        //         img.src = githubUser.avatar_url;
+        //         img.className = "promise-avatar-example";
+        //         document.body.append(img);
+        //         setTimeout(() => {
+        //             img.remove();
+        //             resolve(githubUser);
+        //         }, 3000);
+        //     });
+        // }
+        // // Use them:
+        // loadJson('/article/promise-chaining/user.json')
+        // .then(user => loadGithubUser(user.name))
+        // .then(showAvatar)
+        // .then(githubUser => console.logs(`Finished showing ${githubUser.name}`));
 
 
-        let urls = [
-            'https://api.github.com/users/iliakan',
-            'https://api.github.com/users/remy',
-            'https://api.github.com/users/jeresig'
-        ];
+        // let urls = [
+        //     'https://api.github.com/users/iliakan',
+        //     'https://api.github.com/users/remy',
+        //     'https://api.github.com/users/jeresig'
+        // ];
 
-        // map every url to the promise of the fetch
-        let requests = urls.map(url => fetch(url));
-        // Promise.all waits until all jobs are resolved
-        Promise.all(requests).then(responses => responses.forEach(
-            response => alert(`${response.url}: ${response.status}`)
-        ));
+        // // map every url to the promise of the fetch
+        // let requests = urls.map(url => fetch(url));
+        // // Promise.all waits until all jobs are resolved
+        // Promise.all(requests).then(responses => responses.forEach(
+        //     response => console.logs(`${response.url}: ${response.status}`)
+        // ));
 
 
 
@@ -215,30 +215,65 @@
         async function f() {
             return 1;
         }
-        f().then(alert); // 1
+        f().then(console.logs); // 1
 
         async function f() {
             let promise = new Promise((resolve, reject) => {
                 setTimeout(() => resolve("done!"), 1000)
             });
             let result = await promise; // wait until the promise resolves (*)
-            alert(result); // "done!"
+            console.logs(result); // "done!"
         }
         f();
 
         */ 
 
         // generator 
-        function* generateSequence() {
-            yield 1;
-            yield 2;
-            return 3;
+        // function* generateSequence() {
+        //     yield 1;
+        //     yield 2;
+        //     return 3;
+        // }
+        // let generator = generateSequence();
+        // for(let value of generator) {
+        //     console.logs(value); // 1, then 2
+        // }
+
+
+        class Student{
+            constructor(name,age,cls){
+                this.name = name;
+                this.age = age;
+                this.cls = cls;
+            }
+
+            // static mathod only class from this class not to another or child class
+            // static bioData (){
+            //     return `my name ${this.name}, age: ${this.age}, class: ${this.cls}`;
+            // }
+
+            // instance mathod
+            bioData (){
+                return `my name ${this.name}, age: ${this.age}, class: ${this.cls}`;
+            }
         }
-        let generator = generateSequence();
-        for(let value of generator) {
-            alert(value); // 1, then 2
+
+        class Player extends Student{
+            constructor(name,age,cls,game){
+                super(name,age,cls);
+                this.mygame = game
+            }
+            playerBioData(){
+                // return `${super.bioData()}`;
+                return `my name ${this.name}, age: ${this.age}, class: ${this.cls}, game ${this.mygame}`;
+            }
         }
         
+        let stObj = new Student('akram','27','BTech');
+        console.log(stObj.bioData());
+
+        let plObj = new Player('akram','27','BTech','football');
+        console.log(plObj.playerBioData());
 
     </script>
 </body>

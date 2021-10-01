@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script> -->
+    <style>
+        .alert {
+            padding: 15px;
+            border: 1px solid #d6e9c6;
+            border-radius: 4px;
+            color: #3c763d;
+            background-color: #dff0d8;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Contents</h1>
+
+    <div class="contents">
+    <ul class="book">
+        <li class="chapter">Chapter 1</li>
+        <li class="chapter">Chapter 1</li>
+    </ul>
+    </div>
+
+    <ul>
+        <li>The</li>
+        <li>test</li>
+    </ul>
+    <ul>
+        <li>has</li>
+        <li>passed</li>
+    </ul>
+    
+    <script>
+        let div = document.createElement('div');
+        div.className = "alert";
+        div.innerHTML = "<strong>Hi there!</strong> You've read an important message.";
+        document.body.append(div);
+
+
+        let elements = document.querySelectorAll('ul > li:last-child');
+        for (let elem of elements) {
+            console.log(elem.innerHTML); // "test", "passed"
+        }
+
+        let chapter = document.querySelector('.chapter');   // LI
+        console.log(chapter.closest('.book'));              // UL
+        console.log(chapter.closest('.contents'));          // DIV
+        console.log(chapter.closest('h1'));                 // null (because h1 is not an ancestor)
+
+/*
+window.innerHeight;
+window.innerWidth;
+
+For all nodes: parentNode, childNodes, firstChild, lastChild, previousSibling, nextSibling.
+For element nodes only: parentElement, children, firstElementChild, lastElementChild, previousElementSibling, nextElementSibling.
+
+
+alert( document.body instanceof HTMLBodyElement ); // true
+alert( document.body instanceof HTMLElement ); // true
+alert( document.body instanceof Element ); // true
+alert( document.body instanceof Node ); // true
+alert( document.body instanceof EventTarget ); // true
+
+
+*/
+console.log(document.location);
+console.log(document.location.href);
+
+for(let i=1; i<=7; i++){
+    //document.write(` col - ${i} `);
+    for(let j=1; j<=i; j++){
+        //document.write(` row - ${j} `);
+        document.write(` * `);
+    }
+    document.write('<br />');
+}
+
+
+for(let i=7; i>=1; i--){
+    for(let j=i; j>=1; j--){
+        document.write(' * ');
+    }
+    document.write('<br />');
+}
+
+
+for(let i=1; i<=7; i++){
+    for(let j=7; j>=i; j--){
+        document.write(' &nbsp; ');
+    }
+    for(let j=1; j<=i; j++){
+        document.write(' *  &nbsp;');
+    }
+    document.write('<br />');
+}
+
+
+for(let i=7; i>=1; i--){
+    for(let j=7; j>=i; j--){
+        document.write(' &nbsp; ');
+    }
+    for(let j=i; j>=1; j--){
+        document.write(' *  &nbsp;');
+    }
+    document.write('<br />');
+}
+
+let mm = ['ak', 'jee'];
+
+let ak = [
+    { name: 'jeeshan', proffesion: 'web develepor'},
+    { name: 'akram', proffesion: 'web develepor' }
+];
+//console.log(ak);
+
+
+Object.values(ak).forEach(val => {
+    document.write(`name: ${val.name}, profession: ${val.proffesion} <br/>`);
+});
+
+
+    </script>
+
+</body>
+</html>

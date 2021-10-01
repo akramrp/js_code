@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script> -->
+</head>
+<body>
+    <a href="https://www.cluemediator.com/get-current-geolocation-using-javascript">https://www.cluemediator.com</a>
+    <script>
+        /* // find latitude or longitude
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(position => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+                document.write(`latitude: ${lat}`);
+                document.write(`<br>longitude: ${lon}`);
+            },
+            error => {
+                document.write('Need Access to get Location.');
+            });
+        }
+        */
+
+        // 1. Split an array into chunks in JavaScript
+        const list = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8', 'Item 9', 'Item 10'];
+        const chunkList = [];
+
+        while(list.length){
+            chunkList.push(list.splice(0, 4));
+        }
+        console.log(chunkList);
+
+        // const chunkList2 = _.chunk(list, 4);
+        // console.log(chunkList2);
+
+        // 2. Check if an array contains all the elements of another array in JavaScript
+        const array1 = ['val_1', 'val_2', 'val_3'];
+        const array2 = ['val_1', 'val_3', 'val_2', 'val_23'];
+        const array3 = ['val_28', 'val_74', 'val_21'];
+
+        let isValidArray2 = array1.every(singleValue => array2.includes(singleValue));
+        let isValidArray3 = array2.every(singleValue => array3.includes(singleValue));
+
+        console.log('one arr all value include to another arr by every function: ', isValidArray2); // true
+        console.log('one arr all value include to another arr by every function: ', isValidArray3); // false
+
+        // 3. Check if an array contains any element of another array in JavaScript
+        let isValidArray4 = array1.some(singleValue => array2.includes(singleValue));
+        let isValidArray5 = array2.some(singleValue => array3.includes(singleValue));
+
+        console.log('one arr any value include to another arr by some function: ', isValidArray4); // true
+        console.log('one arr any value include to another arr by some function: ', isValidArray5); // false
+
+
+        // 4. Join strings with a comma only if strings are not null or empty
+        const addressLine1 = "Address Line 1";
+        const addressLine2 = "";
+        const city = "City";
+        const state = "State";
+        const postcode = null;
+        const country = "Country";
+
+        const output = [addressLine1, addressLine2, city, state, postcode, country].join(', ');
+        console.log(output); // Address Line 1, , City, State, , Country
+
+        const output1 = [addressLine1, addressLine2, city, state, postcode, country].filter(Boolean).join(', ');
+        console.log(output1); // Address Line 1, , City, State, Country
+
+
+        // 5. Verify an image URL in JavaScript
+        let checkURL = (url) => {
+            if(typeof(url) !== 'string')
+                return false;
+            return (url.match(/\.(jpg|jpeg|gif|png)$/) !=null )
+        }
+        console.log(checkURL('cluemediator.com')); // Output: false
+        console.log(checkURL('https://xyz.com/abc.png')); // Output: true
+        console.log(checkURL('http://abc.com/xyz.gif')); // Output: true
+
+        
+        // const pageWidth  = document.documentElement.scrollWidth; // Output: 838
+        // const pageHeight = document.documentElement.scrollHeight; // Output: 4110
+
+        /*
+        6. What are HTTP Status Codes?
+        Status codes are issued by a server in response to a client’s request made to the server. The first digit of the status code specifies one of five standard classes of responses.
+
+            List of the Standard Classes
+            1xx – Informational
+            2xx – Success
+            3xx – Redirection
+            4xx – Client Error
+            5XX – Server Error
+            
+            1xx – Informational:
+                100 – Continue
+                101 – Switching Protocols
+                102 – Processing (WebDAV)
+                103 – Early Hints
+            
+            2xx – Success:
+                200 – OK
+                201 – Created
+                202 – Accepted
+                204 – No Content
+                
+            3xx – Redirection:
+                301 – Moved Permanently
+                302 – Found
+                304 – Not Modified
+                305 – Use Proxy
+            
+            4xx – Client Error:
+                400 – Bad Request
+                401 – Unauthorized
+                403 – Forbidden
+                404 – Not Found
+            
+            5xx – Server Error:
+                500 – Internal Server Error
+                501 – Not Implemented
+                502 – Bad Gateway
+                504 – Gateway Timeout
+        */
+
+        // 7. How to get the window size in JavaScript
+        const windowOuterWidth  = window.outerWidth; // Output: 1109  Gets the width of the outside of the browser window
+        const windowOuterHeight = window.outerHeight; // Output: 620 Gets the height of the outside of the browser window
+
+        const windowInnerWidth  = window.innerWidth; // Output: 780  Gets the width of the content area of the browser window including
+        const windowInnerHeight = window.innerHeight; // Output: 532 Gets the height of the content area of the browser window including
+
+        // 8. How to get the screen size in JavaScript
+        const screenHeight = window.screen.height; // Output: 864 Returns the height of the screen in pixels.
+        const screenWidth  = window.screen.width; // Output: 1536
+
+        const availScreenHeight = window.screen.availHeight; // Output: 824 Specifies the height of the screen, in pixels, minus permanent or semipermanent user interface features displayed by the operating system, such as the Taskbar on Windows.
+        const availScreenWidth  = window.screen.availWidth; // Output: 1536
+
+        // 8.generate random String
+        console.log(Math.random().toString(36).slice(2));
+
+        
+        // 9.Encode and decode strings with base64 in JavaScript
+        var str = "Clue Mediator";
+        var output = btoa(str);
+        // Output: Q2x1ZSBNZWRpYXRvcg==
+        var str = "Q2x1ZSBNZWRpYXRvcg==";
+        var output = atob(str);
+        // Output: Clue Mediator
+        </script>
+</body>
+</html>
+
+
+=========================================================================================
+=================================== js reference code ===================================
+=========================================================================================
+<!DOCTYPE html>
+<html>
+<body onclick="myFunction()">
+
+<p>Click anywhere in the document to display the active element.</p>
+<input type="text" value="An input field">
+<button>A Button</button>
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var x = document.activeElement.tagName;
+  document.getElementById("demo").innerHTML = x;
+}
+</script>
+
+</body>
+</html>
+
+=========================================================================================
+=================================== js reference code ===================================
+=========================================================================================
