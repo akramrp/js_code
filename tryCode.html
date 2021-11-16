@@ -658,6 +658,23 @@ Character		Description
 			document.getElementById('timer').innerText = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
 		}, 1000);
 		timerId;
+
+
+		//  array chunk in js
+		function chunk(array, size) {
+	    const chunked_arr = [];
+	    for (let i = 0; i < array.length; i++) {
+	      const last = chunked_arr[chunked_arr.length - 1];
+	      if (!last || last.length === size) {
+	        chunked_arr.push([array[i]]);
+	      } else {
+	        last.push(array[i]);
+	      }
+	    }
+	    return chunked_arr;
+		} 
+		console.log(chunk([1,2,3,4,5],2))
+
 	</script>
 </body>
 </html>
