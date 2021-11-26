@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <style type="text/css">
+        	.marquee {
+			    width: 100%;
+			    margin: 0 auto;
+			    white-space: nowrap;
+			    overflow: hidden;
+			    box-sizing: border-box;
+			    border: 1px solid black;
+			}
+
+			.marquee span {
+			    display: inline-block;
+			    padding-left: 100%;  /* show the marquee just outside the paragraph */
+			    animation: marquee 8s linear infinite;
+			}
+
+			.marquee span:hover {
+			    animation-play-state: paused
+			}
+
+			/* Make it move */
+			@keyframes marquee {
+			    0%   { transform: translate(0, 0); }
+			    100% { transform: translate(-100%, 0); }
+			}
+        </style>
+    </head>
+    <body>
+        <p class="marquee"><span>This is a marquee effect without using marquee tag, coz marquee tags are deprecated and should be avoided</span></p>
+    </body>
+</html>

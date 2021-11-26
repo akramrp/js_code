@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <style>
+            body 
+            {
+                background-color:black;
+            }
+
+            #t
+            {
+                top:120px;
+                visibility:hidden ;
+            }
+            #m
+            {
+               display:block ;
+            visibility:hidden ;
+            }
+
+            #h
+            {
+                
+            visibility:hidden ;
+            }
+            #r
+            {
+                
+            visibility:hidden ;
+
+            }
+            #f
+            {
+                
+            visibility:hidden ;
+            }
+            #w
+            {
+                
+            visibility:hidden ;
+            }
+            #d
+            {
+                
+            visibility:hidden ;
+            }
+            #cc
+            {
+                visibility:hidden;
+                font-size:35px;
+                text-shadow: 0 0 3px pink, 0 0 5px lightpink;
+            }
+            b{
+                color:white;
+            }
+            i
+            {
+                color:white;
+            }
+            h1
+            {
+                color:white;
+            }
+            button{
+                margin-left: 15px;
+                margin-right: 15px;
+                border: 1px solid transparent;
+                border-radius: 10px;
+                height: 25%;
+                width:80%;
+                font-size:15px;
+            }
+            #tr
+            {
+                visibility:hidden;
+                top:-725px;
+            }
+            button:hover{
+                background-color: rgb(200,20,50);
+                color: white;
+            }
+
+        </style>
+    </head>
+    <body>
+    <marquee style="color:magenta; "><big>Thanks for 400+ upvotes and #1 in trending</big></marquee></p>
+        <h1>Can you steal the code?</h1>
+        <p id="a"></p>
+        
+        <b></b>
+        <i><br /><br /></i>
+        <b><br /><br /></b>
+        <b><br /><br /></b>
+        <b><br /><br /></b>
+        <b><br /><br /></b>
+        <b><br /><br /></b>
+        
+       
+        <button id="t" onclick="sv()">Try to recover</button>
+        <button id="m" onclick="mn()">Mansion</button>
+        <button id="h" onclick="ho()">House</button>
+        <button id="r" onclick="ru()">Run</button>
+        <button id="f" onclick="fi()">Fight</button>
+        <button id="w" onclick="wi()">Window</button>
+        <button id="d" onclick="dr()">Door</button>
+        <p id="cc">Congrats</p>
+        <button id="tr" onclick="trw()">Try again</button>
+        <script>
+            alert("Try to complete the game.Scroll down in case the button is visible.Please upvote and do comment your suggestions.");
+
+            var text = "A code to save all computers from crashing is in the hands of a terrible hacker.You need to recover it."; 
+            var word = text.split("");
+            var i = 0;
+            var interval = setInterval(writeText, 50 );
+            function writeText() {
+                var p = document.getElementsByTagName("b")[0];
+                if (i < word.length) {
+                    p.innerHTML += word[i];
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    p.style.backgroundColor ="black"; 
+                    document.getElementById('t').style.visibility="visible";
+                }
+            }
+            function sv()
+            {
+                document.getElementById('t').style.visibility="hidden";
+                var text = " The hacker has a house and a mansion. Where do you think the code is kept?"; 
+            var word = text.split("");
+            var i = 0;
+            var interval = setInterval(writeText, 50 );
+            function writeText() {
+                var p = document.getElementsByTagName("i")[0];
+                if (i < word.length) {
+                    p.innerHTML += word[i];
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    p.style.backgroundColor ="black"; 
+                   document.getElementById('m').style.visibility="visible";
+                   document.getElementById('h').style.visibility="visible";
+                }
+            }
+
+            }
+            function mn()
+            {
+                document.getElementById('m').style.visibility="hidden";
+                   document.getElementById('h').style.visibility="hidden";
+                   var text = "Burglar alarm gets activated.Security guards come running to catch you."; 
+            var word = text.split("");
+            var i = 0;
+            var interval = setInterval(writeText, 50 );
+            function writeText() {
+                var p = document.getElementsByTagName("b")[1];
+                if (i < word.length) {
+                    p.innerHTML += word[i];
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    p.style.backgroundColor ="black"; 
+                    
+                   document.getElementById('f').style.visibility="visible";
+                   document.getElementById('r').style.visibility="visible";
+            }
+            }
+            }
+            function ru()
+            {
+                document.getElementById('f').style.visibility="hidden";
+                   document.getElementById('r').style.visibility="hidden";
+                   document.getElementById('m').style.visibility="hidden";
+                   document.getElementById('h').style.visibility="hidden";
+                   var text = "You run and reach the entrance of the hackers house.You choose to enter it."; 
+            var word = text.split("");
+            var i = 0;
+            var interval = setInterval(writeText, 50 );
+            function writeText() {
+                var p = document.getElementsByTagName("b")[2];
+                if (i < word.length) {
+                    p.innerHTML += word[i];
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    p.style.backgroundColor ="black"; 
+                    
+                   document.getElementById('h').style.visibility="visible";
+                   
+            }
+            }
+            }
+
+            function fi()
+            {
+                document.getElementById('f').style.visibility="hidden";
+                   document.getElementById('r').style.visibility="hidden";
+                   document.getElementById('m').style.visibility="hidden";
+                   document.getElementById('h').style.visibility="hidden";
+                   var text = "You choose to fight.But you are no match to the trained forces of the hacker.They frame you in a false case and sends you to jail.Try again :( Game ended."; 
+            var word = text.split("");
+            var i = 0;
+            var interval = setInterval(writeText, 50 );
+            function writeText() {
+                var p = document.getElementsByTagName("b")[3];
+                if (i < word.length) {
+                    p.innerHTML += word[i];
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    p.style.backgroundColor ="black"; 
+                    
+                   document.getElementById('tr').style.visibility="visible";
+                   
+            }
+            }
+            }
+            function ho()
+            {
+                
+                   document.getElementById('h').style.visibility="hidden";
+                   document.getElementById('m').style.visibility="hidden";
+                   var text = "Now there are two ways of entering.Which way do you choose?"; 
+            var word = text.split("");
+            var i = 0;
+            var interval = setInterval(writeText, 50 );
+            function writeText() {
+                var p = document.getElementsByTagName("b")[4];
+                if (i < word.length) {
+                    p.innerHTML += word[i];
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    p.style.backgroundColor ="black"; 
+                    document.getElementById('w').style.visibility="visible";
+                    document.getElementById('d').style.visibility="visible";
+                   
+                   
+            }
+            }
+            }
+            function dr()
+            {
+                
+                   document.getElementById('d').style.visibility="hidden";
+                   document.getElementById('w').style.visibility="hidden";
+                   var text = "You choose to enter using door.But  the trained forces of the hacker catch you.They frame you in a false case and sends you to jail.Try again :( Game ended."; 
+            var word = text.split("");
+            var i = 0;
+            var interval = setInterval(writeText, 50 );
+            function writeText() {
+                var p = document.getElementsByTagName("b")[4];
+                if (i < word.length) {
+                    p.innerHTML += word[i];
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    p.style.backgroundColor ="black"; 
+                    
+                   document.getElementById('tr').style.visibility="visible";
+                   
+            }
+            }
+            }
+            function wi()
+            {
+                document.getElementById('d').style.visibility="hidden";
+                   document.getElementById('w').style.visibility="hidden";
+                   
+                   var text = "You enter the house and manage to steal the code.Congratulations you saved the computers of the world."; 
+            var word = text.split("");
+            var i = 0;
+            var interval = setInterval(writeText, 50 );
+            function writeText() {
+                var p = document.getElementsByTagName("b")[4];
+                if (i < word.length) {
+                    p.innerHTML += word[i];
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    p.style.backgroundColor ="black"; 
+                    
+                   document.getElementById('cc').style.visibility="visible";
+                   
+            }
+            }
+            }
+            function trw()
+            {
+                document.getElementById('tr').style.visibility="hidden";
+                   
+                   var text = "You manage to escape from the jail.This is your last chance.Run the code again."; 
+            var word = text.split("");
+            var i = 0;
+            var interval = setInterval(writeText, 50 );
+            function writeText() {
+                var p = document.getElementsByTagName("b")[5];
+                if (i < word.length) {
+                    p.innerHTML += word[i];
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    p.style.backgroundColor ="black"; 
+                    
+                   
+                   
+            }
+            }
+            }
+        </script>
+    </body>
+</html>

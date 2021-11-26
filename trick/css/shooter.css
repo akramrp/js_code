@@ -1,0 +1,80 @@
+/*Made by Elizabeth Espíndola*/
+body {
+    background-image:url(" http://wallpapercave.com/wp/KdgcJG4.jpg ");
+    background-size:350%;
+    background-position:center;
+    font-family:Times;
+    font-color:"#CEF6F5";
+}
+#target
+{
+   top:49px;
+   width:60px;
+   position:absolute;
+   animation-name:movetarget;
+   animation-duration:3s;
+   animation-iteration-count:infinite;
+   animation-direction:alternate;
+   -webkit-animation-duration:3s;
+   -webkit-animation-name:movetarget;
+   -webkit-animation-iteration-count:infinite;
+   -webkit-animation-direction:alternate;
+}
+#me
+{
+width:100px;
+position:absolute;
+top:350px;
+left:100px;
+}
+#bullet
+{
+   width:50px;
+   position:absolute ;
+   top:330px;
+   left:125px;
+   display:none;
+}
+@keyframes movetarget
+{
+   from{margin-left:0%;} 
+   to{margin-left:80%;}
+}
+@-webkit-keyframes movetarget
+{
+ from{margin-left:0%;} 
+ to{margin-left:80%;} 
+}
+#score
+{
+  font-size:13px;
+  width:80px;
+  border-width:2px;
+  border-style:dotted;
+  border-color:white;
+  padding-left:10px;
+  position:absolute;
+  top:300px;
+}
+#explode
+{
+ top:49px;
+   width:60px;
+   position:absolute;
+   animation-name:movetarget;
+   animation-duration:3s;
+   animation-iteration-count:infinite;
+   animation-direction:alternate;
+   -webkit-animation-duration:3s;
+   -webkit-animation-name:movetarget;
+   -webkit-animation-iteration-count:infinite;
+   -webkit-animation-direction:alternate;
+   visibility:hidden;
+}
+#info
+{
+   font-size:10px;
+   position:absolute;
+   left:220px;
+   top:330px;
+}

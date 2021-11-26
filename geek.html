@@ -8,24 +8,9 @@
     <title>GeekForGeek</title>
 </head>
 <style>
-    .mainDiv {
-        margin: 10px;
-    }
-    
-    .cls1 {
-        width: 50%;
-        float: left;
-    }
-    
-    .cls2 {
-        width: 50%;
-        float: right;
-    }
-    #vsuccess{ 
-        color: #18ad1e;
-        background-color: cornsilk;
-        padding: 15px; 
-    }
+    .mainDiv { margin: 10px; }
+    .cls1 { width: 50%; float: left; }
+    .cls2 { width: 50%; float: right; }
 </style>
 
 <body>
@@ -52,7 +37,11 @@
                 document.write("<br>");
                 const url = "https://www.google.com/search?q=geeks for geeks";
                 document.write('encodedURL => ' + encodeURI(url) + "<br>");
-                document.write('decodeURI => ' + decodeURI(url) + "<br>");
+                document.write('decodeURL => ' + decodeURI(url) + "<br>");
+                
+                let url1 = btoa(url);
+                document.write('encode with btoa()=> ' + url1 + "<br>");
+                document.write('decode with atob()=> ' + atob(url1) + "<br>");
 
 
                 var object = {
@@ -63,10 +52,11 @@
                 document.write("<br>");
                 document.write('Object.keys(object) => ' + Object.keys(object) + "<br>");
                 document.write('Object.values(object) => ' + Object.values(object) + "<br>");
+                document.write('Object.entries(object) => ' + Object.entries(object) + "<br>");
 
-                document.write("<br>");
-                document.write('method use in data comparing(Date.parse("2020-01-29")) => ' + Date.parse("2020-01-29") + "<br>");
-                document.write('method use in data comparing(Date.parse(new Date())) => ' + Date.parse(new Date()) + "<br>");
+                document.write("<br> Date.parse() use for compare of date:<br>");
+                document.write('(Date.parse("2020-01-29")) => ' + Date.parse("2020-01-29") + "<br>");
+                document.write('(Date.parse(new Date())) => ' + Date.parse(new Date()) + "<br>");
 
                 // es6 rest parameter 
                 function fun(...input) {
@@ -80,7 +70,7 @@
                 document.write('rest parameter fun(1,2,3,4) function fun(...input) { } => ' + fun(1, 2, 3, 4) + "<br>");
 
                 // normal array concat() method 
-                let arr1 = [1, 2, 3];
+                let arr1 = [1, 2, 3, 4];
                 let arr2 = [4, 5];
                 arr3 = arr1.concat(arr2); // [ 1, 2, 3, 4, 5 ]
                 document.write('normal array concat() method: arr.concat(arr2) => ' + arr3 + "<br>");
@@ -89,7 +79,7 @@
                 let arr4 = [1, 2, 3];
                 let arr5 = [4, 5];
                 arr6 = [...arr4, ...arr5]; // [ 1, 2, 3, 4, 5 ] 
-                document.write('spread operator doing the concat job: [...arr4,...arr5] => ' + arr5 + "<br>");
+                document.write('spread operator doing the concat job: [...arr4,...arr5] => ' + arr6 + "<br>");
 
                 let shortFun = arr1.map((number) => {
                     return number + 7;
@@ -98,6 +88,8 @@
             </script>
         </div>
 
+
+        
         <div class="cls2">
             <!--====================== google language convertor ========================-->
             <div id="google_translate_element"></div>
@@ -115,7 +107,7 @@
             <!--====================== Searching in Javascript   ========================-->
             <p>
                 Searching in Javascript:
-                <input type="text" list="datalist" onkeyup="ac(this.value)">
+                <input type="text" list="datalist" onkeyup="searchingFunction(this.value)">
                 <datalist id="datalist"> 
                     <option value="Delhi"></option> 
                     <option value="Ahemdabad"></option> 
@@ -135,7 +127,7 @@
                     var tags = ["Delhi","Ahemdabad","Punjab","Uttar Pradesh","Himachal Pradesh","Karnatka","Kerela","Maharashtra","Gujrat","Rajasthan","Bihar","Tamil Nadu","Haryana","aaa","bbb","ccc","aab","aac","abb","acc"]; 
                     /*list of available options*/ 
                     var n = tags.length; //length of datalist tags
-                    function ac(value) { 
+                    function searchingFunction(value) { 
                         document.getElementById('datalist').innerHTML = ''; 
                         //setting datalist empty at the start of function 
                         //if we skip this step, same name will be repeated 
@@ -192,131 +184,128 @@
                 </p>
                 <p><input type="submit" id="vsubmit" value="Submit"></p>
                 <p style="display: none;" id="vsuccess"></p>
-                <script>
-                    var form = document.querySelector('#validateForm');
-                    var vname = document.querySelector('#vname');
-                    var vphone = document.querySelector('#vphone');
-                    var vemail = document.querySelector('#vemail');
-                    var vdate = document.querySelector('#vdate');
-                    var vpass = document.querySelector('#vpass');
-                    var vedu = document.getElementsByName('vedu');
-                    var vmodel = document.querySelector('#vmodel');
-                    var vques = document.getElementsByName('vques');
-                    var vsuccess = document.querySelector('#vsuccess');
-
-                    function togglePass(){
-                        if(vpass.type === "password")
-                            vpass.type = "text";
-                        else
-                            vpass.type = "password";
-                    }
-
-                    //input only number 
-                    vphone.oninput = function() {
-                        this.value = this.value.replace(/[^\d]/g, '');
-                    }
-
-                    function validateEmail(email) {
-                        let atPos = email.indexOf('@');
-                        let dotPos = email.lastIndexOf('.');
-                        if (atPos < 1 || (dotPos - atPos) < 2)
-                            return false;
-                        else
-                            return true;
-                    }
-
-                    function currentDate() {
-                        var d = new Date(),
-                            month = d.getMonth() + 1,
-                            day = d.getDate(),
-                            year = d.getFullYear();
-
-                        if (month < 10) month = '0' + month;
-                        if (day < 10) day = '0' + day;
-
-                        return [year, month, day].join('-');
-                    }
-
-                    form.onsubmit = function(event) {
-                        event.preventDefault();
-                        if (!isNaN(vname.value)) {
-                            alert('invalid name.');
-                            vname.focus();
-                            return false;
-                        }
-                        if (!(vphone.value).match(/^[6-9]{1}[0-9]{9}$/)) {
-                            alert('invalid phone.');
-                            vphone.focus();
-                            return false;
-                        }
-
-                        if (!validateEmail(vemail.value)) {
-                            alert('invalid eamil.');
-                            vemail.focus();
-                            return false;
-                        }
-
-                        if (Date.parse(currentDate()) < Date.parse(vdate.value)) {
-                            alert('invalid date.');
-                            vdate.focus();
-                            return false;
-                        }
-
-                        for(var i=0; i<vedu.length; i++){
-                            if(vedu[i].checked){
-                                var education = vedu[i].value;
-                                break;
-                            }
-                        }
-
-                        if(i==vedu.length){
-                            alert('select education');
-                            return false;
-                        }
-
-                        if (vmodel.value == '') {
-                            alert('select model.');
-                            vmodel.focus();
-                            return false;
-                        }
-
-                        var questionArr = [];
-                        for(var m=0; m<vques.length; m++){
-                            if(vques[m].type=='checkbox' && vques[m].checked==true)
-                                questionArr.push(vques[m].value);
-                        }
-
-                        if (questionArr.length == '' || questionArr.length == 0) {
-                            alert('select question.');
-                            return false;
-                        }
-
-                        var msg = '<span style="color:red; font-size:16px">Validate Data:</span>' +
-                            '<br> Name: ' + vname.value + 
-                            '<br> Phone: ' + vphone.value + 
-                            '<br> Email: ' + vemail.value + 
-                            '<br> Date: ' + vdate.value + 
-                            '<br> Education: ' + education + 
-                            '<br> Mobile Model: ' + vmodel.value + 
-                            '<br> Question: ' + questionArr + '<br>';
-                            
-                        vsuccess.style.display = 'block';
-                        vsuccess.innerHTML = msg;
-                    }
-
-
-                    // async function showAvatar() {
-                    //   let githubResponse = await fetch(`http://localhost/ticketing/election/ElectionController/searchAllBlockInDistrict`);
-                    //   let githubUser = await githubResponse.json();
-                    //   return githubUser;
-                    // }
-
-                    // showAvatar();
-
-
-                </script>
             </form>
+            <script>
+                var form = document.querySelector('#validateForm');
+                var vname = document.querySelector('#vname');
+                var vphone = document.querySelector('#vphone');
+                var vemail = document.querySelector('#vemail');
+                var vdate = document.querySelector('#vdate');
+                var vpass = document.querySelector('#vpass');
+                var vedu = document.getElementsByName('vedu');
+                var vmodel = document.querySelector('#vmodel');
+                var vques = document.getElementsByName('vques');
+                var vsuccess = document.querySelector('#vsuccess');
+
+                function togglePass(){
+                    if(vpass.type === "password")
+                        vpass.type = "text";
+                    else
+                        vpass.type = "password";
+                }
+
+                //input only number 
+                vphone.oninput = function() {
+                    this.value = this.value.replace(/[^\d]/g, '');
+                }
+
+                function validateEmail(email) {
+                    let atPos = email.indexOf('@');
+                    let dotPos = email.lastIndexOf('.');
+                    if (atPos < 1 || (dotPos - atPos) < 2)
+                        return false;
+                    else
+                        return true;
+                }
+
+                function currentDate() {
+                    var d = new Date(),
+                        month = d.getMonth() + 1,
+                        day = d.getDate(),
+                        year = d.getFullYear();
+
+                    if (month < 10) month = '0' + month;
+                    if (day < 10) day = '0' + day;
+                    return [year, month, day].join('-');
+                }
+
+                form.onsubmit = function(event) {
+                    event.preventDefault();
+                    if (!isNaN(vname.value)) {
+                        alert('invalid name.');
+                        vname.focus();
+                        return false;
+                    }
+                    if (!(vphone.value).match(/^[6-9]{1}[0-9]{9}$/)) {
+                        alert('invalid phone.');
+                        vphone.focus();
+                        return false;
+                    }
+
+                    if (!validateEmail(vemail.value)) {
+                        alert('invalid eamil.');
+                        vemail.focus();
+                        return false;
+                    }
+
+                    if (Date.parse(currentDate()) < Date.parse(vdate.value)) {
+                        alert('invalid date.');
+                        vdate.focus();
+                        return false;
+                    }
+
+                    for(var i=0; i<vedu.length; i++){
+                        if(vedu[i].checked){
+                            var education = vedu[i].value;
+                            break;
+                        }
+                    }
+
+                    if(i==vedu.length){
+                        alert('select education');
+                        return false;
+                    }
+
+                    if (vmodel.value == '') {
+                        alert('select model.');
+                        vmodel.focus();
+                        return false;
+                    }
+
+                    var questionArr = [];
+                    for(var m=0; m<vques.length; m++){
+                        if(vques[m].type=='checkbox' && vques[m].checked==true)
+                            questionArr.push(vques[m].value);
+                    }
+
+                    if (questionArr.length == '' || questionArr.length == 0) {
+                        alert('select question.');
+                        return false;
+                    }
+
+                    var msg = '<span style="color:red; font-size:16px">Validate Data:</span>' +
+                        '<br> Name: ' + vname.value + 
+                        '<br> Phone: ' + vphone.value + 
+                        '<br> Email: ' + vemail.value + 
+                        '<br> Date: ' + vdate.value + 
+                        '<br> Education: ' + education + 
+                        '<br> Mobile Model: ' + vmodel.value + 
+                        '<br> Question: ' + questionArr + '<br>';
+                        
+                    vsuccess.style.cssText='display:block; color:green; background-color: rgb(243, 239, 224); padding: 10px; font-size:17px;';
+                    vsuccess.innerHTML = msg;
+                }
+
+                // async function showAvatar() {
+                //   let githubResponse = await fetch(`http://localhost/ticketing/election/ElectionController/searchAllBlockInDistrict`);
+                //   let githubUser = await githubResponse.json();
+                //   return githubUser;
+                // }
+                // showAvatar();
+
+            </script>
             <!--====================== validation in Javascript   ========================-->
+            
             <!--
                 <!doctype html> 
                 <html lang="en"> 

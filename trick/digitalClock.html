@@ -1,0 +1,109 @@
+<!--Made By Kamil on Sololearn-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Digital clock pro</title>
+    </head>
+    <body id="body">
+    <form id="all">
+        <div id="test">loading</div>
+        <div id="ttt"></div>
+    </form>	
+    <p id="text">Made by Kamil</p>
+    
+</body>
+</html>
+<style>
+	/*Made By Kamil on Sololearn*/
+
+	#body{
+	    background-color:grey;
+	}
+
+	#test{
+	    text-align:center;
+	    font-family:serif;
+	    color:white;
+	    letter-spacing:2px;
+	    font-size:70px;
+	    text-shadow:5px 3px 25px white;
+	    padding:5px;
+	}
+	#text{
+	    text-align:center;
+	    color:white;
+	    letter-spacing:3px;
+	}
+	#ttt{
+	    color:white;
+	    text-align:center;
+	    padding:5px;
+	    font-family:serif;
+	}
+	#all{
+	    padding:5px;
+	    border:5px solid lightskyblue;
+	    font-family:serif;
+	    border-radius:30px;
+	}
+</style>
+<script>
+	//Made By Kamil on Sololearn
+
+	window.onload = function(){
+	//alert('Hi, You Guys are awesome! Already 2k likes?!!  WOW Thank you soooooo much!!');
+	printTime();
+	};
+
+	function printTime() {
+	    var d = new Date();
+	    var hours = d.getHours();
+	    var mins = d.getMinutes();
+	    var secs = d.getSeconds();
+	    var day = d.getDay();
+	    var date = d.getDate();
+	    var month = d.getMonth();
+	    var year = d.getFullYear();
+	        switch (day){
+	            case 0:
+	                day = "Sunday";
+	                break;
+	            case 1:
+	                day = "Monday";
+	                break;
+	            case 2:
+	                day = "Tuesday";
+	                break;
+	            case 3:
+	                day = "Wednesday";
+	                break;
+	            case 4:
+	                day = "Thursday";
+	                break;
+	            case 5:
+	                day = "Friday";
+	                break;
+	            case 6:
+	                day = "Saturday";
+	                break;
+	           }
+
+	        if(hours<10){
+	            hours = "0" + hours;
+	        }
+	        if(mins<10){
+	            
+	            mins = "0" + mins;
+	        }
+	        if(secs<10){
+
+	            secs = "0" + secs;
+	        }
+	   
+	   month = month + 1; 
+	   	document.getElementById("test").innerHTML = hours+":"+mins+":"+secs;
+		document.getElementById("ttt").innerHTML = day + ", " + date + "." + month + "." + year;
+	}
+	setInterval(printTime, 1000);
+
+</script>

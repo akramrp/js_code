@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html ng-app="">
+    <head>
+        <title>Page Title</title>
+              <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+              <link href='https://fonts.googleapis.com/css?family=Advent Pro|Aldrich|Alex Brush|Alfa Slab One|Allerta Stencil|Anaheim|Annie Use Your Telescope|Architects Daughter|Atomic Age|Averia Gruesa Libre|Bad Script|Baloo Bhaijaan|Bangers|Barlow|Basic|Baumans|Black And White Picture|Bonbon|Bubbler One|Bungee Inline|Caesar Dressing|Carter One|Cinzel Decorative|Cormorant SC|Creepster|Do Hyeon|Finger Paint|Fugaz One|Graduate|Hanalei Fill|Faster One|Plaster|Racing Sans One|Ravi Prakash|Righteous|Sarina|Sedgwick Ave Display|The Girl Next Door|Trade Winds|VT323|Zilla Slab Highlight|Megrim|Monofett|Monoton|Montserrat Subrayada|Nosifer|Spicy Rice|Pacifico|Poiret One|Arbutus|Bahiana|Barrio|Bungee Inline|Bungee Shade|Carter One|Coda|Courgette|Creepster|Cutive Mono|Didact Gothic|Eater|Ewert|Glegoo|Jacques Francois Shadow|Julius Sans One|Luckiest Guy|Aladin|Amatic SC|Sofia' rel='stylesheet'>
+              <style type="text/css">
+                body{
+                    
+                    background-color: #f2f2f2;
+                    font-family: myFirstFont;                    
+                  }
+
+                  #name {
+                     border: 1px dashed lightgray;
+                     padding: 15px;
+                     width: 300px;
+                     font-size: 15px;
+                     padding: 20px;
+                  }
+                        
+                  #name5 {
+                     border: 1px dashed lightgray;
+                     padding: 15px;
+                     width: 300px;
+                     font-size: 15px;
+                     padding: 20px;                        }
+                        
+                    #sub {
+                        padding: 14px;
+                        border-radius: 0px;
+                        float: right;   
+                    }
+                        
+                    #rotate {
+                       -webkit-animation-name: inform;
+                       -webkit-animation-duration: 3s;
+                       -webkit-animation-iteration-count: infinite;
+                       -webkit-animation-direction: alternate;
+                       -webkit-animation-timing-function: linear;
+                       animation-name: inform;
+                       animation-duration: 3s;
+                       animation-timing-function: linear;
+                       animation-iteration-count: infinite;
+                       animation-direction: alternate;
+                    }
+                        
+                        
+                        @-webkit-keyframes inform {
+                        0% {transform: rotateY(0deg);}
+                        100% {transform: rotateY(360deg);}
+                        }
+                        @keyframes inform {
+                        0% {transform: rotateY(0deg);}
+                        100% {transform: rotateY(360deg);}
+                                   
+                        }                        
+              </style>
+              
+    </head>
+    <body>
+        
+               <div class="progress" style="background-color: #f2f2f2;border-radius: 0px;">
+                   <div class="progress-bar progress-bar-success progress-bar-striped active bg-white" role="progressbar" area-valuemin="0" area-valuemax="100" area-valuenow="0" style="width: 0%;height: 10px;">
+        </div></div>
+        
+        
+        <center><div id="name2" style="display: none;font-family: Barlow;" class="container">
+            
+             <audio id="sound" autoplay>
+                                        
+                                         <source src="https://instaud.io/_/2tuK.mp3" type="audio/mpeg">
+                                         <source src="https://instaud.io/_/2tvz.ogg" type="audio/ogg">
+                                         
+                                         
+                           </audio>
+                     
+            
+                       <form>
+                       <div class="btn-group">
+                           <input class="name form-control" ng-model="pattern1" id="name" type="text" placeholder="Type Your Name Here" maxlength="10"></div>
+                           
+                            <input style="display: none;" class="name3 form-control" ng-model="pattern1" id="" type="text" placeholder="Type Your Name Here" maxlength="10"></div>
+                            
+        </div></center><br>
+        
+        
+        
+        <div id="maincon" class="container" style="display: none;font-size: 20px;">
+            
+           
+        
+        <div class="container">
+            
+                               <div style="font-family: Nosifer;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Nosifer</span>
+                               </div>
+            
+            
+            </div>
+            
+            
+                <div class="container">
+            
+                               <div style="font-family: Faster One;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Faster One</span>
+                               </div>
+            
+            
+            </div>
+            
+            
+                <div class="container">
+            
+                               <div style="font-family: Monoton" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Monoton</span>
+                               </div>
+            
+            
+            </div>
+            
+            
+                <div class="container">
+            
+                               <div style="font-family: Monofett;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Monofett</span>
+                               </div>
+            
+            
+            </div>
+            
+            
+                <div class="container">
+            
+                               <div style="font-family: Megrim;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Megrim</span>
+                               </div>
+            
+            
+            </div>
+            
+            
+                <div class="container">
+            
+                               <div style="font-family: Zilla Slab Highlight;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Zilla Slab Highlight</span>
+                               </div>
+            
+            
+            </div>
+            
+            
+                <div class="container">
+            
+                               <div style="font-family: VT323;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">VT323</span>
+                               </div>
+            
+            
+            </div>
+            
+            
+                <div class="container">
+            
+                               <div style="font-family: Trade Winds;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Trade Winds</span>
+                               </div>
+            
+            
+            </div>
+            
+            
+                <div class="container">
+            
+                               <div style="font-family: The Girl Next Door;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">The Girl Next Door</span>
+                               </div>
+            
+            
+            </div>
+            
+            
+                <div class="container">
+            
+                               <div style="font-family: Sedgwick Ave Display;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Sedgwick Ave Display</span>
+                               </div>
+            
+            
+            </div>
+            
+            
+                <div class="container">
+            
+                               <div style="font-family: Righteous;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Righteous</span>
+                               </div>
+            
+            
+            </div>
+            
+                <div class="container">
+            
+                               <div style="font-family: Sarina;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Sarina</span>
+                               </div>
+            
+            
+            </div>
+            
+            
+                <div class="container">
+            
+                               <div style="font-family: Ravi Prakash;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Ravi Prakash</span>
+                               </div>
+            
+            
+            </div>
+            
+                <div class="container">
+            
+                               <div style="font-family: Racing Sans One;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Racing Sans One</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Plaster;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Plaster</span>
+                               </div>
+            
+            
+            </div>    <div class="container">
+            
+                               <div style="font-family: Hanalei Fill;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Hanalei Fill</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Graduate;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Graduate</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Fugaz One;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Fugaz One</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Finger Paint;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Finger Paint</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Do Hyeon;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Do Hyeon</span>
+                               </div>
+            
+            
+            </div>    <div class="container">
+            
+                               <div style="font-family: Creepster;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Creepster</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Cormorant SC;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Cormorant SC</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Cinzel Decorative;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Cinzel Decorative</span>
+                               </div>
+            
+            
+            </div>    <div class="container">
+            
+                               <div style="font-family: Carter One;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Carter One</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Caesar Dressing;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Caesar Dressing</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Bungee Inline;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Bungee Inline</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Bubbler One;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Bubbler One</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Bonbon;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Bonbon</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Black And White Picture;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Black And White Picture</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Baumans;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Baumans</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Basic;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Basic</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Barlow;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Barlow</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Bangers;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Bangers</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Baloo Bhaijaan;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Baloo Bhaijaan</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Bad Script;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Bad Script</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Averia Gruesa Libre;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Averia Gruesa Libre</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Atomic Age;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Atomic Age</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Architects Daughter;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Architects Daughter</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Annie Use Your Telescope;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Annie Use Your Telescope</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Anaheim;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Anaheim</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Allerta Stencil;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Allerta Stencil</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Alfa Slab One;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Alfa Slab One</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Alex Brush;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Alex Brush</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Aldrich;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Aldrich</span>
+                               </div>
+            
+            
+            </div>
+                <div class="container">
+            
+                               <div style="font-family: Advent Pro;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Advent Pro</span>
+                               </div>
+            
+           </div>
+            
+             <div class="container">
+            
+                               <div style="font-family: Advent Pro;" id="pattern1" class="alert alert-danger">
+                                   
+                                    
+                                     <center><p id="rotate">New Fonts Of Collection</p></center>
+                                    
+                                    
+                                    
+                               
+                               </div>
+            
+           </div>
+            
+                            <div class="container">
+            
+                               <div style="font-family: Advent Pro;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Advent Pro</span>
+                               </div>
+            
+           </div>
+           
+                           <div class="container">
+            
+                               <div style="font-family: Sofia;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Sofia</span>
+                               </div>
+            
+           </div>
+           
+           
+                           <div class="container">
+            
+                               <div style="font-family: Amatic SC;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Amatic SC</span>
+                               </div>
+            
+           </div>
+           
+           
+           
+                           <div class="container">
+            
+                               <div style="font-family: Aladin;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Aladin</span>
+                               </div>
+            
+           </div>
+           
+           
+           
+                           <div class="container">
+            
+                               <div style="font-family: Luckiest Guy;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Luckiest Guy</span>
+                               </div>
+            
+           </div>
+           
+           
+           
+                           <div class="container">
+            
+                               <div style="font-family: Julius Sans One;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Julius Sans One</span>
+                               </div>
+            
+           </div>
+           
+           
+           
+                           <div class="container">
+            
+                               <div style="font-family: Jacques Francois Shadow;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Jacques Francois Shadow</span>
+                               </div>
+            
+           </div>
+           
+           
+                           <div class="container">
+            
+                               <div style="font-family: Glegoo;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Glegoo</span>
+                               </div>
+            
+           </div>
+           
+           
+           
+                           <div class="container">
+            
+                               <div style="font-family: Ewert;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Ewert</span>
+                               </div>
+            
+           </div>
+           
+           
+                                      <div class="container">
+            
+                               <div style="font-family: Eater;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Eater</span>
+                               </div>
+            
+           </div>
+           
+                                      <div class="container">
+            
+                               <div style="font-family: Didact Gothi0c|;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Didact Gothi0c|</span>
+                               </div>
+            
+           </div>
+           
+           
+                                      <div class="container">
+            
+                               <div style="font-family: Cutive Mono;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Cutive Mono</span>
+                               </div>
+            
+           </div>
+           
+           
+                                      <div class="container">
+            
+                               <div style="font-family: Creepster;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Creepster</span>
+                               </div>
+            
+           </div>
+           
+           
+           
+                                      <div class="container">
+            
+                               <div style="font-family: Courgette;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Courgette</span>
+                               </div>
+            
+           </div>
+           
+           
+           
+                                      <div class="container">
+            
+                               <div style="font-family: Coda;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Coda</span>
+                               </div>
+            
+           </div>
+           
+           
+                                      <div class="container">
+            
+                               <div style="font-family: Carter One;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Carter One</span>
+                               </div>
+            
+           </div>
+           
+           
+           
+                                      <div class="container">
+            
+                               <div style="font-family: Bungee Shade;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Bungee Shade</span>
+                               </div>
+            
+           </div>
+           
+           
+           
+                                      <div class="container">
+            
+                               <div style="font-family: Bungee Inline;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Bungee Inline</span>
+                               </div>
+            
+           </div>
+           
+           
+           
+                                      <div class="container">
+            
+                               <div style="font-family: Barrio;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Barrio</span>
+                               </div>
+            
+           </div>
+           
+           
+           
+                                      <div class="container">
+            
+                               <div style="font-family: Bahiana;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Bahiana</span>
+                               </div>
+            
+           </div>
+           
+           
+                                      <div class="container">
+            
+                               <div style="font-family: Poiret One;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Poiret One</span>
+                               </div>
+            
+           </div>
+           
+           
+           
+                                      <div class="container">
+            
+                               <div style="font-family: Pacifico;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Pacifico</span>
+                               </div>
+            
+           </div>
+           
+           
+           
+                                      <div class="container">
+            
+                               <div style="font-family: Spicy Rice;" id="pattern1" class="well well-md">{{ pattern1 }}
+                               <span style="float: right;font-family: bg deep blue" class="label label-primary">Spicy Rice</span>
+                               </div>
+            
+           </div>
+        </div>
+        <script>        
+          alert("Hey Dear Learner Here we have 68 Top And Best Fonts Of 878 Google Fonts You Can Select The Font Of your Website Here And give Your Texts More Elegance");
+          
+                    var i = 0;
+                    
+                    var num = document.getElementsByTagName('div')[1];
+                    
+                    var num2 = document.getElementById('name');
+                    
+                    var num3 = document.getElementById('maincon');
+                    
+                    var t = setInterval(load, 27);
+                    
+                    function load() {
+                      if (i >= 100)
+                      {
+                          clearInterval(t);
+                          
+                          $("#name2").fadeIn(2000);
+                          
+                          setInterval(type, 100);
+                          
+                      }else {
+                          
+                               i++;
+                               
+                               num.style.width = i + "%";
+                          
+                          
+                      }
+                                      
+                                      
+                    }
+                    
+                    function check() {
+                        
+                    
+                    if (num2.value == "") {
+                        
+                                             num3.style.display = "none";
+                                             
+                        
+                        
+                    }
+                    
+                    }
+                    
+                    
+                  function check2() {
+                                            
+                                            setInterval(check, 29);
+                    
+                    }
+                    
+                    
+                    $(document).ready(function () {
+                    
+                    $("#name").keydown(function () {
+                        
+                         $("#maincon").slideDown(500);
+                         
+                         setInterval(check2, 30);
+                        
+                        
+                    });
+
+                    });
+                    
+                    
+                    var i5 = 0;
+                    
+                    var txt = "Give Your Projects More Personality";
+                    
+                    
+                    
+                    function type() {
+                        
+                         if (i5 < txt.length) {
+                             
+                             var num = document.getElementById("name");
+                             
+                             num.value += txt.charAt(i5);
+                            
+                             i5++;
+                             
+                           }
+                        
+                     }
+                     
+                     setInterval(type2, 40);
+                     
+                     
+                         var num5 = txt.length;
+                     
+                     
+                     function type2() {
+                         
+                         var num = document.getElementById("name");
+                         
+                         var val, val2, val3;
+
+                                          if (i5 == txt.length) {
+                                              
+                                                         if (num.value == "") {
+                                                             
+                                                                   var num = document.getElementById("name");
+                                                                   
+                                                                   $(".name").attr("id", "name5");
+                                                                   
+                                                                   $(".name3").attr("id", "name");
+                                                                  
+
+                                                             
+                                                         }else {
+                                                          
+                                                                   var num = document.getElementById("name");
+                             
+                                                                   var val = num.value;
+                                                                   
+                                                                   var val2 = val.charAt(num5);
+                                                                   
+                                                                   var val3 = val.slice(0 ,  val2 - 1);
+                                                                   
+                                                                   num.value = val3;
+                                                                   
+                                                                   
+                                                    }
+                                                    
+                                                 
+                                                  
+                                              
+                                          }   
+                     }
+        </script>  
+    </body>
+</html>

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- JavaScript for Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- I'll only use Bootstrap for icons -->
+    <!-- Custom font -->
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Ubuntu;
+        }
+        .loader{
+            position: fixed;
+            z-index: 5;
+            height: 100%;
+            width: 100%;
+            background: teal;
+            text-align: center;
+        }
+        .app-name{
+            position: relative;
+            color: white;
+            font-size: 40px;
+            top: 170px;
+            display: none;
+        }
+        .info{
+            position: fixed;
+            z-index: 5;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(20, 20, 20, 0.5);
+            display: none;
+        }
+        .info-section{
+            position: relative;
+            height: 60%;
+            width: 90%;
+            background-color: gainsboro;
+            border: 1px solid #333;
+            padding: 10px 20px;
+            margin: 80px auto;
+        }
+        .info-section > ul{
+            padding-left: 0;
+            list-style-type: none;
+        }
+        .close-info{
+            font-size: 25px;
+            float: right;
+            cursor: hand;
+        }
+        .info-title{
+            font-size: 25px;
+            margin-top: 30px;
+            padding-bottom: 10px;
+            font-weight: bold;
+            border-bottom: 1px solid silver;
+        }
+        *:focus{
+            outline: none;
+        }
+        /*Header section*/
+        header{
+            position: fixed;
+            z-index: 2;
+            height: 60px;
+            width: 100%;
+            /*Night mode color
+            background-color: rgb(39, 50, 54);
+            */
+            background-color: teal;
+            color: white;
+        }
+        header span:nth-child(1){
+            font-size: 20px;
+            line-height: 60px;
+            margin-left: 15px;
+            transition: linear 400ms;
+            cursor: hand;
+        }
+        header span:nth-child(1):hover{
+            color: gold;
+        }
+        header span:nth-child(2){
+            font-size: 20px;
+            line-height: 60px;
+            cursor: hand;
+            margin-left: 10px;
+        }
+        header span:nth-child(3){
+            float: right;
+            margin-right: 15px;
+            font-size: 25px;
+            line-height: 60px;
+            cursor: hand;
+            transition: ease-in 300ms;
+        }
+        header span:nth-child(3):hover{
+            color: gold;
+        }
+        /*Side menu section*/
+        aside{
+            position: fixed;
+            top: 0;
+            z-index: 3;
+            height: 100%;
+            width: 0px;
+            background-color: #006666;
+            color: white;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        aside > *{
+            display: none;
+        }
+        aside ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        aside li{
+            padding: 10px 0 10px 10px;
+            border-bottom: 1px solid gainsboro;
+            cursor: hand;
+            transition: ease-in 300ms;
+        }
+        aside li span{
+            padding-right: 10px;
+            font-size: 20px;
+        }
+        aside li:nth-child(1){
+            float: right;
+            padding: 0;
+            margin-right: 10px;
+            font-size: 25px;
+            cursor: hand;
+        }
+        aside li:nth-child(1):hover{
+            color: gold;
+            transition: ease-in 500ms;
+        }
+        aside li:nth-child(2){
+            font-size: 15px;
+        }
+        aside li:nth-child(1), li:nth-child(2){
+            border-bottom: 0;
+            text-align: center;
+        }
+        aside li:nth-child(3){
+            margin-top: 50px;
+        }
+        aside li:last-child{
+            border-bottom: 0;
+        }
+        aside li:not(:nth-child(1)):not(:nth-child(2)):hover{
+            border-left: 5px solid #333;
+            color: gold;
+        }
+        /*Main content section*/
+        main{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            padding-top: 60px;
+            padding-bottom: 20px;
+            margin: 0;
+            background: gainsboro;
+            background-attachment: fixed;
+            color: #333;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        main p{
+            margin-top: 10px;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+        }
+        main table{
+            margin: 0 auto;
+            width: 95%;
+            background-color: #ddd;
+        }
+        main table td{
+            width: 50%;
+            padding: 5px 15px;
+        }
+        main table, main table td{
+            border: 1px solid silver;
+            border-radius: 2px;
+        }
+        main table input[type=number]{
+            height: 30px;
+            width: 50%;
+            margin: 0;
+            padding: 5px 15px;
+            float: left;
+            border: 1px solid silver;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+            background-color: #eee;
+            border-right: 0;
+            text-align: right;
+        }
+        main table select{
+            height: 30px;
+            width: 50%;
+            margin: 0;
+            padding: 0 10px;
+            float: left;
+            border: 1px solid silver;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            border-left: 1px solid silver;
+            background-color: #eee;
+            font-weight: 
+        }
+        main table td:first-child{
+            text-align: right;
+        }
+        table tr:not(:first-child) > td:first-child{
+            font-weight: bold;
+        }
+        main table tr:hover{
+            background-color: #ccc;
+            transition: ease-in-out 200ms;
+        }
+        .mass-section, .time-section, .temp-section, .data-section{
+            display: none;
+        }
+    </style>
+    </head>
+    <body>
+        <section class="loader">
+            <span class="app-name">Panda's <br /> Unit Converter</span>
+        </section>
+        <section class="info">
+            <section class="info-section">
+                <span class="close-info">&times;</span>
+                <p class="info-title">Update Log</p>
+                <ul>
+                    <li>July 27, 2018
+                        <ul>
+                            <li>Inaccurate mass unit data corrected.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <header>
+            <span class="menu glyphicon glyphicon-menu-hamburger"></span>
+            <span>Unit Converter</span>
+            <span class="glyphicon glyphicon-info-sign"></span>
+        </header>
+        <aside>
+            <ul>
+                <li class="close-btn">&times;</li>
+                <li>Select Converter</li>
+                <li class="length-link"><span class="glyphicon glyphicon-resize-vertical"></span> Length</li>
+                <li class="mass-link"><span class="glyphicon glyphicon-scale"></span> Mass</li>
+                <li class="time-link"><span class="glyphicon glyphicon-time"></span> Time</li>
+                <li class="temp-link"><span class="glyphicon glyphicon-fire"></span> Temperature</li>
+                <li class="data-link"><span class="glyphicon glyphicon-floppy-disk"></span> Digital Storage</li>
+            </ul>
+        </aside>
+        <!-- Length Converter -->
+        <main class="length-section">
+            <p><span class="glyphicon glyphicon-resize-vertical"></span> Length Converter</p>
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <input type="number" class="length-input" min="0"/>
+                        <select class="length-select">
+                            <option>Inch</option>
+                            <option>Foot</option>
+                            <option>Yard</option>
+                            <option>Centimeter</option>
+                            <option>Meter</option>
+                            <option>Kilometer</option>
+                            <option>Mile</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="inVal">0</span></td>
+                    <td>Inch (in)</td>
+                </tr>
+                <tr>
+                    <td class="ftVal">0</td>
+                    <td>Foot (ft)</td>
+                </tr>
+                <tr>
+                    <td class="ydVal">0</td>
+                    <td>Yard (yd)</td>
+                </tr>
+                <tr>
+                    <td class="cmVal">0</td>
+                    <td>Centimeter (cm)</td>
+                </tr>
+                <tr>
+                    <td class="mVal">0</td>
+                    <td>Meter (m)</td>
+                </tr>
+                <tr>
+                    <td class="kmVal">0</td>
+                    <td>Kilometer (km)</td>
+                </tr>
+                <tr>
+                    <td class="miVal">0</td>
+                    <td>Mile (mi)</td>
+                </tr>
+            </table>
+        </main>
+        <!-- Mass Converter -->
+        <main class="mass-section">
+            <p><span class="glyphicon glyphicon-scale"></span> Mass Converter</p>
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <input type="number" class="mass-input" min="0" />
+                        <select class="mass-select">
+                            <option>Milligram</option>
+                            <option>Gram</option>
+                            <option>Kilogram</option>
+                            <option>Pound</option>
+                            <option>Ton</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mgVal">0</td>
+                    <td>Milligram (mg)</td>
+                </tr>
+                <tr>
+                    <td class="gVal">0</td>
+                    <td>Gram (g)</td>
+                </tr>
+                <tr>
+                    <td class="kgVal">0</td>
+                    <td>Kilogram (kg)</td>
+                </tr>
+                <tr>
+                    <td class="lbVal">0</td>
+                    <td>Pound (lb)</td>
+                </tr>
+                <tr>
+                    <td class="tVal">0</td>
+                    <td>Ton (t)</td>
+                </tr>
+            </table>
+        </main>
+        <!-- Time Converter -->
+        <main class="time-section">
+            <p><span class="glyphicon glyphicon-time"></span> Time Converter</p>
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <input type="number" class="time-input" min="0" />
+                        <select class="time-select">
+                            <option>Millisecond</option>
+                            <option>Second</option>
+                            <option>Minute</option>
+                            <option>Hour</option>
+                            <option>Day</option>
+                            <option>Week</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="msVal">0</td>
+                    <td>Millisecond (ms)</td>
+                </tr>
+                <tr>
+                    <td class="sVal">0</td>
+                    <td>Second (s)</td>
+                </tr>
+                <tr>
+                    <td class="minVal">0</td>
+                    <td>Minute (m)</td>
+                </tr>
+                <tr>
+                    <td class="hVal">0</td>
+                    <td>Hour (h)</td>
+                </tr>
+                <tr>
+                    <td class="dVal">0</td>
+                    <td>Day (d)</td>
+                </tr>
+                <tr>
+                    <td class="wVal">0</td>
+                    <td>Week (w)</td>
+                </tr>
+            </table>
+        </main>
+        <!-- Temperature Converter -->
+        <main class="temp-section">
+            <p><span class="glyphicon glyphicon-fire"></span> Temperature Converter</p>
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <input type="number" class="temp-input" min="0" />
+                        <select class="temp-select">
+                            <option>Celsius</option>
+                            <option>Fahrenheit</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="celVal">0</td>
+                    <td>Celsius (°C)</td>
+                </tr>
+                <tr>
+                    <td class="fahVal">32</td>
+                    <td>Fahrenheit (°F)</td>
+                </tr>
+            </table>
+        </main>
+        <!-- Data Storage Converter -->
+        <main class="data-section">
+            <p><span class="glyphicon glyphicon-floppy-disk"></span> Digital Storage Converter</p>
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <input type="number" class="data-input" min="0" />
+                        <select class="data-select">
+                            <option>Byte</option>
+                            <option>Kilobyte</option>
+                            <option>Megabyte</option>
+                            <option>Gigabyte</option>
+                            <option>Terabyte</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bVal">0</td>
+                    <td>Byte (b)</td>
+                </tr>
+                <tr>
+                    <td class="kbVal">0</td>
+                    <td>Kilobyte (Kb)</td>
+                </tr>
+                <tr>
+                    <td class="mbVal">0</td>
+                    <td>Megabyte (Mb)</td>
+                </tr>
+                <tr>
+                    <td class="gbVal">0</td>
+                    <td>Gigabyte (Gb)</td>
+                </tr>
+                <tr>
+                    <td class="tbVal">0</td>
+                    <td>Terabyte (Tb)</td>
+                </tr>
+            </table>
+        </main>
+        <script type="text/javascript">
+            $(function(){
+            /*I forgot to put placeholder to each 
+              textbox after writing these lengthy code
+              so I will use jQuery to put
+              them once for all instead. XD
+            */
+            $('input[type=number]').attr('placeholder', '0');
+            //Loader animation
+            $('.app-name').fadeIn(3000);
+            $('.app-name').delay(500).fadeOut(1000);
+            $('.loader').delay(4000).fadeOut(2000);
+            //Update log
+            $('header span:nth-child(3)').on('click', function(){
+                $('.info').show();
+            });
+            $('.close-info').on('click', function(){
+                $('.info').hide();
+            });
+            //Open side menu
+            $('.menu').on('click', function(){
+                $('aside').animate({width: '150px'}, 300);
+                $('aside > *').delay(300).fadeIn(300);
+            });
+            //Close side menu
+            $('.close-btn').on('click', function(){
+                $('aside > *').fadeOut(300);
+                $('aside').delay(300).animate({width: '0px'}, 300);
+            });
+            //Length converter link
+            $('.length-link').on('click', function(){
+                $('main').fadeOut(500);
+                $('.length-section').delay(300).fadeIn(500);
+                //auto close side menu after clicking the link
+                $('aside > *').fadeOut(300);
+                $('aside').delay(300).animate({width: '0px'}, 300);
+            });
+            //Mass converter link
+            $('.mass-link').on('click', function(){
+                $('main').fadeOut(500);
+                $('.mass-section').delay(300).fadeIn(500);
+                $('aside > *').fadeOut(300);
+                $('aside').delay(300).animate({width: '0px'}, 300);
+            });
+            //Time converter link
+            $('.time-link').on('click', function(){
+                $('main').fadeOut(500);
+                $('.time-section').delay(300).fadeIn(500);
+                $('aside > *').fadeOut(300);
+                $('aside').delay(300).animate({width: '0px'}, 300);
+            });
+            //Temperature converter link
+            $('.temp-link').on('click', function(){
+                $('main').fadeOut(500);
+                $('.temp-section').delay(300).fadeIn(500);
+                $('aside > *').fadeOut(300);
+                $('aside').delay(300).animate({width: '0px'}, 300);
+            });
+            //Data storage converter link
+            $('.data-link').on('click', function(){
+                $('main').fadeOut(500);
+                $('.data-section').delay(300).fadeIn(500);
+                $('aside > *').fadeOut(300);
+                $('aside').delay(300).animate({width: '0px'}, 300);
+            });
+            //Conversion function
+            //Length converter function
+            $('.length-input, .length-select').on('input', function(){
+                var inch = $('.inVal'), foot = $('.ftVal'), yard = $('.ydVal'), 
+                    centimeter = $('.cmVal'), meter = $('.mVal'), 
+                    kilometer = $('.kmVal'), mile = $('.miVal');
+                var txt = $('.length-input');
+                if($('.length-select').val() == 'Inch'){
+                    inch.text(1 * txt.val());
+                    foot.text(0.0833333 * txt.val());
+                    yard.text(0.0277778 * txt.val());
+                    centimeter.text(2.54 * txt.val());
+                    meter.text(0.0254 * txt.val());
+                    kilometer.text(0.0000254 * txt.val());
+                    mile.text(0.0000157828 * txt.val());
+                }else if($('.length-select').val() == 'Foot'){
+                    inch.text(12 * txt.val());
+                    foot.text(1 * txt.val());
+                    yard.text(0.333333 * txt.val());
+                    centimeter.text(30.48 * txt.val());
+                    meter.text(0.3048 * txt.val());
+                    kilometer.text(0.0003048 * txt.val());
+                    mile.text(0.0001893939 * txt.val());
+                }else if($('.length-select').val() == 'Yard'){
+                    inch.text(36 * txt.val());
+                    foot.text(3 * txt.val());
+                    yard.text(1 * txt.val());
+                    centimeter.text(91.44 * txt.val());
+                    meter.text(0.9144 * txt.val());
+                    kilometer.text(0.0009144 * txt.val());
+                    mile.text(0.0005681818 * txt.val());
+                }else if($('.length-select').val() == 'Centimeter'){
+                    inch.text(0.393701 * txt.val());
+                    foot.text(0.0328084 * txt.val());
+                    yard.text(0.0109361 * txt.val());
+                    centimeter.text(1 * txt.val());
+                    meter.text(0.01 * txt.val());
+                    kilometer.text(0.00001 * txt.val());
+                    mile.text(0.0000062137 * txt.val());
+                }else if($('.length-select').val() == 'Meter'){
+                    inch.text(39.3701 * txt.val());
+                    foot.text(3.28084 * txt.val());
+                    yard.text(1.09361 * txt.val());
+                    centimeter.text(100 * txt.val());
+                    meter.text(1 * txt.val());
+                    kilometer.text(0.001 * txt.val());
+                    mile.text(0.000621371 * txt.val());
+                }else if($('.length-select').val() == 'Kilometer'){
+                    inch.text(39370.1 * txt.val());
+                    foot.text(3280.84 * txt.val());
+                    yard.text(1093.61 * txt.val());
+                    centimeter.text(100000 * txt.val());
+                    meter.text(1000 * txt.val());
+                    kilometer.text(1 * txt.val());
+                    mile.text(0.621371 * txt.val());
+                }else if($('.length-select').val() == 'Mile'){
+                    inch.text(63360 * txt.val());
+                    foot.text(5280 * txt.val());
+                    yard.text(1760 * txt.val());
+                    centimeter.text(160934 * txt.val());
+                    meter.text(1609.34 * txt.val());
+                    kilometer.text(1.60934 * txt.val());
+                    mile.text(1 * txt.val());
+                }
+                else{
+                    return false;
+                }
+            });
+            //Mass converter function
+            $('.mass-input, .mass-select').on('input', function(){
+               var milligram = $('.mgVal'), gram = $('.gVal'), 
+                   kilogram = $('.kgVal'), pound = $('.lbVal'), 
+                   ton = $('.tVal');
+                   var mass = $('.mass-input');
+                if($('.mass-select').val() == 'Milligram'){
+                    milligram.text(1 * mass.val());
+                    gram.text(0.001 * mass.val());
+                    kilogram.text(0.000001 * mass.val());
+                    pound.text(0.000002204622622 * mass.val());
+                    ton.text(0.000000001 * mass.val())
+                }else if($('.mass-select').val() == 'Gram'){
+                    milligram.text(1000 * mass.val());
+                    gram.text(1 * mass.val());
+                    kilogram.text(0.001 * mass.val());
+                    pound.text(0.00220462 * mass.val());
+                    ton.text(0.000001 * mass.val());
+                }else if($('.mass-select').val() == 'Kilogram'){
+                    milligram.text(1000000 * mass.val());
+                    gram.text(1000 * mass.val());
+                    kilogram.text(1 * mass.val());
+                    pound.text(2.205 * mass.val());
+                    ton.text(0.00110231 * mass.val());
+                }else if($('.mass-select').val() == 'Pound'){
+                    milligram.text(453592.37 * mass.val());
+                    gram.text(453.592 * mass.val());
+                    kilogram.text(0.453592 * mass.val());
+                    pound.text(1 * mass.val());
+                    ton.text(0.0005 * mass.val());
+                }else if($('.mass-select').val() == 'Ton'){
+                    milligram.text(907184740 * mass.val());
+                    gram.text(907185 * mass.val());
+                    kilogram.text(907.185 * mass.val());
+                    pound.text(2000 * mass.val());
+                    ton.text(1 * mass.val());
+                }else{
+                    return false;
+                }
+            });
+            //Time converter function
+            $('.time-input, .time-select').on('input', function(){
+                var millisecond = $('.msVal'), second = $('.sVal'), 
+                    minute = $('.minVal'), hour = $('.hVal'), 
+                    day = $('.dVal'), week = $('.wVal');
+                    var time = $('.time-input');
+                if($('.time-select').val() == 'Millisecond'){
+                    millisecond.text(1 * time.val());
+                    second.text(0.001 * time.val());
+                    minute.text(0.0000166667 * time.val());
+                    hour.text(0.000000277778 * time.val());
+                    day.text(0.00000000165344 * time.val());
+                    week.text(0.0000000115741 * time.val());
+                }else if($('.time-select').val() == 'Second'){
+                    millisecond.text(1000 * time.val());
+                    second.text(1 * time.val());
+                    minute.text(0.0166667 * time.val());
+                    hour.text(0.000277778 * time.val());
+                    day.text(0.0000115741 * time.val());
+                    week.text(0.00000165344 * time.val());
+                }else if($('.time-select').val() == 'Minute'){
+                    millisecond.text(60000 * time.val());
+                    second.text(60 * time.val());
+                    minute.text(1 * time.val());
+                    hour.text(0.0166667 * time.val());
+                    day.text(0.000694444 * time.val());
+                    week.text(0.0000992063 * time.val());
+                }else if($('.time-select').val() == 'Hour'){
+                    millisecond.text(3600000 * time.val());
+                    second.text(3600 * time.val());
+                    minute.text(60 * time.val());
+                    hour.text(1 * time.val());
+                    day.text(0.0416667 * time.val());
+                    week.text(0.00595238 * time.val());
+                }else if($('.time-select').val() == 'Day'){
+                    millisecond.text(86400000 * time.val());
+                    second.text(86400 * time.val());
+                    minute.text(1440 * time.val());
+                    hour.text(24 * time.val());
+                    day.text(1 * time.val());
+                    week.text(0.142857 * time.val());
+                }else if($('.time-select').val() == 'Week'){
+                    millisecond.text(604800000 * time.val());
+                    second.text(604,800 * time.val());
+                    minute.text(10,080 * time.val());
+                    hour.text(168 * time.val());
+                    day.text(7 * time.val());
+                    week.text(1 * time.val());
+                }
+            });
+            //Temperature converter function
+            $('.temp-input, .temp-select').on('input', function(){
+                var celsius = $('.celVal'), fahrenheit = $('.fahVal');
+                var temp = $('.temp-input');
+                if($('.temp-select').val() == 'Celsius'){
+                    celsius.text(1 * temp.val());
+                    fahrenheit.text(temp.val() * 1.8 + 32);
+                }else if($('.temp-select').val() == 'Fahrenheit'){
+                    celsius.text('0');
+                    fahrenheit.text('0');
+                    celsius.text((temp.val() - 32) / 1.8);
+                    fahrenheit.text(1 * temp.val());
+                }
+            });
+            //Data storage converter function
+            $('.data-input, .data-select').on('input', function(){
+                var byte = $('.bVal'), kilobyte = $('.kbVal'), 
+                    megabyte = $('.mbVal'), gigabyte = $('.gbVal'), 
+                    terabyte = $('.tbVal');
+                var data = $('.data-input')
+                if($('.data-select').val() == 'Byte'){
+                    byte.text(1 * data.val());
+                    kilobyte.text(0.001 * data.val());
+                    megabyte.text(0.00001 * data.val());
+                    gigabyte.text(0.000000001 * data.val());
+                    terabyte.text(0.000000000001 * data.val());
+                }else if($('.data-select').val() == 'Kilobyte'){
+                    byte.text(1000 * data.val());
+                    kilobyte.text(1 * data.val());
+                    megabyte.text(0.001 * data.val());
+                    gigabyte.text(0.000001 * data.val());
+                    terabyte.text(0.000000001 * data.val());
+                }else if($('.data-select').val() == 'Megabyte'){
+                    byte.text(1000000 * data.val());
+                    kilobyte.text(1000 * data.val());
+                    megabyte.text(1 * data.val());
+                    gigabyte.text(0.001 * data.val());
+                    terabyte.text(0.00001 * data.val());
+                }else if($('.data-select').val() == 'Gigabyte'){
+                    byte.text(1000000000 * data.val());
+                    kilobyte.text(1000000 * data.val());
+                    megabyte.text(1000 * data.val());
+                    gigabyte.text(1 * data.val());
+                    terabyte.text(0.001 * data.val());
+                }else if($('.data-select').val() == 'Terabyte'){
+                    byte.text(1000000000000 * data.val());
+                    kilobyte.text(1000000000 * data.val());
+                    megabyte.text(1000000 * data.val());
+                    gigabyte.text(1000 * data.val());
+                    terabyte.text(0.001 * data.val());
+                }
+            });
+        });
+        </script>
+    </body>
+</html>

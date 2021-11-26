@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<!--Author: Igor Makarsky-->
+<!--Original idea: CS50-->
+<html lang="en">
+<head>
+  <title>Binary Bulbs</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  <style>
+    .bit {
+      height:100%;
+      width:100%;
+      font-size:12.0vw;
+    }
+
+    body {
+        color:#000;
+        text-align:center;
+        background: #EEE;
+    }
+
+    th, td {
+        text-align:center;
+    }
+
+    .fa-lightbulb-o {
+        -webkit-transition: color .15s;
+        -moz-transition: color .15s;
+        -o-transition: color .15s;
+        transition: color .15s;
+    }
+
+    .bulb-on {
+        color: yellow;
+        filter: drop-shadow(0 0 10px rgba(0,0,0,0.7));
+    }
+
+    .table.no-border tr td, .table.no-border tr th {
+        border-width: 0;
+    }
+
+    .counter {
+        font-size:4.0vw;
+    }
+
+    footer {
+        pointer-events: auto;
+        position: absolute;
+        bottom: 2%;
+        width: 100%;
+        height: 60px;
+    }
+
+    .transparent {
+        opacity: 0;
+    }
+
+    #game {
+        opacity: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <table class="table no-border">
+      <tr id="labels">
+        <td>128</td>
+        <td>64</td>
+        <td>32</td>
+        <td>16</td>
+        <td>8</td>
+        <td>4</td>
+        <td>2</td>
+        <td>1</td>
+      </tr>
+      <tr id="bits">
+        <td><div class="bit"><div class="fa">0</div></div></td>
+        <td><div class="bit"><div class="fa">0</div></div></td>
+        <td><div class="bit"><div class="fa">0</div></div></td>
+        <td><div class="bit"><div class="fa">0</div></div></td>
+        <td><div class="bit"><div class="fa">0</div></div></td>
+        <td><div class="bit"><div class="fa">0</div></div></td>
+        <td><div class="bit"><div class="fa">0</div></div></td>
+        <td><div class="bit"><div class="fa">0</div></div></td>
+      </tr>
+      <tr id="bulbs">
+        <td><div class="bit"><i class="fa fa-lightbulb-o"></i></div></td>
+        <td><div class="bit"><i class="fa fa-lightbulb-o"></i></div></td>
+        <td><div class="bit"><i class="fa fa-lightbulb-o"></i></div></td>
+        <td><div class="bit"><i class="fa fa-lightbulb-o"></i></div></td>
+        <td><div class="bit"><i class="fa fa-lightbulb-o"></i></div></td>
+        <td><div class="bit"><i class="fa fa-lightbulb-o"></i></div></td>
+        <td><div class="bit"><i class="fa fa-lightbulb-o"></i></div></td>
+        <td><div class="bit"><i class="fa fa-lightbulb-o"></i></div></td>
+      </tr>
+  </table>
+  
+  <table class="table no-border counter">
+      <tr>
+        <td><i class="fa fa-chevron-up"></i></td>
+      </tr>
+      <tr>
+        <td><span id="number">0</span></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-chevron-down"></i></td>
+      </tr>
+  </table>
+  
+  <table class="table no-border">
+      <tr>
+        <td colspan="3" id="game">How do you represent the number</td>
+      </tr>
+      <tr>
+        <td>Bulbs</td>
+        <td>Game Mode</td>
+        <td>Labels</td>
+      </tr>
+      <tr>
+        <td><input id="bulbs-switcher" type="checkbox" checked data-toggle="toggle"></td>
+        <td><input id="game-mod" type="checkbox" checked data-toggle="toggle"></td>
+        <td><input id="labels-switcher" type="checkbox" checked data-toggle="toggle"></td>
+      </tr>
+  </table>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">Made by <a href="https://www.sololearn.com/Profile/779917">Igor Makarsky</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+  var max = 255;
+var min = 0;
+var value = 0;
+var gameMode = false;
+var winAnimation = false;
+var correctAnswer = null;
+
+$(function() {
+    $('#bits').toggle();
+    $('#game-mod').bootstrapToggle('off');
+    
+    $('#bulbs-switcher').change(function() {
+        $('#bulbs').toggle();
+        $('#bits').toggle();
+    });
+    
+    $('#labels-switcher').change(function() {
+        $('#labels').toggleClass('transparent');
+    });
+    
+    $('#game-mod').change(function() {
+        switchGameMode();
+    });
+    
+    $('.fa-lightbulb-o').click(function() {
+        $(this).parent().toggleClass('bulb-on');
+        updateView2();
+    });
+    
+    $('#bits .fa').click(function() {
+        var bit = $(this).html() == '0' ? 1 : 0;
+        $(this).html(bit);
+        updateView3();
+    });
+    
+    $('.fa-chevron-up').click(function() {
+        if (value < max) {
+            ++value;
+            updateView();
+        }
+    });
+    
+    $('.fa-chevron-down').click(function() {
+        if (value > min) {
+            --value;
+            updateView();
+        }
+    });
+});
+
+function updateView() {
+    winAnimation ? null : $('#number').html(value);
+    
+    var bits = value.toString(2);
+    bits = '0'.repeat(8 - bits.length) + bits;
+    
+    $('#bits .fa').each(function (index) {
+        $(this).html(bits[index]);
+    });
+    
+    $('.fa-lightbulb-o').each(function (index) {
+        bits[index] == "1" ? $(this).parent().addClass('bulb-on') : $(this).parent().removeClass('bulb-on');
+    });
+    
+    if (gameMode && value === correctAnswer) {
+        animate();
+    }
+}
+
+function updateView2() {
+    var bits = '';
+    
+    $('.fa-lightbulb-o').each(function (index) {
+        if ($(this).parent().hasClass('bulb-on')) {
+            bits += 1;
+        } else {
+            bits += 0;
+        }
+    });
+    
+    value = parseInt(bits, 2);
+    updateView();
+}
+
+function updateView3() {
+    var bits = '';
+    
+    $('.bit .fa').each(function (index) {
+        bits += $(this).html();
+    });
+    
+    value = parseInt(bits, 2);
+    updateView();
+}
+
+function switchGameMode() {
+    gameMode = !gameMode;
+    
+    if (gameMode) {
+        correctAnswer = Math.floor(Math.random() * 255) + 1;
+        $('#game').html(`How do you represent the number ${correctAnswer} in binary?`);
+        $('#game').css('opacity', 1);
+        value = 0;
+        updateView();
+    } else {
+        $('#game').css('opacity', 0);
+    }
+}
+
+function animate() {
+    winAnimation = true;
+    $('body').css('pointer-events', 'none');
+    $('#game').html('You win!');
+    
+    var num = 85;
+    
+    var interval = setInterval(function () {
+        num = 255 - num;
+        value = num;
+        updateView();
+    }, 150);
+    
+    setTimeout(function () {
+        $('#game-mod').bootstrapToggle('off');
+        clearInterval(interval);
+        value = correctAnswer;
+        updateView();
+        winAnimation = false;
+        $('body').css('pointer-events', 'auto');
+    }, 3000);
+}
+</script>
+</body>
+</html>
