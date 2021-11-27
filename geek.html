@@ -85,6 +85,42 @@
                     return number + 7;
                 });
                 document.write('function  => ' + shortFun + "<br>");
+
+                document.write("<br>");
+                document.write("<br>");
+
+                var voter_age = [24, 33, 16, 40];
+                var arr = [-10, -0.20, 0.30, -40, -50];
+                var lnags = ["HTML", "CSS", "JavaScript", "ReactJS"];
+                for(x of lnags){
+                    document.write(x+', ');
+                }
+                /*========================================================================================*/
+                /*==============================       array function       ==============================*/
+
+                lnags.every((element) => { return typeof(element)==='string' });        // trur
+                lnags.findIndex((element) => { return element=='ReactJS' });            // 3
+                arr.find((ele) => { return ele>0 });                                    // 0.3
+                voter_age.filter((ele) => { return ele>=18 });                          // [24, 33, 40]
+                Array.isArray(voter_age);                                               // true
+                lnags.indexOf('ReactJS');                                               // return first occurence index 3
+                lnags.lastIndexOf('ReactJS')                                            // return last index 3
+                lnags.includes('ReactJS');                                              // true
+                Array.from('akram');                                                    // (5) ['a', 'k', 'r', 'a', 'm']
+                lnags.forEach((ele) => { console.log(ele) });                           //  return all element
+                Array.of(22,3,5,8,9)                                                    // (5) [22, 3, 5, 8, 9]
+                "my name is akram".split();                                             // (1) ['my name is akram']
+                "my name is akram".split(' ')                                           // (4) ['my', 'name', 'is', 'akram']
+                lnags.map((ele) => { return ele.repeat(2) })                            // (4) ['HTMLHTML', 'CSSCSS', 'JavaScriptJavaScript', 'ReactJSReactJS']
+                lnags.reverse()                                                         // (4) ['ReactJS', 'JavaScript', 'CSS', 'HTML']
+                lnags.push('Node');                                                     // (5) ['ReactJS', 'JavaScript', 'CSS', 'HTML', 'Node']
+                lnags.pop('Node');                                                     // (4) ['ReactJS', 'JavaScript', 'CSS', 'HTML']
+
+
+
+                /*==============================       array function       ==============================*/
+                /*========================================================================================*/
+                
             </script>
         </div>
 
