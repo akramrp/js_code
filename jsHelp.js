@@ -22,6 +22,10 @@ vs extensions:
 vs code formetText ---> shift+alt+f
 
 
+========node.js full course for beginner
+run commend "node" for node console 
+
+
 =============================================================================================================
 ======================================== crud app configration start ========================================
 =============================================================================================================
@@ -80,6 +84,11 @@ after inatall react app with projectName:
         yarn add mongoose-auto-increment
         yarn add cors
         yarn add body-parser
+
+    for oldcim project:
+        // install node in CentOS
+        npm install express --save
+        npm install formidable
     
 =============================================================================================================
 ======================================== crud app configration end   ========================================
