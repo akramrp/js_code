@@ -1,24 +1,67 @@
-<!doctype html> 
-    <html lang="en"> 
-    <head> 
-        <meta charset="utf-8"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
-        <title>Autocomplete using Jquery</title> 
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
-        <script> 
-            $( function() { 
-                /* Making a list of available tags */
-                var tags = ["Delhi","Ahemdabad","Punjab","Uttar Pradesh","Himachal Pradesh","Karnatka","Kerela","Maharashtra","Gujrat","Rajasthan","Bihar","Tamil Nadu", "Haryana"];
-                /* #tthe ags is the id of the input element source: tags is the list of available tags*/ 
-                $( "#tags" ).autocomplete({ source: tags }); 
-            }); 
-        </script> 
-    </head> 
-    <body> 
-        <div class="ui-widget"> 
-            <H3>Enter an alphabet to get suggestion:</H3> 
-            <input id="tags"> 
-        </div> 
-    </body> 
-    </html>
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	
+	<input type="file" id="file" name="file" data-attr="577">
+	<input type="button" id="btn1" value="submit">
+  <select name="sel" id="sel">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+  <br><br>
+  <input type="text" value="text1" name="text1" id="text1">
+  <input type="text" value="text2" name="text2" id="text2">
+  <button id="btn2" name="btn2" >clickme</button>
+  <br><br>
+  only number1: <input type="text" name="number1" id="number1"> 
+  only number2: <input type="text" name="number2" id="number2">
+
+
+<script>
+let number1 = document.querySelector('[name=number1]');
+let number2 = document.querySelector('[name=number2]');
+[number1, number2].forEach((element, index) => {
+    element.oninput = function() {
+        this.value = this.value.replace(/[^\d]/g, '');
+    }
+})
+
+
+// let sel = document.getElementsByName('sel')
+let sel =  document.getElementsByName("sel")[0];
+let result = document.querySelector('#result');
+sel.addEventListener('change', function () {
+    // result.textContent = this.value;
+    //alert(this.value);
+    if(this.value==2)
+      document.getElementsByName('file')[0].style = "display:none;";
+    else
+      document.getElementsByName('file')[0].style = "display:block;";
+    alert(document.getElementsByName('file')[0].getAttribute('data-attr'));
+});
+
+
+let btn2 =  document.getElementsByName("btn2")[0];
+btn2.addEventListener('click', function () {
+    // result.textContent = this.value;
+    //alert(this.value);
+    //alert(document.getElementsByName('text1', 'text2')[0].value);
+    //alert(document.getElementById('text1', 'text2').value);
+    const ids = ['text1', 'text2'];
+    const elements = document.querySelectorAll(ids.map(id => `#${id}`).join(', '));
+    console.log(elements);
+});
+
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    var filedata = $("#file").val()!='' ? 'yes' : 'no';
+	  alert(filedata);
+  });
+});
+</script>
+<body>
+</html>

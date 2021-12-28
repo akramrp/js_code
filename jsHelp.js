@@ -1,8 +1,6 @@
 console.log(Object.getOwnPropertyNames(Math));
 // (43) ['abs', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atanh', 'atan2', 'ceil', 'cbrt', 'expm1', 'clz32', 'cos', 'cosh', 'exp', 'floor', 'fround', 'hypot', 'imul', 'log', 'log1p', 'log2', 'log10', 'max', 'min', 'pow', 'random', 'round', 'sign', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc', 'E', 'LN10', 'LN2', 'LOG10E', 'LOG2E', 'PI', 'SQRT1_2', 'SQRT2']
 
-
-
 /*
 
 
@@ -19,11 +17,13 @@ vs extensions:
     10. live sess compiler
     11. live server
     12. emmet (for auto all basic html structure)
-vs code formetText ---> shift+alt+f
+
+    vs code formetText ---> shift+alt+f
 
 
 ========node.js full course for beginner
 run commend "node" for node console 
+
 
 
 =============================================================================================================
@@ -48,6 +48,8 @@ after inatall react app with projectName:
     5. npm fund
     6. npm audit
     7. npm audit fix
+    8. npm rm {package name}       // for normal dependencies
+    8. npm rm {package name} -D    // for normal devDependencies
 
 ===========  crudapp configration 
     for frontend:
@@ -93,5 +95,18 @@ after inatall react app with projectName:
 =============================================================================================================
 ======================================== crud app configration end   ========================================
 =============================================================================================================
+
+
+========================== ================ ejs (embadding js)
+<% 'Scriptlet' tag, for control-flow, no output
+<%_ ‘Whitespace Slurping’ Scriptlet tag, strips all whitespace before it
+<%= Outputs the value into the template (HTML escaped)
+<%- Outputs the unescaped value into the template
+<%# Comment tag, no execution, no output
+<%% Outputs a literal '<%'
+%> Plain ending tag
+-%> Trim-mode ('newline slurp') tag, trims following newline
+_%> ‘Whitespace Slurping’ ending tag, removes all whitespace after it
+
 
 */

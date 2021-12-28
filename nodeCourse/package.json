@@ -1,0 +1,37 @@
+{
+  "name": "nodecourse",
+  "version": "1.0.0",
+  "description": "node js code",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akramrp/nodejs.git"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "code"
+  ],
+  "author": "akram saif",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akramrp/nodejs/issues"
+  },
+  "homepage": "https://github.com/akramrp/nodejs#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "data-fns": "^0.1.8",
+    "date-fns": "^2.27.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "mongodb": "^4.2.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

@@ -81,7 +81,25 @@ Character		Description
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 </xmp>
 
+<xmp>
+DIFF BETWEEN "==" AND "===" :::
+0 == false   // true
+0 === false  // false
+1 == "1"     // true
+1 === "1"    // false
+null == undefined // true
+null === undefined // false
+'0' == false // true
+'0' === false // false
+[]==[] or []===[] //false, refer different objects in memory
+{}=={} or {}==={} //false, refer different objects in memory
+</xmp>
 	<script>
+		const capitalizeString = (word) => {
+			return word.charAt(0).toUpperCase()+word.slice(1);
+		}
+		console.log(capitalizeString('akramsaif'));
+
 		document.getElementById("showPrimeNumber").addEventListener('click', function(){
 			var check;
 			var num = document.getElementById("num").value;
@@ -449,7 +467,7 @@ Character		Description
 
 
 		['aa','bb','cc'].forEach((item, index) => {
-		    console.log(`${item} his at ${index}`);
+		    console.log(`${item} is at ${index}`);
 		});
 
 		/*

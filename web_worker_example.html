@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>worker</title>
+</head>
+<body>
+    <h2>Web Worker</h2>
+</body>
+</html>
+<script>
+    let w;
+    if (typeof(w) == "undefined" ){
+        w = new Worker("counter.js")
+    }
+
+    w.onmessage = function(event){
+        // document.getElementById("message").innerHTML = event.data;
+        console.log(event.data)
+    };
+
+    w.terminate();
+    w = undefined;
+</script>
