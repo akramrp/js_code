@@ -1,7 +1,7 @@
-const dbConnection = require("./mongodb");
+const dbConnect = require("./mongodb");
 
 const insert = async () => {
-    const db = await dbConnection();
+    const db = await dbConnect();
     const singleObj = { item: "oneplus node2", qty: 15, size: {h:10, w:15, uom:"cm"}, status:"D" }
     // const multipleObj = [
     //     { item: "max 1", qty: 25, size: {h:15, w:10, uom:"cm"}, status:"N" },

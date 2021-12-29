@@ -1,9 +1,9 @@
 // video 18, 19, 20
-const dbConnection = require("./mongodb");
+const dbConnect = require("./mongodb");
 
 // method-2 for handing promise
 const main = async () => {
-    let data = await dbConnection();
+    let data = await dbConnect();
     data = await data.find().toArray();
     console.log(data);
 }

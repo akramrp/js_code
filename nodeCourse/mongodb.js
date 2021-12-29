@@ -7,16 +7,16 @@ const COLLECTION = "collectionTest";
 
 const client = new MongoClient(URL);
 
-async function dbConnection() {
+async function dbConnect() {
     let result = await client.connect();
     let db = result.db(DATABASE);
     return db.collection(COLLECTION);
 }
-module.exports = dbConnection;
+module.exports = dbConnect;
 
 /*
 // method-1 for handing promise
-dbConnection().then( (resp) => {    // return  Promise { <pending> }
+dbConnect().then( (resp) => {    // return  Promise { <pending> }
     // console.log(resp)
     // console.log(resp.find().toArray())  // return  Promise { <pending> }
     resp.find().toArray().then( (data) => {
@@ -26,7 +26,7 @@ dbConnection().then( (resp) => {    // return  Promise { <pending> }
 
 // method-2 for handing promise
 const main = async () => {
-    let data = await dbConnection();
+    let data = await dbConnect();
     data = await data.find().toArray();
     console.log(data);
 }
