@@ -588,7 +588,10 @@ null === undefined // false
 		*/
 		
 		let nowDate = new Date();
-		console.log( nowDate ); // shows current date/time 2021-08-26T09:33:23.324Z
+		console.log( nowDate ); 				// shows current date/time 2021-08-26T09:33:23.324Z
+		new Date().toDateString()				// 'Wed Dec 29 2021'
+		new Date().toLocaleDateString(); 		// '12/29/2021'
+		new Date().toLocaleTimeString() 		// '3:23:16 PM'
 
 		// now add 24 hours, get 02.01.1970 UTC+0
 		let Jan02_1970 = new Date(24 * 3600 * 1000);

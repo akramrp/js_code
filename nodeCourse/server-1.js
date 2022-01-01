@@ -5,6 +5,10 @@ const os = require('os');
 const path = require('path');
 // console.log(Object.getOwnPropertyNames(os)) // get all method
 
+console.log(`RAM ==> freemem:  ${os.freemem()} bytes, ${os.freemem()/(1024*1024*1024)} GB`)
+console.log(`RAM ==> totalmem: ${os.totalmem()} bytes, ${os.totalmem()/(1024*1024*1024)} GB`)
+console.log(`userInfo ==> ${Object.entries(os.userInfo())}`)
+
 // console.log(` hostname: ${os.hostname()}
 // homedir: ${os.homedir()}
 // type: ${os.type()}

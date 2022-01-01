@@ -14,18 +14,18 @@
     string method:
         var str = 'akram mohd'; 
         var x = "mm nn bb vv cc xx zz cc";
-        // x.slice(15,30)         "xx zz cc"
-        // x.substring(15, 30)    "xx zz cc"    //substring not accept negative index 
-        // x.search('cc')         12
-        // x.indexOf('cc')        12
-        // x.indexOf('cc', 15)    21
-        // x.lastIndexOf('cc')    21
-        // x.replace('bb','dd')
-        // x.replace(/bb/i,'dd')  // an /i flag (insensitive):
-        // x.replace(/bb/g,'dd')  // an /g flag (global match):
-        // str.toUpperCase()      "AKRAM"
-        // str.trim()()           remove whitespace from string
-        // str.split(' ')          ['akram', 'mohd']  convert to array by split 
+        x.slice(15,30)              "xx zz cc"
+        x.substring(15, 30)         "xx zz cc"    //substring not accept negative index 
+        x.search('cc')              12
+        x.indexOf('cc')             12
+        x.indexOf('cc', 15)         21
+        x.lastIndexOf('cc')         21
+        x.replace('bb','dd')
+        x.replace(/bb/i,'dd')       // an /i flag (insensitive):
+        x.replace(/bb/g,'dd')       // an /g flag (global match):
+        str.toUpperCase()           "AKRAM"
+        str.trim()()                remove whitespace from string
+        str.split(' ')              ['akram', 'mohd']  convert to array by split 
 
     number method:
         var num = 7
