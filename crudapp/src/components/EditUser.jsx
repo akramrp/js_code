@@ -3,12 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { FormControl, FormGroup, Input, InputLabel, Typography, Button } from "@mui/material";
 import { editUser, getUsers } from "../services/apis";
 
-const userInitValue = {name:'', username:'', email:'', phone:''}
+const userInitValue = {name:'', username:'', email:'', phone:'', password:""}
 
 const EditUser = () => {
     
     const [user, setUser] = useState(userInitValue);
-    const {name, username, email, phone} = user;
+    const {name, username, email, phone, password} = user;
     const navigate = useNavigate();
     const { id } = useParams();
 
@@ -38,22 +38,27 @@ const EditUser = () => {
         <Typography>&nbsp;</Typography>
             <FormControl>
                 <InputLabel htmlFor="name">Name:</InputLabel>
-                <Input name="name" onChange={(e) => onChangeValue(e)} value={name} />
+                <Input type="text" name="name" onChange={(e) => onChangeValue(e)} value={name} />
             </FormControl>
             &nbsp;
             <FormControl>
                 <InputLabel htmlFor="username">Username:</InputLabel>
-                <Input name="username" onChange={(e) => onChangeValue(e)} value={username} />
+                <Input type="text" name="username" onChange={(e) => onChangeValue(e)} value={username} />
             </FormControl>
             &nbsp;
             <FormControl>
                 <InputLabel htmlFor="email">Email:</InputLabel>
-                <Input name="email" onChange={(e) => onChangeValue(e)} value={email} />
+                <Input type="email" name="email" onChange={(e) => onChangeValue(e)} value={email} />
             </FormControl>
             &nbsp;
             <FormControl>
                 <InputLabel htmlFor="phone">Phone:</InputLabel>
-                <Input name="phone" onChange={(e) => onChangeValue(e)} value={phone} />
+                <Input type="text" name="phone" onChange={(e) => onChangeValue(e)} value={phone} />
+            </FormControl>
+            &nbsp;
+            <FormControl>
+                <InputLabel htmlFor="password">Password:</InputLabel>
+                <Input type="password" name="password" onChange={(e) => onChangeValue(e)} value={password} />
             </FormControl>
             &nbsp;
             <FormControl>

@@ -1,6 +1,8 @@
 console.log(Object.getOwnPropertyNames(Math));
 // (43) ['abs', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atanh', 'atan2', 'ceil', 'cbrt', 'expm1', 'clz32', 'cos', 'cosh', 'exp', 'floor', 'fround', 'hypot', 'imul', 'log', 'log1p', 'log2', 'log10', 'max', 'min', 'pow', 'random', 'round', 'sign', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc', 'E', 'LN10', 'LN2', 'LOG10E', 'LOG2E', 'PI', 'SQRT1_2', 'SQRT2']
 
+
+
 /*
 REPL = read eval print loop  //use in cli
 > node
@@ -134,4 +136,9 @@ mongoose support the following type schema:
     ObjectId
     Decimal128
 
+*/
+
+
+/*
+https://medium.com/@siddarthasiddu96/user-login-and-registration-with-nodejs-using-express-bycrpt-and-mysql-529c872db5a0
 */

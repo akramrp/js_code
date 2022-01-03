@@ -34,6 +34,7 @@ const Alluser = () => {
                     <TableCell>USERNAME</TableCell>
                     <TableCell>EMAIL</TableCell>
                     <TableCell>PHONE</TableCell>
+                    <TableCell>PASSWORD</TableCell>
                     <TableCell>ACTION</TableCell>
                 </TableRow>
             </TableHead>
@@ -46,9 +47,10 @@ const Alluser = () => {
                             <TableCell>{data.username}</TableCell>
                             <TableCell>{data.email}</TableCell>
                             <TableCell>{data.phone}</TableCell>
+                            <TableCell>{data.password}</TableCell>
                             <TableCell>
-                                <Button color="primary" variant="contained" component={Link} to={`/edit/${data._id}`}>Edit</Button>&nbsp;
-                                <Button color="secondary" variant="contained" onClick={()=> deleteThisUser(data._id) }>Delete</Button>
+                                <Button color="primary" size="small" variant="contained" component={Link} to={`/edit/${data._id}`}>Edit</Button>&nbsp;
+                                <Button color="secondary" size="small" variant="contained" onClick={()=> deleteThisUser(data._id) }>Delete</Button>
                             </TableCell>
                         </TableRow>
                     ))
