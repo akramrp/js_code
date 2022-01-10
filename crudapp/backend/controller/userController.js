@@ -62,22 +62,26 @@ export const deleteUser = async (req, res) => {
 
 export const login = async (req, res) => {
     let singleUserData = await userModel.find({"email":req.body.email});
+    // let singleUserData = await userModel.findOne(request.body).select("-password"); // fetch data without password
     // userData.password = bcrypt.hashSync(singleUserData[0].password, 10);
     // console.log(singleUserData[0].password);
     try{
         if(singleUserData.length>0){
             let passwordHash = singleUserData[0].password;
             // if(singleUserData[0].password == req.body.password)
-            if( bcrypt.compareSync(req.body.password, passwordHash) )
-                res.json({message:"Success😊! You are login now."});
+            if( bcrypt.compareSync(req.body.password, passwordHash) ){
+                delete singleUserData[0].password;
+                res.status(200).json(singleUserData[0]);
+                // res.json({error:"Success😊\nYou are login now."});
+            }
             else
-                res.json({message:"Error😢! Incorrect Password. Please Enter Correct Password."});
+                res.json({error:"Error😢\nIncorrect Password. Please Enter Correct Password."});
         }
         else{
-            res.json({message:"Error😢! User Not Found."});
+            res.json({error:"Error😢\nUser Not Found."});
         }
     }
     catch(error){
-        res.status(401).json({message:error.message});
+        res.status(401).json({error:error.message});
     }
 }

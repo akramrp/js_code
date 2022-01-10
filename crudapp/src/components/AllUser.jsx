@@ -1,13 +1,18 @@
 import { Button, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import { useEffect, useState } from "react";
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { getUsers, deleteUser } from "../services/apis";
 
 const Alluser = () => {
     const [users, setUsers] = useState([]);
+    const navigate = useNavigate()
 
     useEffect( () => {
-        getAllUsers();
+        const auth = localStorage.getItem("loginData");
+        if(! auth)
+            navigate('/home');
+        else
+            getAllUsers();
     }, [])
 
     const getAllUsers = async () => {

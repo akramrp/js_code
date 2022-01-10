@@ -136,6 +136,15 @@ mongoose support the following type schema:
     ObjectId
     Decimal128
 
+    
+Syntax
+sessionStorage
+window.sessionStorage
+sessionStorage.setItem("key", "value");
+sessionStorage.getItem("key");
+sessionStorage.removeItem("key");
+sessionStorage.clear();
+
 */
 
 
