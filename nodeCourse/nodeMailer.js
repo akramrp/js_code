@@ -1,23 +1,32 @@
-var nodemailer = require('nodemailer');
+// ====================== send mail in nodejs  start ======================
+// npm install nodemailer
+const nodemailer = require('nodemailer');
+const express = require('express');
+const app = express();
+const PORT = 3001;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-var transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
     service: 'gmail',
-    auth: {
+    auth:{
         user: 'userakram09@gmail.com',
-        pass: 'akram7as00$$go'
+        pass: 'akram7as77##go'
     }
-});
+})
 
 var mailOptions = {
-    from : 'userakram09@gmail.com',
+    from: 'userakram09@gmail.com',  
     to: 'akramrp7@gmail.com',
-    subject: 'test node mail',
-    text: 'this mail sent by ===> modemailer.'
+    subject: 'Sending email using NodeJS',
+    text: "Hello Akram,<br>this email send by nodejs using nodemailer module"
 }
 
-transporter.sendMail(mailOptions, (error, info) => {
-    if (error)
-        console.log(error);
-    else
+transporter.sendMail(mailOptions, (err, info) => {
+    if (err)
+        console.log(err);
+    else{
         console.log('Email Sent:'+ info.response);
-});
+        console.log('Email Sent successfully.');
+    }
+})
+// ====================== send mail in nodejs  end   ======================

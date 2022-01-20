@@ -37,6 +37,19 @@ const AddUser = () => {
         }
     }
 
+    /*
+    // fetch apis for login
+    let result = await fetch('http://localhost:3001/user/login', {
+        method: 'post',
+        body: JSON.stringify({email,password}),
+        headers: {
+            'Content-Type': 'application/json' 
+        }
+    });
+    result = await result.json();
+    console.log(result);
+    */
+
     return (
         <FormGroup style={{width: '50%' }}>
         <Typography> LOGIN FORM </Typography>

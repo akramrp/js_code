@@ -17,8 +17,6 @@ REPL = read eval print loop  //use in cli
 .save     Save all evaluated commands in this REPL session to a file
 
 
-
-
 vs extensions:
     1. material theme
     2. material icons theme
@@ -33,11 +31,21 @@ vs extensions:
     11. live server
     12. emmet (for auto all basic html structure)
 
-    vs code formetText ---> shift+alt+f
+    ================================== shortcuts
+    element: 			div>ul>li
+	id and class: 		div#header>div.page
+	element with id:	div#showDiv>ul>li 
+	siblings:			div+h1+p
+	climb up: 			div+div>p>span+em^bq
+	multiplication: 	div>ul>li*5,  div.showContent>ul>li*5
+	grouping: 			div>(header>ul>li*3) || div>herder>ul>li*3
+	custom attributes:  td[title='instagram']*4
+	item numbering:		ul>li.item$*3
 
-
-========node.js full course for beginner
-run commend "node" for node console 
+    ===================================== keys
+    shift+alt+f         formet text
+    alt+↑ or ↓          move line up / down
+    ctl + alt+↑ or ↓    copy line up / down
 
 
 
@@ -151,3 +159,33 @@ sessionStorage.clear();
 /*
 https://medium.com/@siddarthasiddu96/user-login-and-registration-with-nodejs-using-express-bycrpt-and-mysql-529c872db5a0
 */
+
+
+// ====================== send mail in nodejs  start ======================
+// npm install nodemailer
+const nodemailer = require('nodemailer');
+const transporter = nodemailer.createTransport({
+    service: 'gamil',
+    auth:{
+        user: 'userakram09@gmail.com',
+        pass: 'akram7as77##go'
+    }
+})
+
+var mailOptions = {
+    from: 'userakram09@gmail.com',
+    to: 'akramrp7@gmail.com',
+    subject: 'Sending email using NodeJS',
+    text:"Hello Akram,<br>this email send by nodejs using nodemailer module"
+}
+
+transporter.sendMail(mailOptions, (err, info) => {
+    if (err)
+        console.log(err);
+    else{
+        console.log('Email Sent:'+ info.response);
+        console.log('Email Sent successfully.');
+    }
+})
+
+// ====================== send mail in nodejs  end   ======================
