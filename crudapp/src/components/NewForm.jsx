@@ -9,7 +9,6 @@ import MobileDatePicker from '@mui/lab/MobileDatePicker';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 
 
-
 const NewForm = () => {
     const [value, setValue] = React.useState(new Date());
     return(
@@ -29,7 +28,7 @@ const NewForm = () => {
             <Fab color="secondary" aria-label="edit" size="small"> <Edit /> </Fab> &nbsp; 
             <Fab color="success" aria-label="favorite" size="small"> <Favorite /> </Fab> &nbsp;
 
-            <Divider>Date N Time</Divider>
+            <Divider>Date And Time</Divider>
 
             <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <Stack spacing={3}>
