@@ -15,11 +15,19 @@
   <br><br>
   <input type="text" value="text1" name="text1" id="text1">
   <input type="text" value="text2" name="text2" id="text2">
-  <button id="btn2" name="btn2" >clickme</button>
+  <button id="btn2" name="btn2" >clickme</button> 
+  <button id="coptToClipboard" name="coptToClipboard" >copy to clipboard</button> 
   <br><br>
   only number1: <input type="text" name="number1" id="number1"> 
-  only number2: <input type="text" name="number2" id="number2">
+  only number2: <input type="text" name="number2" id="number2"><br><br>
 
+  <button onclick="callGenerator()">Call Generator Func</button>
+
+  <br><br>
+
+  <h1> Enter mobile number with Country code </h1>
+  <input type="tel" id="mobile"/>
+  <button onclick="submit()"> Submit </button>
 
 <script>
 let number1 = document.querySelector('[name=number1]');
@@ -62,6 +70,33 @@ $(document).ready(function(){
 	  alert(filedata);
   });
 });
+
+
+// let newfile = new ActiveXObject("Scripting.FileSystemObject");
+// let openFile = newfile.OpenTextFile("C:\Users\funne\OneDrive\Documents\sname.txt", 1, true);
+// console.log(openFile);
+
+
+
 </script>
 <body>
 </html>
+
+<script src="https://unpkg.com/libphonenumber-js/bundle/libphonenumber-js.min.js"></script>
+<script>
+// Number will be with country code
+function isValidNumber(number) {
+   console.log(number)
+   return new libphonenumber.parsePhoneNumber(number).isValid()
+}
+function submit() {
+  var number = document.getElementById('mobile').value;
+    if(number.length <5) {
+       alert('Too Short ')
+    } else if(isValidNumber(number)) {
+      alert('Valid number')
+    } else {
+      alert('InValid number')
+    }
+}
+</script>

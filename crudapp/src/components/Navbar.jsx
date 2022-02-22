@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar,Button  } from "@mui/material";
+import { Button  } from "@mui/material";
 import {useNavigate, NavLink} from 'react-router-dom';
 
 const Navbar = () => {
@@ -13,7 +13,7 @@ const Navbar = () => {
         
     }
     return (
-        <>
+        <React.Fragment>
             <Button><NavLink to='/' exact="true">[LOGO]  Home </NavLink></Button>
             { auth ?   <>
                     <Button><NavLink to='all' exact="true">All User </NavLink></Button>
@@ -26,7 +26,12 @@ const Navbar = () => {
                     <Button><NavLink to='login' exact="true">Login </NavLink></Button>
                 </> 
             }
-        </>
+            <Button><NavLink to='testPage' exact="true"> TestPage </NavLink></Button>
+            <Button><NavLink to='testPage2' exact="true"> TestPage2 </NavLink></Button>
+            <Button><NavLink to='testHooks' exact="true"> testHooks </NavLink></Button>
+            <Button><NavLink to='newForm' exact="true"> newForm </NavLink></Button>
+            <Button><NavLink to='newHome' exact="true"> newHome </NavLink></Button>
+        </React.Fragment>
     )
 }
 

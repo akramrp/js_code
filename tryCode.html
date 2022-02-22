@@ -95,11 +95,14 @@ null === undefined // false
 {}=={} or {}==={} //false, refer different objects in memory
 </xmp>
 	<script>
+		// write multiple css in one line in js
+		document.querySelector("#example").style.cssText='display:block; color:green; background-color: rgb(243, 239, 224); padding: 10px; font-size:17px;';
+
 		const capitalizeString = (word) => {
 			return word.charAt(0).toUpperCase()+word.slice(1);
 		}
 		console.log(capitalizeString('akramsaif'));
-
+		
 		document.getElementById("showPrimeNumber").addEventListener('click', function(){
 			var check;
 			var num = document.getElementById("num").value;
@@ -674,6 +677,109 @@ null === undefined // false
 
 		*/
 		
+
+
+
+		//The apply() method is used to write methods, which can be used on different objects. It is different from the function call() because it takes arguments as an array.
+
+		 var student = {
+			details: function(section, rollnumber){
+				return this.name + ', '+ this.class + ', '+ section +', '+rollnumber;
+			}
+		}
+		var stud1 = {
+			name: 'Akram',
+			class: '12th'
+		}
+		
+		var stud2 = {
+			name: 'Jeeshan',
+			class: '12th'
+		}
+		var x = student.details.apply(stud1, ["A", '1347010024']);
+		console.log("Apply method ===> ", x)
+
+		//In JavaScript function binding happens using Bind() method. With this method, we can bind an object to a common function, so that the function gives different result when needed. otherwise it gives the same result or gives an error while the code is executing
+
+		var geeks = {
+		name : "ABC",
+			printFunc: function(){
+				document.write(this.name);
+			}
+		}
+		var printFunc2= geeks.printFunc;
+		printFunc2(); // Here we made a new variable function printFunc2 which refers to the function printFunc() of object geeks. Here the binding of this is lost, so no output is produced
+
+
+
+		var geeks = {
+			name : "ABC",
+			printFunc: function(){
+				document.write(this.name);}
+		}    
+		var printFunc2= geeks.printFunc.bind(geeks);
+		//using bind() 
+		// bind() takes the object "geeks" as parameter//
+		printFunc2();
+
+		
+		// example-3
+		var geek1 = {
+			name: 'ABC',
+			article: 'Javascript'
+		}
+		var geek2 = {
+			name: 'BBB',
+			article: 'NodeJS'
+		}
+		function printVal(){
+			console.log(`${this.name} contributes about ${this.article}`)
+		}
+		var printFunction1 = printVal.bind(geek1);
+		printFunction1()
+		var printFunction2 = printVal.bind(geek2);
+		printFunction2()
+
+
+
+
+		// Special character encoded with
+		// escape function
+		var str = escape("Geeks for Geeks!!!");
+		document.write("Encoded : " + str);
+		
+		// New Line
+		document.write("<br>");
+		
+		// unescape() function
+		document.write("Decoded : " + unescape(str))
+		
+		// New Line
+		document.write("<br><br>");
+		
+		// The exception
+		// @ and . not encoded.
+		str = escape("To contribute articles contact us" + "at review-team@geeksforgeeks.org")
+		document.write("Encoded : " + str);
+		
+		// New Line
+		document.write("<br>");
+		
+		// unescape() function
+		document.write("Decoded : " + unescape(str))
+
+		/*
+		A Comparison===>
+		| -------------------------------------------------------------------|
+		| Action 				for..in					for..of				 |
+		| -------------------------------------------------------------------|
+		| Applies to			Enumerable Properties	Iterable Collections |
+		| Use with Objects?		Yes						No					 |
+		| Use with Arrays?		Yes, but not advised	Yes 				 |
+		| Use with Strings?		Yes, but not advised	Yes					 |
+		|--------------------------------------------------------------------|
+		*/
+
 		let timerId = setInterval(() => {
 			let now = new Date();
 			document.getElementById('timer').innerText = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
@@ -683,19 +789,67 @@ null === undefined // false
 
 		//  array chunk in js
 		function chunk(array, size) {
-	    const chunked_arr = [];
-	    for (let i = 0; i < array.length; i++) {
-	      const last = chunked_arr[chunked_arr.length - 1];
-	      if (!last || last.length === size) {
-	        chunked_arr.push([array[i]]);
-	      } else {
-	        last.push(array[i]);
-	      }
-	    }
-	    return chunked_arr;
+			const chunked_arr = [];
+			for (let i = 0; i < array.length; i++) {
+			const last = chunked_arr[chunked_arr.length - 1];
+			if (!last || last.length === size) {
+				chunked_arr.push([array[i]]);
+			} else {
+				last.push(array[i]);
+			}
+			}
+			return chunked_arr;
 		} 
 		console.log(chunk([1,2,3,4,5],2))
 
+
+		const findOcurrence = (strval) => {
+			var maxVal = 1;
+			var maxLetter = strval[0];
+			var  map = {};
+			split = strval.split('');
+			split.forEach((item)=>{
+				map[item] = map[item] ? map[item]+1 : 1;
+			})
+			
+			for(let k in map){
+				if( map[k] > maxVal){
+					maxVal = map[k];
+					maxLetter = k;   
+				}
+			}
+			return maxLetter;
+		}
+		console.log(findOcurrence('mohd akram! hello goodmorning'))
+
+
+		// calling api in js
+		fetch('https://jsonplaceholder.typicode.com/todos')
+		.then(response =>{
+			return response.json();
+		})
+		.then(data =>{
+			console.log(data);
+		})
+
+		/*Output: Array [
+			0: {userId: 1, id: 1, title: 'delectus aut autem', completed: false}
+			1: {userId: 1, id: 2, title: 'quis ut nam facilis et officia qui', completed: false}
+			2: {userId: 1, id: 3, title: 'fugiat veniam minus', completed: false}
+		]*/
+
+		//send data by apis in js
+		dataObj = {name, email, phone}
+		fetch('https://jsonplaceholder.typicode.com/todos', {
+			method:"POST",
+			Headers:{
+				"Accept":'application/json',
+				"Content-Type": "application/json"
+			},
+			body:JSON.stringify(dataObj)
+		}).then((result)=>{
+			result
+		})
 	</script>
 </body>
 </html>
