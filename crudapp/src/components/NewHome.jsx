@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Box, Divider, Grid, Hidden, Paper, styled} from '@mui/material';
+import {Box, Divider, Grid, Hidden, Paper} from '@mui/material';
 
 
 export default function NewHome() {

@@ -15,6 +15,7 @@ import TestPage2 from './components/TestPage2';
 import TestHooks from './components/TestHooks';
 import NewForm from './components/NewForm';
 import NewHome from './components/NewHome';
+import ReduxCounter from './components/ReduxCounter';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/testHooks" element={<TestHooks />} exact></Route>
         <Route path="/newForm" element={<NewForm />} exact></Route>
         <Route path="/newHome" element={<NewHome />} exact></Route>
+        <Route path="/reduxCounter" element={<ReduxCounter />} exact></Route>
 
         <Route element={ <PrivateComponents />} > 
           <Route path="/all" element={<AllUser />} exact></Route>

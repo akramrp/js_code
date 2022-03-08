@@ -31,6 +31,7 @@ const Navbar = () => {
             <Button><NavLink to='testHooks' exact="true"> testHooks </NavLink></Button>
             <Button><NavLink to='newForm' exact="true"> newForm </NavLink></Button>
             <Button><NavLink to='newHome' exact="true"> newHome </NavLink></Button>
+            <Button><NavLink to='reduxCounter' exact="true"> ReduxCounter </NavLink></Button>
         </React.Fragment>
     )
 }
