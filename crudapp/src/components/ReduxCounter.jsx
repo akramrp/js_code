@@ -1,10 +1,13 @@
 import React from 'react'
 import { Box, Divider } from "@mui/material";
+
+// import from reducre
 import Counter from "../features/counter/Counter"
 import Coin from "../features/coin/Coin"
 import Theme from "../features/theme/Theme"
-
 import { useGetAllPostQuery } from "../services/post"
+
+//import from mui
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -17,7 +20,6 @@ import Paper from '@mui/material/Paper';
 // function createData(name, calories, fat, carbs, protein) {
 //     return { name, calories, fat, carbs, protein };
 // }
-
 // const rows = [
 //     createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
 //     createData('Ice cream sandwich', 237, 9.0, 37, 4.3),

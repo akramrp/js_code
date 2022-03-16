@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Box, TextField, Button, Typography } from '@mui/material'
 import { Add } from "@mui/icons-material"
+
+// import from redux
 import { useSelector, useDispatch } from 'react-redux'
 import { changeThemeColor } from './themeSlice'
 
