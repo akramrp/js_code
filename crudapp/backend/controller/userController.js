@@ -15,6 +15,12 @@ export const addUser = async (req, res) => {
     let userData = req.body;
     userData.password = bcrypt.hashSync(userData.password, 10);
     const userObj = new userModel(userData);
+    /*
+    let checkUser = await userObj.findOne({emil:userData.email})
+    if(checkUser){
+        return res.status(400).json({message:'user already exist!'})
+    }
+    */
     try{
         await userObj.save();
         res.status(201).json(userObj);
