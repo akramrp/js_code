@@ -57,8 +57,13 @@ function rendomOTP() {
     return Math.floor(100000 + Math.random() * 900000);
 }
 
+function getRandomOTP(num){
+    return parseInt(Math.random() * (9**num));
+}
+console.log(getRandomOTP(6))
+
 function isNumberKey(evt) {
-    var charCode = event.keyCode;
+    var charCode = evt.keyCode;
     if (charCode > 48 && charCode < 57)
         return true;
     return false;
@@ -108,6 +113,13 @@ function table() {
         document.write('<br>');
     }
 }
+// 1
+// 1 2
+// 1 2 3
+// 1 2 3 4
+// 1 2 3 4 5
+// 1 2 3 4 5 6
+// 1 2 3 4 5 6 7
 
 function formatDate() {
     var d = new Date(),
@@ -156,6 +168,219 @@ function temperatureConverter(valNum) {
     valNum = parseFloat(valNum);
     document.getElementById("outputCelcius").innerHTML = (valNum - 32) / 1.8;
 }
+
+
+// ==================== js important function
+
+function pramidCode(num){
+    let arr = [];
+    for(let a=1; a<=num; a++){
+        arr.push(" *".repeat(a));
+    }
+    return arr;
+}
+let stars = pramidCode(5);
+console.log(stars.join('\n'))
+
+
+function getStringReverse(str){
+	let nstr = "";
+    for(let a=str.length-1; a>=0; a--){
+      	nstr += str[a];
+    }
+    return nstr;
+}
+
+
+// getUpperCaseWord 1
+function getUpperCaseWord(str){
+  	return str[0].toUpperCase()+str.slice(1)
+}
+console.log(getUpperCaseWord('akram'));
+
+
+// getUpperCaseWord 2
+function getUpperCaseWord2(str){
+	let nval = "";
+	let splitValue = str.split(' ');
+	if(splitValue.length > 1) {
+		for(let a=0; a<splitValue.length; a++) {
+		 	let singleValue = splitValue[a];
+		 	nval += singleValue[0].toUpperCase()+singleValue.slice(1)+'';
+		}
+	}
+	else{
+	  	nval = str[0].toUpperCase()+str.slice(1)
+	}
+	return nval;
+}
+console.log(getUpperCaseWord2('mohd akram').trimEnd());
+
+
+function getPassword(num){
+    let mixStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$';
+    let pass = '';
+    for(let a=1; a<=num; a++){
+        getChar = Math.floor(Math.random() * mixStr.length);
+        pass += mixStr.charAt(getChar);
+    }
+    return pass;
+}
+console.log(getPassword(10))
+
+
+function removeDuplicateNumber(getArr){
+    let uniqueNumberArr = [];
+    for(let a=0; a<getArr.length; a++) {
+        if(!uniqueNumberArr.includes(getArr[a]))
+            uniqueNumberArr.push(getArr[a]);  
+    }
+    return uniqueNumberArr;
+}
+numberArr = [1,22,77,4,5,7,77,22,5,8];
+console.log(removeDuplicateNumber(numberArr))
+
+
+let vowels = "aeiou";
+for(let i=0; i<vowels.length; i++){
+    console.log(vowels[i])
+}
+
+let ciperText = [..."YZOGUT QGMORTZ MTRHTILS"];
+let plainText = "";
+for(let [index, value] of ciperText.entries()){
+    plainText += (index %2===0) ? value : '';
+}
+console.log(plainText); //YOU GOT THIS
+
+
+function getWeekDay(date) {
+    let days = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
+    return days[date.getDay()];
+}
+let formdate = new Date(2014, 0, 3); // 3 Jan 2014
+console.log(getWeekDay(formdate))  // FR
+
+
+
+// Rest parameters and spread syntax
+function sumAll(...args) { // args is the name for the array
+    let sum = 0;
+    for (let arg of args) sum += arg;
+    return sum;
+}
+console.log(sumAll(1,3,5,7,8)) // 24
+
+let ex_arr1 = [1,2,3];
+let ex_arr2 = [5,6,7];
+// add both array
+let fianl_arr = [...ex_arr1, ...ex_arr2];
+
+
+//  array chunk in js
+function chunk(array, size) {
+    const chunked_arr = [];
+    for (let i = 0; i < array.length; i++) {
+        const last = chunked_arr[chunked_arr.length - 1];
+        if (!last || last.length === size)
+            chunked_arr.push([array[i]]);
+        else
+            last.push(array[i]);
+    }
+    return chunked_arr;
+} 
+console.log(chunk([1,2,3,4,5],2))
+
+
+const findOcurrence = (strval) => {
+    var maxVal = 1;
+    var maxLetter = strval[0];
+    var  map = {};
+    split = strval.split('');
+    split.forEach((item)=>{
+        map[item] = map[item] ? map[item]+1 : 1;
+    })
+    
+    for(let k in map){
+        if( map[k] > maxVal){
+            maxVal = map[k];
+            maxLetter = k;   
+        }
+    }
+    return maxLetter;
+}
+console.log(findOcurrence('mohd akram! hello goodmorning'))
+
+
+let timerId = setInterval(() => {
+    let now = new Date();
+    // document.getElementById('timer').innerText = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+}, 1000);
+timerId;
+
+
+function getDataWithFetchAPI(){
+    // calling api in js
+    fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(response =>{
+        return response.json();
+    })
+    .then(data =>{
+        console.log(data);
+    })
+    /*Output: Array [
+        0: {userId: 1, id: 1, title: 'delectus aut autem', completed: false}
+        1: {userId: 1, id: 2, title: 'quis ut nam facilis et officia qui', completed: false}
+        2: {userId: 1, id: 3, title: 'fugiat veniam minus', completed: false}
+    ]*/
+}
+
+function sendDataWithFetchAPI(dataObj){
+    // send data by apis in js
+    // dataObj = {name, email, phone}
+    fetch('https://jsonplaceholder.typicode.com/todos', {
+        method:"POST",
+        Headers:{
+            "Accept":'application/json',
+            "Content-Type": "application/json"
+        },
+        body:JSON.stringify(dataObj)
+    }).then((result)=>{
+        result
+    })
+}
+
+
+function findMax(arr) {
+    var length = arr.length
+    var max = -Infinity;
+    while (length--) {
+        if (arr[length] > max) {
+            max = arr[length];
+        }
+    }
+    return max;
+}
+let marks = [22,6,88,23];
+console.log(findMax(marks))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
     // jquery code

@@ -69,13 +69,13 @@ Also certain IDEs have built-in linting, which is convenient but not as customiz
 <xmp>
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 Character		Description
-\n 					New line
-\r					Carriage return: not used alone. Windows text files use a combination of two characters \r\n to represent a line break.
+\n 				New line
+\r				Carriage return: not used alone. Windows text files use a combination of two characters \r\n to represent a line break.
 \', \"			Quotes
-\\					Backslash
-\t					Tab
-\b, \f, \v	Backspace, Form Feed, Vertical Tab – kept for compatibility, not used nowadays.
-\xXX				Unicode character with the given hexadecimal Unicode XX, e.g. '\x7A' is the same as 'z'.
+\\				Backslash
+\t				Tab
+\b, \f, \v		Backspace, Form Feed, Vertical Tab – kept for compatibility, not used nowadays.
+\xXX			Unicode character with the given hexadecimal Unicode XX, e.g. '\x7A' is the same as 'z'.
 \uXXXX			A Unicode symbol with hexqcode XXXX in UTF-16 encoding, for instance \u00A9 – is a Unicode for the copyright symbol ©. It must be exactly 4hex digits.
 \u{X…XXXXXX} (1 to 6 hex characters)	A Unicode symbol with the given UTF-32 encoding. Some rare characters are encoded with two Unicode symbols, taking 4 bytes. This way we can insert long codes.
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -97,11 +97,6 @@ null === undefined // false
 	<script>
 		// write multiple css in one line in js
 		document.querySelector("#example").style.cssText='display:block; color:green; background-color: rgb(243, 239, 224); padding: 10px; font-size:17px;';
-
-		const capitalizeString = (word) => {
-			return word.charAt(0).toUpperCase()+word.slice(1);
-		}
-		console.log(capitalizeString('akramsaif'));
 		
 		document.getElementById("showPrimeNumber").addEventListener('click', function(){
 			var check;
@@ -164,7 +159,7 @@ null === undefined // false
 			var user = {
 				name : 'akram',
 				mobile : 123456789,
-				"likes birds": true,  					// multiword property name must be quoted
+				"likes birds": true,	// multiword property name must be quoted
 				age: 26,
 				fullName: function() {
 			    	return this.name + " " + this.mobile;
@@ -180,13 +175,13 @@ null === undefined // false
 			console.log(user.fullName());
 
 			user.isAdmin = true; 							// add property
-			user['isSuperuser'] = true; 			// add property
+			user['isSuperuser'] = true; 					// add property
 			// delete user.age;  							// delete property
 			user.__mvalue = 55;
 			console.log(user);   							// {name: "akram", mobile: 123456789}
 
-			console.log( "age" in user ); 		// true, user.age exists
-			console.log( "blabla" in user ); 	// false, user.blabla doesn't exist
+			console.log( "age" in user ); 					// true, user.age exists
+			console.log( "blabla" in user ); 				// false, user.blabla doesn't exist
 
 
 			for(let key in user) {
@@ -205,9 +200,7 @@ null === undefined // false
 			  let: 2,
 			  return: 3
 			};
-
 			console.log( obj.for + obj.let + obj.return );  // 6
-
 
 			/*
 			Comparison by reference
@@ -244,9 +237,9 @@ null === undefined // false
 
 			// Object.keys, values, entries
 			// 	For plain objects, the following methods are available:
-			// 		Object.keys(obj) 		– returns an array of keys.
-			// 		Object.values(obj) 	– returns an array of values.
-			// 		Object.entries(obj) – returns an array of [key, value] pairs.
+					Object.keys(obj) 		//– returns an array of keys.
+					Object.values(obj) 		//– returns an array of values.
+					Object.entries(obj) 	//– returns an array of [key, value] pairs.
 
 				let _user = { 
 					name: "John", 
@@ -395,9 +388,9 @@ null === undefined // false
 
 		// Getting a substring
 		// There are 3 methods in JavaScript to get a substring: substring, substr and slice.
-		// substring is almost the same as slice, but it allows start to be greater than end.
-		// substr return the part of the string from start, with the given length.
-		// A lowercase letter is always greater than the uppercase: alert( 'a' > 'Z' ); // true
+			// substring is almost the same as slice, but it allows start to be greater than end.
+			// substr return the part of the string from start, with the given length.
+			// A lowercase letter is always greater than the uppercase: alert( 'a' > 'Z' ); // true
 
 		let str1 = "stringify";
 		let str2 = "";
@@ -439,8 +432,8 @@ null === undefined // false
 		// Arrays have their own implementation of toString method that returns a comma-separated list of elements.
 
 		let arr1 = [1, 2, 3];
-		document.write('<br>String method of array: ', arr1); // 1,2,3
-		document.write('<br>String method of array: ', String(arr1)); // 1,2,3
+		document.write('<br>Without String method of array: ', arr1); // 1,2,3
+		document.write('<br>With String method of array: ', String(arr1)); // 1,2,3
 
 
 		/*
@@ -451,6 +444,8 @@ null === undefined // false
 			slice:
 				The method arr.slice is much simpler than similar-looking arr.splice.
 				The syntax: arr.slice([start], [end])
+				let arr = [22,33,55,88]
+				arr.slice(1,3) 	//(2) [33, 55]
 
 				arr.concat(arg1, arg2...)
 		*/
@@ -601,17 +596,6 @@ null === undefined // false
 		console.log( Jan02_1970 );
 		console.log(nowDate.getFullYear()+'-'+(nowDate.getMonth()+1)+'-'+nowDate.getDate())  //2021-8-25
 
-		function getWeekDay(date) {
-			let days = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
-			return days[date.getDay()];
-		}
-
-		let formdate = new Date(2014, 0, 3); // 3 Jan 2014
-		console.log(getWeekDay(formdate))  // FR
-
-
-		// JSON methods, toJSON
-
 		let student = {
 			name: 'John',
 			age: 30,
@@ -627,20 +611,6 @@ null === undefined // false
 		let userData = '{ "name": "John", "age": 35, "isAdmin": false, "friends": [0,1,2,3] }';
 		let userData1 = JSON.parse(userData);
 		console.log(userData1);
-
-
-		// Rest parameters and spread syntax
-		function sumAll(...args) { // args is the name for the array
-			let sum = 0;
-			for (let arg of args) sum += arg;
-			return sum;
-		}
-		console.log(sumAll(1,3,5,7,8)) // 24
-
-		let ex_arr1 = [1,2,3];
-		let ex_arr2 = [5,6,7];
-		// add both array
-		let fianl_arr = [...ex_arr1, ...ex_arr2];
 		
 		/*
 
@@ -779,77 +749,6 @@ null === undefined // false
 		| Use with Strings?		Yes, but not advised	Yes					 |
 		|--------------------------------------------------------------------|
 		*/
-
-		let timerId = setInterval(() => {
-			let now = new Date();
-			document.getElementById('timer').innerText = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
-		}, 1000);
-		timerId;
-
-
-		//  array chunk in js
-		function chunk(array, size) {
-			const chunked_arr = [];
-			for (let i = 0; i < array.length; i++) {
-			const last = chunked_arr[chunked_arr.length - 1];
-			if (!last || last.length === size) {
-				chunked_arr.push([array[i]]);
-			} else {
-				last.push(array[i]);
-			}
-			}
-			return chunked_arr;
-		} 
-		console.log(chunk([1,2,3,4,5],2))
-
-
-		const findOcurrence = (strval) => {
-			var maxVal = 1;
-			var maxLetter = strval[0];
-			var  map = {};
-			split = strval.split('');
-			split.forEach((item)=>{
-				map[item] = map[item] ? map[item]+1 : 1;
-			})
-			
-			for(let k in map){
-				if( map[k] > maxVal){
-					maxVal = map[k];
-					maxLetter = k;   
-				}
-			}
-			return maxLetter;
-		}
-		console.log(findOcurrence('mohd akram! hello goodmorning'))
-
-
-		// calling api in js
-		fetch('https://jsonplaceholder.typicode.com/todos')
-		.then(response =>{
-			return response.json();
-		})
-		.then(data =>{
-			console.log(data);
-		})
-
-		/*Output: Array [
-			0: {userId: 1, id: 1, title: 'delectus aut autem', completed: false}
-			1: {userId: 1, id: 2, title: 'quis ut nam facilis et officia qui', completed: false}
-			2: {userId: 1, id: 3, title: 'fugiat veniam minus', completed: false}
-		]*/
-
-		//send data by apis in js
-		dataObj = {name, email, phone}
-		fetch('https://jsonplaceholder.typicode.com/todos', {
-			method:"POST",
-			Headers:{
-				"Accept":'application/json',
-				"Content-Type": "application/json"
-			},
-			body:JSON.stringify(dataObj)
-		}).then((result)=>{
-			result
-		})
 	</script>
 </body>
 </html>
