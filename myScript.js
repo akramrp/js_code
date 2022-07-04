@@ -130,6 +130,7 @@ function formatDate() {
     if (month < 10) month = '0' + month;
     if (day < 10) day = '0' + day;
 
+    // 2022-06-17
     document.getElementById('formatDate').innerHTML = [year, month, day].join('-') + ' (toDateString: ' + d.toDateString() + ')';
 }
 
@@ -241,6 +242,26 @@ numberArr = [1,22,77,4,5,7,77,22,5,8];
 console.log(removeDuplicateNumber(numberArr))
 
 
+const findOcurrence = (strval) => {
+    var maxVal = 1;
+    var maxLetter = strval[0];
+    var  map = {};
+    split = strval.split('');
+    split.forEach((item)=>{
+        map[item] = map[item] ? map[item]+1 : 1;
+    })
+    
+    for(let k in map){
+        if( map[k] > maxVal){
+            maxVal = map[k];
+            maxLetter = k;   
+        }
+    }
+    return maxLetter;
+}
+console.log(findOcurrence('mohd akram! hello goodmorning'))
+
+
 let vowels = "aeiou";
 for(let i=0; i<vowels.length; i++){
     console.log(vowels[i])
@@ -290,26 +311,6 @@ function chunk(array, size) {
     return chunked_arr;
 } 
 console.log(chunk([1,2,3,4,5],2))
-
-
-const findOcurrence = (strval) => {
-    var maxVal = 1;
-    var maxLetter = strval[0];
-    var  map = {};
-    split = strval.split('');
-    split.forEach((item)=>{
-        map[item] = map[item] ? map[item]+1 : 1;
-    })
-    
-    for(let k in map){
-        if( map[k] > maxVal){
-            maxVal = map[k];
-            maxLetter = k;   
-        }
-    }
-    return maxLetter;
-}
-console.log(findOcurrence('mohd akram! hello goodmorning'))
 
 
 let timerId = setInterval(() => {

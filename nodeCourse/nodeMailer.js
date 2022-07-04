@@ -9,21 +9,21 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth:{
-        user: 'userakram09@gmail.com',
-        pass: 'akram7as77##go'
+        user: 'mohd.akram@myphoneme.com',
+        pass: 'akram7as77##my'
     }
 })
 
 var mailOptions = {
-    from: 'userakram09@gmail.com',  
+    from: 'mohd.akram@myphoneme.com',  
     to: 'akramrp7@gmail.com',
     subject: 'Sending email using NodeJS',
-    text: "Hello Akram,<br>this email send by nodejs using nodemailer module"
+    text: "Hello Akram,\n\nthis email send by nodejs using nodemailer module \n\ncheck:> js_code/nodeCourse/nodeMailer.js file"
 }
 
 transporter.sendMail(mailOptions, (err, info) => {
     if (err)
-        console.log(err);
+        console.log('error ==> ', err);
     else{
         console.log('Email Sent:'+ info.response);
         console.log('Email Sent successfully.');

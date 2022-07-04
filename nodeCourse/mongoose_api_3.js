@@ -18,8 +18,8 @@ app.post('/create', async (request, response) => {
 app.get("/list", async (request, response) => {
     try{
         let data = await Product.find();
-        response.send(data);
-        // response.status(200).json(data);
+        //response.send(data);
+        response.status(200).json(data);
     }
     catch(error){
         response.status(404).json({message:error.message});
@@ -77,4 +77,4 @@ app.post('/upload', upload, (request, response) => {
 })
 
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}` 😊👍));  
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));  

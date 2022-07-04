@@ -346,9 +346,6 @@ null === undefined // false
 			for (let i=0; i<arr.length; i++) – works fastest, old-browser-compatible.
 			for (let item of arr) – the modern syntax for items only,
 			for (let i in arr) – never use.
-
-
-			For instance, it is copied by reference:
 		*/
 
 
@@ -425,18 +422,25 @@ null === undefined // false
 
 		
 		var fruits = ["Banana"];
-		var arr = fruits; 							// copy by reference (two variables reference the same array)
+		var arr = fruits; 				// copy by reference (two variables reference the same array)
 		console.log( arr === fruits ); 	// true
 
 
 		// Arrays have their own implementation of toString method that returns a comma-separated list of elements.
 
 		let arr1 = [1, 2, 3];
-		document.write('<br>Without String method of array: ', arr1); // 1,2,3
-		document.write('<br>With String method of array: ', String(arr1)); // 1,2,3
+		document.write('<br>Without String method of array: ', arr1); 		// 1,2,3
+		document.write('<br>With String method of array: ', String(arr1)); 	// 1,2,3
 
 
 		/*
+			split = string to array:
+			T	he str.split(delim) method splits the string into an array by the given delimiter delim
+			
+			join = array to str:
+				The str.hoin(delim) method join the array element into an string by the given delimiter delim
+
+			===================================================================================================
 			splice:
 				The arr.splice method is a swiss army knife for arrays. It can do everything: insert, remove and replace elements.
 				syntex: arr.splice(fromStartIndex, numberOfDeleteElement, insertElementByComma like elmt1,elmt2,..elmt.n )
@@ -485,12 +489,6 @@ null === undefined // false
 			let result = arr.map(function(item, index, array) {
 			  // returns the new value instead of item
 			});
-
-			split = string to array:
-			The str.split(delim) method splits the string into an array by the given delimiter delim
-			
-			join = array to str:
-				The str.hoin(delim) method join the array element into an string by the given delimiter delim
 		*/
 
 		let users = [
@@ -520,7 +518,7 @@ null === undefined // false
 		let namesString = 'Bilbo, Gandalf, Nazgul';
 		console.log(namesString.split(',')); 					// ["Bilbo", " Gandalf", " Nazgul"]
 
-		'imran'.split(''); 														// ["i", "m", "r", "a", "n"]
+		'imran'.split(''); 										// ["i", "m", "r", "a", "n"]
 		["i", "m", "r", "a", "n"].join(' ') 					// imran
 
 
@@ -596,7 +594,7 @@ null === undefined // false
 		console.log( Jan02_1970 );
 		console.log(nowDate.getFullYear()+'-'+(nowDate.getMonth()+1)+'-'+nowDate.getDate())  //2021-8-25
 
-		let student = {
+		var student = {
 			name: 'John',
 			age: 30,
 			isAdmin: false,
@@ -647,9 +645,6 @@ null === undefined // false
 
 		*/
 		
-
-
-
 		//The apply() method is used to write methods, which can be used on different objects. It is different from the function call() because it takes arguments as an array.
 
 		 var student = {
@@ -749,6 +744,18 @@ null === undefined // false
 		| Use with Strings?		Yes, but not advised	Yes					 |
 		|--------------------------------------------------------------------|
 		*/
+
+
+		var userDetails = {
+			name: 'akram',
+			agge: 27,
+			profession:'Software Engineer',
+			getDetails: function(){
+				return `myself ${this.name} with profession: ${this.profession}`
+			}
+		}
+		var userObj = userDetails.getDetails();
+
 	</script>
 </body>
 </html>

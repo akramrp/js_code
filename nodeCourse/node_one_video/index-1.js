@@ -7,6 +7,7 @@ const EventEmitter = require('events');
 const em = new EventEmitter();
 
 //add listener for the log event
+let msg = "this is testing log"
 em.on('log', (msg) => logEvents(msg));
 setTimeout(() => {
     em.emit('log', 'Log event emitted!');

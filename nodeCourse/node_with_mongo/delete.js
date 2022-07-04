@@ -1,4 +1,4 @@
-const dbConnect = require('./mongodb');
+const dbConnect = require('../mongodb');
 
 const deleteData = async () => {
 	let data = await dbConnect();
