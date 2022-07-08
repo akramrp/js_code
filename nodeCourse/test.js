@@ -43,3 +43,12 @@
 
 
 
+var mongoClient = require('mongodb').mongoClient
+var url = "mongodb://localhost:27017/mydb";
+
+// create database
+mongoClient.connect(url, (err, db) => {
+    if (err) throw err
+    console.log('database created!.')
+    db.close()
+})

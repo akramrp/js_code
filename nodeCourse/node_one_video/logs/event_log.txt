@@ -1,2 +1,5 @@
 
 2022-07-03	18:33:56	197e0418-5628-4bf0-90c4-ee68193a6ba5	Log event emitted!
+2022-07-05	12:00:31	8dfe3e57-f378-4745-92ee-05ca8470796a	login event is generated
+2022-07-05	12:00:53	c6a47d1b-4b22-47c1-af1a-079da976fb22	login event is generated
+2022-07-05	12:03:30	79688ad8-9b6c-4df7-bae4-8d5fe9b97a3a	login event is generated

@@ -1,3 +1,5 @@
+// ::::::::::::::::::::::: from w3 school tutorial :::::::::::::::::::::::
+
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
 // var url = "mongodb://localhost:27017/mydb";
